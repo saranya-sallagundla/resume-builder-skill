@@ -1,4 +1,5 @@
 # The Complete Powerful Resume Standard
+
 A self-contained checklist of everything a resume must have to pass ATS screening, survive the recruiter's 6–10 second scan, and get shortlisted for interviews. Reusable for any role, any JD.
 
 ---
@@ -50,6 +51,7 @@ Use only these standard header names: Summary, Skills, Work Experience, Certific
 ## 5. Numbers & Metrics That Must Appear
 
 A powerful resume has a number in at least 60–70% of bullets. Categories to mine:
+
 - **Money:** cost saved, revenue enabled, budget managed, penalty avoided
 - **Time:** resolution time cut, delivery accelerated, downtime reduced, hours automated away
 - **Volume:** tickets/month, incidents handled, servers/apps/users supported, transactions processed
