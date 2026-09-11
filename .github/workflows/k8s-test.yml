@@ -1,0 +1,32 @@
+name: k8s-test
+on:
+  pull_request:
+    paths: [k8s/**, Dockerfile, web/**]
+  push:
+    branches: [main]
+    paths: [k8s/**, Dockerfile, web/**]
+
+jobs:
+  kind:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build image locally
+        run: docker build -t resume-scorer:ci .
+      - uses: helm/kind-action@v1
+        with: {cluster_name: ci}
+      - name: Load image into kind
+        run: kind load docker-image resume-scorer:ci --name ci
+      - name: Apply manifests (image overridden to the CI build)
+        run: |
+          kubectl apply -k k8s/
+          kubectl set image deployment/resume-scorer web=resume-scorer:ci
+          kubectl rollout status deployment/resume-scorer --timeout=90s
+      - name: Smoke test through the Service
+        run: |
+          kubectl port-forward svc/resume-scorer 8080:80 &
+          sleep 3
+          curl -fsS http://localhost:8080/ | grep -q "Does this resume match" && echo "scorer is serving"
+      - name: Show cluster state on failure
+        if: failure()
+        run: kubectl get all -A && kubectl describe deploy resume-scorer && kubectl logs -l app=resume-scorer --tail=50
