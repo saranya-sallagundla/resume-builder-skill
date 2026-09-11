@@ -1,0 +1,24 @@
+name: package
+on:
+  push:
+    tags: ["v*"]
+
+permissions: {contents: write}
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 0}
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.12"}
+      - run: python scripts/build_skill.py
+      - name: Changelog since previous tag
+        run: |
+          prev=$(git describe --tags --abbrev=0 "${GITHUB_REF_NAME}^" 2>/dev/null || echo "")
+          { echo "## Changes"; git log --pretty='- %s (%h)' ${prev:+$prev..}HEAD; } > RELEASE_NOTES.md
+      - uses: softprops/action-gh-release@v2
+        with:
+          body_path: RELEASE_NOTES.md
+          files: dist/resume-builder.skill
