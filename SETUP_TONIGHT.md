@@ -21,7 +21,7 @@ In the Codespace: drag `resume-builder-skill.zip` from your Downloads onto the f
 
 ```bash
 unzip -q resume-builder-skill.zip && cp -r repo/. . && rm -rf repo resume-builder-skill.zip
-grep -rl YOUR_GITHUB_USERNAME . | xargs sed -i "s/YOUR_GITHUB_USERNAME/$GITHUB_USER/g"
+grep -rl saranya-sallagundla . | xargs sed -i "s/saranya-sallagundla/$GITHUB_USER/g"
 ```
 
 (`$GITHUB_USER` is set automatically in Codespaces.)
