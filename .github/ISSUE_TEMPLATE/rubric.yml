@@ -1,0 +1,11 @@
+name: Rubric change
+description: Propose a change to the 100-point scoring rubric
+labels: [rubric]
+body:
+  - type: textarea
+    id: change
+    attributes: {label: What should change and why}
+    validations: {required: true}
+  - type: textarea
+    id: evidence
+    attributes: {label: Evidence (ATS behaviour, recruiter feedback, before/after scores)}
