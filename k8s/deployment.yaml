@@ -12,7 +12,7 @@ spec:
       securityContext: {runAsNonRoot: true, runAsUser: 101}
       containers:
         - name: web
-          image: ghcr.io/YOUR_GITHUB_USERNAME/resume-scorer:latest
+          image: ghcr.io/saranya-sallagundla/resume-scorer:latest
           ports: [{containerPort: 8080, name: http}]
           resources:
             requests: {cpu: 10m, memory: 16Mi}
