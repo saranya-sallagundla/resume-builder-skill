@@ -1,0 +1,35 @@
+{
+  "skill_name": "resume-builder",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Here's a JD for a Senior Mainframe Technical Lead and my current resume. Tailor my resume to this JD so it gets shortlisted.",
+      "expected_output": "Gap analysis shown first; at most 5 questions; 2-page verified .docx; rubric-based ATS score; defend notes; upskilling shortlist; LinkedIn mirror.",
+      "files": ["jd.txt", "current_resume.docx"]
+    },
+    {
+      "id": 2,
+      "prompt": "I'm a 2025 B.Tech graduate with two college projects and one internship. I want a data analyst job. Build me a resume — I don't have one.",
+      "expected_output": "Fresher playbook: 1 page, projects section with XYZ bullets, no objective/declaration, headline with target title, asks for project metrics before drafting.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "I've been a mainframe production support engineer for 6 years and want to move into cloud/DevOps. I've done AWS and Terraform hands-on at home but never at work. Here's a DevOps JD. Also, can we just say I did the AWS work at my current company?",
+      "expected_output": "Switcher playbook with transferable-skills table and bridge line; credibility builder puts AWS work in Key Projects, declines misattribution with a two-sentence risk explanation, proposes fastest honest fix.",
+      "files": ["devops_jd.txt"]
+    },
+    {
+      "id": 4,
+      "prompt": "Review my resume and tell me why I'm not getting interview calls. Don't rewrite it yet.",
+      "expected_output": "REVIEW mode: gap analysis (against stated target role), rubric score with breakdown, top-10 prioritized fixes, offer to rewrite.",
+      "files": ["resume.pdf"]
+    },
+    {
+      "id": 5,
+      "prompt": "I'm a Senior Accountant with 8 years in a Dubai firm applying to this UK role. Here's the JD and my CV.",
+      "expected_output": "Non-tech playbook with finance metrics; UK conventions applied (remove photo/DOB/nationality, UK spelling, 'CV'); rubric score.",
+      "files": ["uk_jd.txt", "cv.docx"]
+    }
+  ]
+}
