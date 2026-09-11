@@ -1,0 +1,14 @@
+name: New playbook or market
+description: Propose a candidate-type playbook or regional convention
+labels: [playbook]
+body:
+  - type: input
+    id: scope
+    attributes: {label: Candidate type or market, placeholder: "e.g. Nursing (Gulf), Product Manager (US)"}
+    validations: {required: true}
+  - type: textarea
+    id: metrics
+    attributes: {label: Metrics recruiters expect for this profile}
+  - type: textarea
+    id: conventions
+    attributes: {label: Conventions that differ from the core standards}
