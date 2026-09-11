@@ -1,0 +1,13 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: resume-scorer
+  annotations: {nginx.ingress.kubernetes.io/rewrite-target: /}
+spec:
+  rules:
+    - host: scorer.local
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend: {service: {name: resume-scorer, port: {name: http}}}

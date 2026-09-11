@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Resume Match Scorer — paste a JD and a resume, get a 100-point breakdown</title>
+<meta name="description" content="Free, no-login ATS and recruiter match scorer. Runs entirely in your browser; nothing is uploaded.">
+<style>
+  :root{
+    --ink:#1d2430; --ink-2:#4a5568; --paper:#fbfaf6; --rule:#d9d4c7;
+    --field:#ffffff; --ok:#2f7a4f; --warn:#b7791f; --bad:#b83a3a; --band:#e8f0ea;
+    --mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+    --sans: "Source Sans 3", "Segoe UI", system-ui, sans-serif;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{ --ink:#ece9e1; --ink-2:#b5b0a4; --paper:#171a1f; --rule:#343945; --field:#1f232b; --band:#1f2c24; }
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.5 var(--sans)}
+  main{max-width:1080px;margin:0 auto;padding:32px 20px 64px}
+  h1{font-size:clamp(26px,4vw,38px);line-height:1.1;margin:0 0 8px;font-weight:650;letter-spacing:-.01em}
+  .lede{color:var(--ink-2);max-width:62ch;margin:0 0 28px}
+  .grid{display:grid;gap:20px;grid-template-columns:1fr 1fr}
+  @media (max-width:800px){.grid{grid-template-columns:1fr}}
+  label{display:block;font-weight:600;margin-bottom:6px}
+  textarea{width:100%;min-height:340px;padding:12px 14px;border:1px solid var(--rule);border-radius:6px;
+    background:var(--field);color:var(--ink);font:14px/1.45 var(--mono);resize:vertical}
+  textarea:focus{outline:2px solid var(--ok);outline-offset:1px}
+  .bar{display:flex;gap:12px;align-items:center;margin:18px 0 28px;flex-wrap:wrap}
+  button{background:var(--ink);color:var(--paper);border:0;border-radius:6px;padding:10px 18px;font:600 15px var(--sans);cursor:pointer}
+  button.secondary{background:transparent;color:var(--ink);border:1px solid var(--rule)}
+  button:focus-visible{outline:2px solid var(--ok);outline-offset:2px}
+  select{padding:9px 10px;border:1px solid var(--rule);border-radius:6px;background:var(--field);color:var(--ink);font:15px var(--sans)}
+  .total{display:flex;align-items:baseline;gap:14px;border-top:3px solid var(--ink);padding-top:14px;margin-bottom:6px}
+  .total b{font-size:56px;line-height:1;font-weight:700;letter-spacing:-.03em}
+  .total span{color:var(--ink-2)}
+  .verdict{margin:0 0 22px;padding:10px 14px;background:var(--band);border-radius:6px}
+  table{width:100%;border-collapse:collapse;font-size:15px}
+  td,th{text-align:left;padding:9px 6px;border-bottom:1px solid var(--rule);vertical-align:top}
+  th{font-weight:600}
+  td.num{font-family:var(--mono);white-space:nowrap;text-align:right}
+  .ok{color:var(--ok)} .warn{color:var(--warn)} .bad{color:var(--bad)}
+  .meter{height:6px;background:var(--rule);border-radius:3px;overflow:hidden;min-width:90px}
+  .meter i{display:block;height:100%;background:currentColor}
+  details{margin-top:22px;border-top:1px solid var(--rule);padding-top:10px}
+  summary{cursor:pointer;font-weight:600}
+  ul{margin:8px 0 0 18px;padding:0}
+  li{margin:3px 0}
+  .tag{display:inline-block;font:13px var(--mono);background:var(--band);padding:2px 7px;border-radius:4px;margin:2px 3px 2px 0}
+  footer{margin-top:44px;color:var(--ink-2);font-size:14px;border-top:1px solid var(--rule);padding-top:14px}
+  footer a{color:inherit}
+  .hidden{display:none}
+</style>
+</head>
+<body>
+<main>
+  <h1>Does this resume match this job?</h1>
+  <p class="lede">Paste a job description and a resume. You get a 100-point breakdown across ten things recruiters and ATS parsers actually check — keyword coverage, where the keywords sit, numbers per bullet, fluff verbs, clichés, hygiene. Everything runs in your browser; nothing is sent anywhere.</p>
+
+  <div class="grid">
+    <div>
+      <label for="jd">Job description</label>
+      <textarea id="jd" spellcheck="false" placeholder="Paste the full JD. Put the job title on the first line."></textarea>
+    </div>
+    <div>
+      <label for="cv">Resume (plain text or markdown; start bullets with - or •)</label>
+      <textarea id="cv" spellcheck="false" placeholder="Paste the resume text."></textarea>
+    </div>
+  </div>
+
+  <div class="bar">
+    <button id="run">Score it</button>
+    <button id="sample" class="secondary">Load sample</button>
+    <label for="pages" style="margin:0;font-weight:500">Target pages</label>
+    <select id="pages"><option value="1">1</option><option value="2" selected>2</option></select>
+  </div>
+
+  <section id="out" class="hidden" aria-live="polite">
+    <div class="total"><b id="total">0</b><span>/ 100</span></div>
+    <p class="verdict" id="verdict"></p>
+    <table>
+      <thead><tr><th>Dimension</th><th></th><th class="num">Points</th><th>What to fix</th></tr></thead>
+      <tbody id="rows"></tbody>
+    </table>
+    <details><summary>Keywords extracted from the JD</summary><div id="kw"></div></details>
+    <details><summary>Bullets with no numbers</summary><ul id="nonum"></ul></details>
+  </section>
+
+  <footer>
+    Same rubric as <code>scripts/score_resume.py</code> in the <a href="https://github.com/YOUR_GITHUB_USERNAME/resume-builder-skill">resume-builder-skill</a> repo — the full Claude skill turns this score into a rewritten, verified 2-page resume. This estimates typical ATS + recruiter behaviour; it is not a guarantee, and knockout questions can override any match.
+  </footer>
+</main>
+
+<script>
+const FLUFF = ["responsible for","helped with","helped","worked on","involved in","assisted with","assisted","participated in","tasked with"];
+const CLICHE = ["spearheaded","leveraged","leverage","synergy","seamlessly","seamless","passionate","results-driven","proven track record","dynamic","cutting-edge","go-getter","think outside the box","detail-oriented","team player"];
+const HEADERS = ["summary","skills","work experience","experience","certifications","education","projects","key projects"];
+const STOP = new Set(`a an and are as at be by for from has have in is it its of on or that the to with will you your we our this these those their they them experience years year strong good knowledge ability able work working team teams role roles skills skill required preferred plus including etc across using use used within must should can may`.split(/\s+/));
+const GENERIC = new Set(`lead senior junior technical management manager engineer analyst developer responsibilities requirements experience preferred required plus strong looking hands-on environments clients client large support operations processes reviews coordination`.split(/\s+/));
+
+const esc = s => s.replace(/[.*+?^${}()|[\]\\]/g,"\\$&");
+const has = (text, k) => new RegExp("\\b"+esc(k)+"\\b","i").test(text) || text.includes(k);
+
+function extractKeywords(jd, limit=20){
+  const words = jd.replace(/[^\w\s\-+/#.]/g," ").split(/\s+/).filter(Boolean);
+  const counts = new Map();
+  const bump=(k,w=1)=>{k=k.replace(/^[.,]+|[.,]+$/g,"").toLowerCase(); if(k.length<2||STOP.has(k)||GENERIC.has(k))return; counts.set(k,(counts.get(k)||0)+w);};
+  for(const w of words){
+    const toolLike = /^[A-Z]{2,}[0-9/-]*$/.test(w) || /^[A-Z][a-z]+[A-Z][A-Za-z]+$/.test(w) || (/[0-9+#/-]/.test(w) && /^[A-Za-z]/.test(w));
+    if(toolLike) bump(w,3); else if(/^[A-Z][a-z]{2,}$/.test(w)) bump(w,1);
+  }
+  for(let i=0;i<words.length-1;i++){
+    const a=words[i], b=words[i+1];
+    if(!STOP.has(a.toLowerCase())&&!STOP.has(b.toLowerCase())&&/^[A-Za-z]/.test(a)&&/[A-Za-z0-9]$/.test(a)&&/[A-Za-z0-9]$/.test(b)) bump(a+" "+b);
+  }
+  return [...counts.entries()].sort((x,y)=>y[1]-x[1]||x[0].localeCompare(y[0])).slice(0,limit).map(e=>e[0]);
+}
+const bulletsOf = r => r.split("\n").filter(l=>/^\s*[•\-*–·]\s+\S/.test(l)).map(l=>l.replace(/^\s*[•\-*–·]\s+/,"").trim());
+
+function score(resume, jd, targetPages){
+  const r = resume.toLowerCase();
+  const d = {};
+  const kws = extractKeywords(jd);
+  const present = kws.filter(k=>r.includes(k));
+  d.keywords=kws; d.missing=kws.filter(k=>!r.includes(k));
+  const kc = kws.length? +(25*present.length/kws.length).toFixed(1):0;
+
+  const lines = resume.split("\n").filter(l=>l.trim());
+  const top = lines.slice(0,Math.max(1,Math.floor(lines.length/3))).join("\n").toLowerCase();
+  const ratio = present.length? present.filter(k=>top.includes(k)).length/present.length:0;
+  const kp = ratio>=.8?10:ratio>=.6?6:ratio>=.4?3:0;
+
+  let title=(jd.split("\n").find(l=>l.trim())||"").trim().toLowerCase().replace(/^(job title|title|role)\s*[:\-]\s*/,"");
+  const head = lines.slice(0,4).join("\n").toLowerCase();
+  const ta = title && head.includes(title)?5: title && r.includes(title)?3:0;
+
+  let ps=10;
+  if(/^\s*\|.*\|\s*$/m.test(resume)) ps-=3;
+  const hdrs = HEADERS.filter(h=>new RegExp("^\\s*#*\\s*"+esc(h)+"\\s*$","mi").test(resume));
+  if(hdrs.length<3) ps-=2;
+  if(/!\[|<img|\.png|\.jpg/i.test(resume)) ps-=2;
+  ps=Math.max(0,ps);
+
+  const bl = bulletsOf(resume);
+  const numbered = bl.filter(b=>/\d/.test(b));
+  const q = bl.length? +(15*numbered.length/bl.length).toFixed(1):0;
+  d.noNum = bl.filter(b=>!/\d/.test(b));
+
+  let pen=0; const fluff=new Set();
+  for(const b of bl){ const bl_=b.toLowerCase();
+    for(const f of FLUFF){ if(new RegExp("\\b"+esc(f)+"\\b").test(bl_)){pen++;fluff.add(f);break;} }
+    if(b.length>220) pen++;
+    if(/\b(was|were|is|are|been)\s+\w+ed\b/.test(bl_)) pen++;
+  }
+  const fw = bl.map(b=>(b.split(/\s+/)[0]||"").toLowerCase());
+  for(let i=1;i<fw.length;i++) if(fw[i]&&fw[i]===fw[i-1]) pen++;
+  const bq=Math.max(0,10-pen); d.fluff=[...fluff];
+
+  const scopeRe=/\b(\d+\+?\s*(people|person|engineers?|members?|users?|servers?|clients?|tickets?|incidents?|apps?|applications?|systems?|regions?|sites?|stores?|accounts?)|\$\s?\d|\d+\s?(k|m|lakh|crore|%))/g;
+  const sh=(r.match(scopeRe)||[]).length;
+  const sp = sh>=6?10:sh>=3?6:sh>=1?3:0;
+
+  const est=Math.max(1,Math.round(lines.length/55));
+  const ll = est===targetPages?5:Math.abs(est-targetPages)===1?2:0; d.estPages=est;
+
+  const cl = CLICHE.filter(c=>new RegExp("\\b"+esc(c)+"\\b").test(r));
+  const hu=Math.max(0,5-cl.length); d.cliche=cl;
+
+  const styles=new Set();
+  if(/\b\d{2}\/\d{4}\b/.test(resume)) styles.add("mm/yyyy");
+  if(/\b[A-Z][a-z]{2,8}\.? \d{4}\b/.test(resume)) styles.add("Mon yyyy");
+  if(/\b\d{4}-\d{2}\b/.test(resume)) styles.add("yyyy-mm");
+  const issues=Math.max(0,styles.size-1)+(resume.match(/\S  +\S/g)||[]).length;
+  const hy=Math.max(0,5-issues); d.dateStyles=[...styles];
+
+  const rows=[
+    ["Keyword coverage",kc,25, d.missing.length?`Add where truthful: ${d.missing.slice(0,6).join(", ")}${d.missing.length>6?"…":""}`:"All must-have keywords present."],
+    ["Keyword placement",kp,10, kp<10?"Move more JD keywords into headline, summary, skills and the first role.":"Strong top third."],
+    ["Title alignment",ta,5, ta<5?`Put “${title}” (or exact equivalent) in the headline.`:"Title matches."],
+    ["Parse safety",ps,10, ps<10?"Remove tables/images; use standard headers (Summary, Skills, Work Experience, Certifications, Education).":"Parser-safe."],
+    ["Quantification",q,15, d.noNum.length?`${d.noNum.length} bullet(s) have no number — add scope or result metrics.`:"Every bullet carries a number."],
+    ["Bullet quality",bq,10, d.fluff.length?`Replace fluff verbs: ${d.fluff.join(", ")}.`: bq<10?"Shorten long bullets, remove passive voice, vary opening verbs.":"Tight, active bullets."],
+    ["Scope & progression",sp,10, sp<10?"State team size, volumes, users, budgets in each recent role; show numbers growing over time.":"Scope is clear."],
+    ["Length & layout",ll,5, ll<5?`Text length suggests ~${est} page(s); target is ${targetPages}.`:"Length on target."],
+    ["Humanization",hu,5, cl.length?`Cut clichés: ${cl.join(", ")}.`:"Reads human."],
+    ["Hygiene",hy,5, hy<5?`Use one date format (${d.dateStyles.join(" vs ")||"mixed"}) and remove double spaces.`:"Clean."],
+  ];
+  const total=+rows.reduce((a,x)=>a+x[1],0).toFixed(1);
+  return {rows,total,d};
+}
+
+const $=id=>document.getElementById(id);
+function cls(v,max){const p=v/max;return p>=.8?"ok":p>=.5?"warn":"bad";}
+function render(res){
+  $("out").classList.remove("hidden");
+  $("total").textContent=res.total;
+  const t=res.total;
+  $("verdict").textContent = t>=85?"Shortlist-ready. Spend the remaining effort on interview prep.":
+    t>=70?"Competitive but beatable — fix the two lowest dimensions before submitting.":
+    t>=50?"Likely filtered out in a large pool. Retailor keywords, add numbers, restructure the top third.":
+    "Unlikely to pass ATS. Rebuild from the standards.";
+  $("rows").innerHTML=res.rows.map(([n,v,m,fix])=>`<tr class="${cls(v,m)}"><td>${n}</td><td><div class="meter"><i style="width:${(v/m*100).toFixed(0)}%"></i></div></td><td class="num">${v} / ${m}</td><td style="color:var(--ink-2)">${fix}</td></tr>`).join("");
+  $("kw").innerHTML=res.d.keywords.map(k=>`<span class="tag" style="${res.d.missing.includes(k)?'text-decoration:line-through;opacity:.7':''}">${k}</span>`).join("");
+  $("nonum").innerHTML=res.d.noNum.length?res.d.noNum.map(b=>`<li>${b.replace(/</g,"&lt;")}</li>`).join(""):"<li>None.</li>";
+  $("out").scrollIntoView({behavior:"smooth",block:"start"});
+}
+$("run").addEventListener("click",()=>{ if(!$("jd").value.trim()||!$("cv").value.trim())return alert("Paste both a JD and a resume first."); render(score($("cv").value,$("jd").value,+$("pages").value)); });
+$("sample").addEventListener("click",async()=>{
+  try{ const [jd,cv]=await Promise.all([fetch("sample_jd.md").then(r=>r.text()),fetch("sample_resume.md").then(r=>r.text())]); $("jd").value=jd; $("cv").value=cv; render(score(cv,jd,2)); }
+  catch{ alert("Sample files not found next to index.html."); }
+});
+</script>
+</body>
+</html>
