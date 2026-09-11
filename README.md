@@ -9,7 +9,7 @@ An open-source Claude skill that turns a job description plus your raw material 
 [![codeql](https://github.com/saranya-sallagundla/resume-builder-skill/actions/workflows/codeql.yml/badge.svg)](https://github.com/saranya-sallagundla/resume-builder-skill/security/code-scanning)
 ![License: MIT](https://img.shields.io/badge/license-MIT-black)
 
-**Live scorer:** https://saranya-sallagundla.github.io/resume-builder-skill/ — paste a JD and a resume, get the breakdown. Runs in the browser; nothing is uploaded.
+**Live scorer:** <https://saranya-sallagundla.github.io/resume-builder-skill/> — paste a JD and a resume, get the breakdown. Runs in the browser; nothing is uploaded.
 
 <!-- Replace with a 10-second GIF: paste → Score it → breakdown appears -->
 ![demo](docs/demo.gif)

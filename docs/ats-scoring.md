@@ -26,7 +26,7 @@ Always report the breakdown, never just the total. Score the same way every time
 
 ## Reporting format
 
-```
+```text
 ## ATS & recruiter match: 82 / 100
 Keyword coverage 21/25 · Placement 10/10 · Title 5/5 · Parse safety 10/10
 Quantification 9/15 · Bullet quality 8/10 · Scope & progression 8/10

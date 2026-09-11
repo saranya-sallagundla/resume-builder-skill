@@ -17,6 +17,7 @@ e.g. `Junior Data Analyst | B.Tech CSE | SQL, Python, Power BI`
 **Summary (3 lines):** what they're targeting, what they've built (with one number), what they bring (one differentiator). No "seeking opportunities", no "fresher looking for".
 
 **Projects section rules:**
+
 - 2–4 projects, most JD-relevant first, each 2–4 XYZ bullets with real numbers (data size, users, accuracy, latency, test coverage, time saved).
 - Name the stack explicitly — each is a keyword hit.
 - Include one line on what broke and how they fixed it — this is the hands-on proof interviewers probe for.
@@ -46,12 +47,14 @@ e.g. `Cloud Support Engineer | 6 yrs Production Operations & Incident Management
 Never: "looking to transition", "eager to move into", "although my background is in…"
 
 **Transferable-skills mapping (do this explicitly before drafting):**
+
 | Old-domain activity | New-domain language |
 |---|---|
 | Mainframe batch monitoring | Production support, job scheduling, SLA adherence |
 | Retail store manager | P&L ownership, team leadership, customer operations |
 | Teacher | Training delivery, curriculum design, stakeholder communication |
 | Manual QA | Test strategy, defect lifecycle, requirement analysis |
+
 Build a table like this for the specific candidate and use the right-hand column throughout.
 
 **Work Experience bullets:** rewrite each old-role bullet emphasising the 20–30% that maps to the new domain. Cut what doesn't map. Keep real titles; add JD-language in parentheses if truthful: `Systems Analyst (Production Support & Incident Management)`.
@@ -105,6 +108,7 @@ Build a table like this for the specific candidate and use the right-hand column
 Same pipeline, different metric vocabulary. Keyword-mirror the JD exactly as for tech.
 
 **Metrics by function:**
+
 - **Sales/BD:** quota attainment %, revenue closed, pipeline built, deal size, win rate, accounts managed, new logos.
 - **Marketing:** leads generated, CAC, conversion %, campaign ROI, audience growth, budget managed.
 - **Finance/Accounting:** books closed (days), variance reduced, audit findings, budget size, savings identified, compliance (IFRS/GAAP/SOX).
