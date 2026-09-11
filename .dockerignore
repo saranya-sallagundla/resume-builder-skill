@@ -1,0 +1,6 @@
+.git
+dist
+tests
+terraform
+k8s
+skill/evals

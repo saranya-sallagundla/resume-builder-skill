@@ -1,0 +1,10 @@
+dist/
+site/
+__pycache__/
+.pytest_cache/
+*.pyc
+terraform/.terraform/
+terraform/*.tfstate*
+terraform/terraform.tfvars
+terraform/plan.txt
+junit.xml
