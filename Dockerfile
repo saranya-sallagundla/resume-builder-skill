@@ -1,5 +1,5 @@
 # Static scorer served by nginx. Multi-stage keeps the final image tiny (~10 MB).
-FROM alpine:3.20 AS build
+FROM alpine:3.24 AS build
 WORKDIR /src
 COPY web/ ./web/
 COPY examples/sample_jd.md examples/sample_resume.md ./web/
