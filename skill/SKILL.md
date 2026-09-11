@@ -49,7 +49,7 @@ Classify: **fresher**, **domain switcher**, **experienced individual contributor
 
 Use this exact structure:
 
-```
+```text
 ## Gap analysis: <Role> at <Company>
 **Must-have keywords (from JD):** 15–20 exact phrases — tools, certs, titles, methods
 **Present & well-worded:** ...

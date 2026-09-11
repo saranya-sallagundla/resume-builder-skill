@@ -1,0 +1,40 @@
+name: ci
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  lint:
+    name: lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: DavidAnson/markdownlint-cli2-action@v16
+        with:
+          globs: |
+            skill/**/*.md
+            docs/**/*.md
+            README.md
+      - name: yamllint
+        run: pipx run yamllint -d relaxed .github k8s
+
+  test:
+    name: test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.12", cache: pip, cache-dependency-path: requirements-dev.txt}
+      - run: pip install -r requirements-dev.txt
+      - name: Validate skill structure
+        run: python scripts/build_skill.py
+      - name: Unit tests
+        run: pytest -q --junitxml=junit.xml
+      - name: Regression gate — sample resume must stay above 85
+        run: python scripts/score_resume.py --resume examples/sample_resume.md --jd examples/sample_jd.md --min-score 85
+      - name: Post score to job summary
+        if: always()
+        run: python scripts/score_resume.py --resume examples/sample_resume.md --jd examples/sample_jd.md >> "$GITHUB_STEP_SUMMARY"
+      - uses: actions/upload-artifact@v4
+        with: {name: skill-package, path: dist/resume-builder.skill}
