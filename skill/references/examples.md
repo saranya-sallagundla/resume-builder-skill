@@ -54,7 +54,7 @@ Why the second works: numbers in every sentence, a named technical event, one de
 
 Placed directly after the most recent role. Same formatting as Work Experience. No apologetic language.
 
-```
+```text
 KEY PROJECTS
 Kubernetes Production Simulation — 2025
 • Deployed a 3-service Java application on a 2-node Kubernetes cluster with Prometheus/Grafana monitoring and HPA autoscaling.
@@ -82,7 +82,7 @@ Signals of human writing: concrete nouns, specific tools with versions, odd real
 
 ## 6. Skills section layout
 
-```
+```text
 SKILLS
 Platforms & OS: IBM z/OS 2.5, Linux (RHEL 8), Windows Server 2019
 Languages: COBOL, JCL, REXX, Python (scripting)
