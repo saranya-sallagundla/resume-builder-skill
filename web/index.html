@@ -3,14 +3,15 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Resume Match Scorer — paste a JD and a resume, get a 100-point breakdown</title>
-<meta name="description" content="Free, no-login ATS and recruiter match scorer. Runs entirely in your browser; nothing is uploaded.">
+<title>Resume Blueprint &amp; Match Scorer — paste a JD, get a resume skeleton and a 100-point breakdown</title>
+<meta name="description" content="Free, no-login tool: paste a job description and get an instant resume blueprint matched to it, an ATS/recruiter score, an X-Ray view, a 6-second scan simulator, and a multi-JD match matrix. Runs entirely in your browser; nothing is uploaded.">
 <style>
   :root{
     --ink:#1d2430; --ink-2:#4a5568; --paper:#fbfaf6; --rule:#d9d4c7;
     --field:#ffffff; --ok:#2f7a4f; --warn:#b7791f; --bad:#b83a3a; --band:#e8f0ea;
     --mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
     --sans: "Source Sans 3", "Segoe UI", system-ui, sans-serif;
+    --num:#2f7a4f; --fluff:#b83a3a; --kwmark:#1d2430; --cliche:#8a8a8a;
   }
   @media (prefers-color-scheme: dark){
     :root{ --ink:#ece9e1; --ink-2:#b5b0a4; --paper:#171a1f; --rule:#343945; --field:#1f232b; --band:#1f2c24; }
@@ -18,17 +19,24 @@
   *{box-sizing:border-box}
   body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.5 var(--sans)}
   main{max-width:1080px;margin:0 auto;padding:32px 20px 64px}
-  h1{font-size:clamp(26px,4vw,38px);line-height:1.1;margin:0 0 8px;font-weight:650;letter-spacing:-.01em}
-  .lede{color:var(--ink-2);max-width:62ch;margin:0 0 28px}
+  h1{font-size:clamp(24px,4vw,36px);line-height:1.15;margin:0 0 8px;font-weight:650;letter-spacing:-.01em}
+  .lede{color:var(--ink-2);max-width:68ch;margin:0 0 22px}
+  .tabs{display:flex;gap:6px;flex-wrap:wrap;margin:0 0 20px;border-bottom:2px solid var(--rule);padding-bottom:0}
+  .tab{background:transparent;border:0;padding:9px 14px;font:600 14px var(--sans);color:var(--ink-2);cursor:pointer;border-radius:6px 6px 0 0;border-bottom:3px solid transparent}
+  .tab.active{color:var(--ink);border-bottom-color:var(--ok);background:var(--band)}
+  .tab:focus-visible{outline:2px solid var(--ok);outline-offset:2px}
+  .panel{display:none} .panel.active{display:block}
   .grid{display:grid;gap:20px;grid-template-columns:1fr 1fr}
   @media (max-width:800px){.grid{grid-template-columns:1fr}}
   label{display:block;font-weight:600;margin-bottom:6px}
-  textarea{width:100%;min-height:340px;padding:12px 14px;border:1px solid var(--rule);border-radius:6px;
+  .hint{font-weight:400;color:var(--ink-2);font-size:13px}
+  textarea{width:100%;min-height:300px;padding:12px 14px;border:1px solid var(--rule);border-radius:6px;
     background:var(--field);color:var(--ink);font:14px/1.45 var(--mono);resize:vertical}
   textarea:focus{outline:2px solid var(--ok);outline-offset:1px}
-  .bar{display:flex;gap:12px;align-items:center;margin:18px 0 28px;flex-wrap:wrap}
+  .bar{display:flex;gap:12px;align-items:center;margin:18px 0 24px;flex-wrap:wrap}
   button{background:var(--ink);color:var(--paper);border:0;border-radius:6px;padding:10px 18px;font:600 15px var(--sans);cursor:pointer}
   button.secondary{background:transparent;color:var(--ink);border:1px solid var(--rule)}
+  button.ghost{background:transparent;color:var(--ink-2);border:1px dashed var(--rule);font-weight:500}
   button:focus-visible{outline:2px solid var(--ok);outline-offset:2px}
   select{padding:9px 10px;border:1px solid var(--rule);border-radius:6px;background:var(--field);color:var(--ink);font:15px var(--sans)}
   .total{display:flex;align-items:baseline;gap:14px;border-top:3px solid var(--ink);padding-top:14px;margin-bottom:6px}
@@ -50,44 +58,132 @@
   footer{margin-top:44px;color:var(--ink-2);font-size:14px;border-top:1px solid var(--rule);padding-top:14px}
   footer a{color:inherit}
   .hidden{display:none}
+  .blueprint{white-space:pre-wrap;font:14px/1.6 var(--mono);background:var(--field);border:1px solid var(--rule);
+    border-radius:6px;padding:16px}
+  .blueprint .slot{background:var(--band);border-radius:3px;padding:0 3px}
+  .xray-box{white-space:pre-wrap;font:14px/1.7 var(--mono);background:var(--field);border:1px solid var(--rule);
+    border-radius:6px;padding:16px}
+  .xray-box mark.num{background:none;color:var(--num);font-weight:700}
+  .xray-box mark.fluff{background:none;color:var(--fluff);text-decoration:underline wavy}
+  .xray-box mark.kw{background:none;color:var(--kwmark);text-decoration:underline;text-decoration-color:var(--ok);text-decoration-thickness:2px}
+  .xray-box mark.cliche{background:none;color:var(--cliche);text-decoration:line-through}
+  .legend{display:flex;gap:16px;flex-wrap:wrap;margin:10px 0 16px;font-size:13px;color:var(--ink-2)}
+  .legend b{padding:0 2px}
+  .scan-wrap{position:relative;border:1px solid var(--rule);border-radius:6px;background:var(--field);overflow:hidden}
+  .scan-doc{white-space:pre-wrap;font:14px/1.6 var(--mono);padding:16px;transition:opacity .3s}
+  .scan-doc .missed{opacity:.15}
+  .scan-doc .caught{background:var(--band)}
+  .scan-status{padding:10px 16px;background:var(--ink);color:var(--paper);font:600 14px var(--sans)}
+  .card{border:1px solid var(--rule);border-radius:6px;padding:14px;margin-top:14px;background:var(--field)}
+  .matrix{width:100%;border-collapse:collapse;font-size:14px;margin-top:10px}
+  .matrix th,.matrix td{border:1px solid var(--rule);padding:8px;text-align:center}
+  .matrix td.best{background:var(--band);font-weight:700}
+  .jd-cols{display:grid;gap:12px;grid-template-columns:1fr 1fr 1fr}
+  @media (max-width:900px){.jd-cols{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
 <main>
-  <h1>Does this resume match this job?</h1>
-  <p class="lede">Paste a job description and a resume. You get a 100-point breakdown across ten things recruiters and ATS parsers actually check — keyword coverage, where the keywords sit, numbers per bullet, fluff verbs, clichés, hygiene. Everything runs in your browser; nothing is sent anywhere.</p>
+  <h1>Resume Blueprint &amp; Match Scorer</h1>
+  <p class="lede">Four ways to look at the same 100-point rubric: build a resume skeleton straight from a JD, score any resume against it, see it the way a recruiter's eyes actually move, and check one resume against several jobs at once. Everything runs in your browser — nothing is ever uploaded.</p>
 
-  <div class="grid">
-    <div>
-      <label for="jd">Job description</label>
-      <textarea id="jd" spellcheck="false" placeholder="Paste the full JD. Put the job title on the first line."></textarea>
-    </div>
-    <div>
-      <label for="cv">Resume (plain text or markdown; start bullets with - or •)</label>
-      <textarea id="cv" spellcheck="false" placeholder="Paste the resume text."></textarea>
-    </div>
+  <div class="tabs" role="tablist">
+    <button class="tab active" data-tab="blueprint" role="tab" aria-selected="true">Blueprint</button>
+    <button class="tab" data-tab="score" role="tab" aria-selected="false">Score &amp; X-Ray</button>
+    <button class="tab" data-tab="scan" role="tab" aria-selected="false">6-Second Scan</button>
+    <button class="tab" data-tab="matrix" role="tab" aria-selected="false">Match Matrix</button>
   </div>
 
-  <div class="bar">
-    <button id="run">Score it</button>
-    <button id="sample" class="secondary">Load sample</button>
-    <label for="pages" style="margin:0;font-weight:500">Target pages</label>
-    <select id="pages"><option value="1">1</option><option value="2" selected>2</option></select>
-  </div>
+  <!-- ============ BLUEPRINT ============ -->
+  <section class="panel active" id="panel-blueprint">
+    <label for="bp-jd">Paste any job description <span class="hint">— title on the first line works best</span></label>
+    <textarea id="bp-jd" spellcheck="false" placeholder="Paste the full JD here..."></textarea>
+    <div class="bar">
+      <button id="bp-run">Build blueprint</button>
+      <button id="bp-toscore" class="secondary hidden">Send blueprint to Score &amp; X-Ray</button>
+    </div>
+    <div id="bp-out" class="hidden">
+      <p class="hint">Every <span class="tag">[bracketed slot]</span> is something only you can truthfully fill in — numbers are never invented. Fill the slots, then switch to <b>Score &amp; X-Ray</b>.</p>
+      <div class="blueprint" id="bp-text"></div>
+    </div>
+  </section>
 
-  <section id="out" class="hidden" aria-live="polite">
-    <div class="total"><b id="total">0</b><span>/ 100</span></div>
-    <p class="verdict" id="verdict"></p>
-    <table>
-      <thead><tr><th>Dimension</th><th></th><th class="num">Points</th><th>What to fix</th></tr></thead>
-      <tbody id="rows"></tbody>
-    </table>
-    <details><summary>Keywords extracted from the JD</summary><div id="kw"></div></details>
-    <details><summary>Bullets with no numbers</summary><ul id="nonum"></ul></details>
+  <!-- ============ SCORE + XRAY ============ -->
+  <section class="panel" id="panel-score">
+    <div class="grid">
+      <div>
+        <label for="jd">Job description</label>
+        <textarea id="jd" spellcheck="false" placeholder="Paste the full JD. Put the job title on the first line."></textarea>
+      </div>
+      <div>
+        <label for="cv">Resume (plain text or markdown; start bullets with - or •)</label>
+        <textarea id="cv" spellcheck="false" placeholder="Paste the resume text."></textarea>
+      </div>
+    </div>
+    <div class="bar">
+      <button id="run">Score it</button>
+      <button id="xray-toggle" class="secondary">Show X-Ray view</button>
+      <label for="pages" style="margin:0;font-weight:500">Target pages</label>
+      <select id="pages"><option value="1">1</option><option value="2" selected>2</option></select>
+    </div>
+
+    <section id="out" class="hidden" aria-live="polite">
+      <div class="total"><b id="total">0</b><span>/ 100</span></div>
+      <p class="verdict" id="verdict"></p>
+      <table>
+        <thead><tr><th>Dimension</th><th></th><th class="num">Points</th><th>What to fix</th></tr></thead>
+        <tbody id="rows"></tbody>
+      </table>
+      <details><summary>Keywords extracted from the JD</summary><div id="kw"></div></details>
+      <details><summary>Bullets with no numbers</summary><ul id="nonum"></ul></details>
+
+      <div id="xray-panel" class="hidden card">
+        <div class="legend">
+          <span><mark class="num" style="background:none">■</mark> <b>numbers</b></span>
+          <span><mark class="fluff" style="background:none">■</mark> <b>fluff verbs</b></span>
+          <span><mark class="kw" style="background:none">■</mark> <b>JD keywords</b></span>
+          <span><mark class="cliche" style="background:none">■</mark> <b>clichés</b></span>
+        </div>
+        <div class="xray-box" id="xray-text"></div>
+      </div>
+    </section>
+  </section>
+
+  <!-- ============ 6-SECOND SCAN ============ -->
+  <section class="panel" id="panel-scan">
+    <label for="scan-cv">Resume text</label>
+    <textarea id="scan-cv" spellcheck="false" placeholder="Paste the resume text you want to test."></textarea>
+    <div class="bar">
+      <button id="scan-run">Run the 6-second scan</button>
+    </div>
+    <div id="scan-out" class="hidden">
+      <div class="scan-wrap">
+        <div class="scan-status" id="scan-status">Ready</div>
+        <div class="scan-doc" id="scan-doc"></div>
+      </div>
+      <div class="card" id="scan-recall hidden">
+        <b>What a recruiter's 6-second scan actually caught:</b>
+        <ul id="scan-recall-list"></ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ MATCH MATRIX ============ -->
+  <section class="panel" id="panel-matrix">
+    <label>Resume</label>
+    <textarea id="mx-cv" spellcheck="false" placeholder="Paste your resume once here."></textarea>
+    <p class="hint" style="margin:14px 0 6px">Up to 3 job descriptions to compare it against:</p>
+    <div class="jd-cols">
+      <textarea id="mx-jd1" spellcheck="false" placeholder="Job description #1"></textarea>
+      <textarea id="mx-jd2" spellcheck="false" placeholder="Job description #2 (optional)"></textarea>
+      <textarea id="mx-jd3" spellcheck="false" placeholder="Job description #3 (optional)"></textarea>
+    </div>
+    <div class="bar"><button id="mx-run">Compare</button></div>
+    <div id="mx-out" class="hidden"></div>
   </section>
 
   <footer>
-    Same rubric as <code>scripts/score_resume.py</code> in the <a href="https://github.com/saranya-sallagundla/resume-builder-skill">resume-builder-skill</a> repo — the full Claude skill turns this score into a rewritten, verified 2-page resume. This estimates typical ATS + recruiter behaviour; it is not a guarantee, and knockout questions can override any match.
+    Same rubric as <code>scripts/score_resume.py</code> in the <a href="https://github.com/saranya-sallagundla/resume-builder-skill">resume-builder-skill</a> repo — the full Claude skill turns any of this into a rewritten, verified 2-page resume. This estimates typical ATS + recruiter behaviour; it is not a guarantee, and knockout questions can override any match.
   </footer>
 </main>
 
@@ -99,7 +195,6 @@ const STOP = new Set(`a an and are as at be by for from has have in is it its of
 const GENERIC = new Set(`lead senior junior technical management manager engineer analyst developer responsibilities requirements experience preferred required plus strong looking hands-on environments clients client large support operations processes reviews coordination`.split(/\s+/));
 
 const esc = s => s.replace(/[.*+?^${}()|[\]\\]/g,"\\$&");
-const has = (text, k) => new RegExp("\\b"+esc(k)+"\\b","i").test(text) || text.includes(k);
 
 function extractKeywords(jd, limit=20){
   const words = jd.replace(/[^\w\s\-+/#.]/g," ").split(/\s+/).filter(Boolean);
@@ -176,7 +271,7 @@ function score(resume, jd, targetPages){
   const rows=[
     ["Keyword coverage",kc,25, d.missing.length?`Add where truthful: ${d.missing.slice(0,6).join(", ")}${d.missing.length>6?"…":""}`:"All must-have keywords present."],
     ["Keyword placement",kp,10, kp<10?"Move more JD keywords into headline, summary, skills and the first role.":"Strong top third."],
-    ["Title alignment",ta,5, ta<5?`Put “${title}” (or exact equivalent) in the headline.`:"Title matches."],
+    ["Title alignment",ta,5, ta<5?`Put "${title}" (or exact equivalent) in the headline.`:"Title matches."],
     ["Parse safety",ps,10, ps<10?"Remove tables/images; use standard headers (Summary, Skills, Work Experience, Certifications, Education).":"Parser-safe."],
     ["Quantification",q,15, d.noNum.length?`${d.noNum.length} bullet(s) have no number — add scope or result metrics.`:"Every bullet carries a number."],
     ["Bullet quality",bq,10, d.fluff.length?`Replace fluff verbs: ${d.fluff.join(", ")}.`: bq<10?"Shorten long bullets, remove passive voice, vary opening verbs.":"Tight, active bullets."],
@@ -190,7 +285,74 @@ function score(resume, jd, targetPages){
 }
 
 const $=id=>document.getElementById(id);
-function cls(v,max){const p=v/max;return p>=.8?"ok":p>=.5?"warn":"bad";}
+const escHtml = s => s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+
+/* ---------- tabs ---------- */
+document.querySelectorAll(".tab").forEach(btn=>{
+  btn.addEventListener("click",()=>{
+    document.querySelectorAll(".tab").forEach(b=>{b.classList.remove("active");b.setAttribute("aria-selected","false");});
+    document.querySelectorAll(".panel").forEach(p=>p.classList.remove("active"));
+    btn.classList.add("active"); btn.setAttribute("aria-selected","true");
+    $("panel-"+btn.dataset.tab).classList.add("active");
+  });
+});
+
+/* ---------- BLUEPRINT ---------- */
+function buildBlueprint(jd){
+  const lines = jd.split("\n").map(l=>l.trim()).filter(Boolean);
+  const title = lines[0] || "Target Role";
+  const kws = extractKeywords(jd, 14);
+  const respLines = lines.filter(l=>/^[-*•]/.test(l) || /^\d+\./.test(l)).map(l=>l.replace(/^[-*•\d.]+\s*/,""));
+  const resp = respLines.length ? respLines : lines.slice(1,6);
+
+  const skillGroups = kws.slice(0,10);
+  const bulletFor = r => {
+    const short = r.length>90 ? r.slice(0,87)+"..." : r;
+    return `- [Action verb] ${short.charAt(0).toLowerCase()+short.slice(1)}, delivering [metric: e.g. % improved / time saved / scale handled].`;
+  };
+
+  const out = [];
+  out.push(`[Your Name]`);
+  out.push(`${title} | [X]+ Years | ${kws.slice(0,3).join(", ") || "[top JD keywords]"} | [Key certification]`);
+  out.push(`[City, Country] · [phone] · [email] · [linkedin.com/in/you]`);
+  out.push(``);
+  out.push(`## Summary`);
+  out.push(`${title} with [X] years [doing the JD's core function], currently [scope: team size / volume / users] at [X]% [SLA/quality metric]. [One signature outcome with a number]. [Second signature outcome with a number].`);
+  out.push(``);
+  out.push(`## Skills`);
+  out.push(skillGroups.length ? skillGroups.join(", ") : "[group JD keywords by category]");
+  out.push(``);
+  out.push(`## Work Experience`);
+  out.push(`### ${title} — [Company] ([client industry] client) — [Mon YYYY] – Present`);
+  (resp.length?resp:["own the core JD responsibility"]).slice(0,6).forEach(r=>out.push(bulletFor(r)));
+  out.push(``);
+  out.push(`### [Previous Title] — [Company] — [Mon YYYY] – [Mon YYYY]`);
+  out.push(`- [Bullet mapping an earlier responsibility to a number].`);
+  out.push(`- [Bullet showing scope or team size with a number].`);
+  out.push(``);
+  out.push(`## Certifications`);
+  out.push(`[Certification the JD mentions or implies] — [Year]`);
+  out.push(``);
+  out.push(`## Education`);
+  out.push(`[Degree], [Field] — [Institution] — [Year]`);
+  return out.join("\n");
+}
+
+$("bp-run").addEventListener("click",()=>{
+  const jd = $("bp-jd").value.trim();
+  if(!jd) return alert("Paste a job description first.");
+  const bp = buildBlueprint(jd);
+  $("bp-text").textContent = bp;
+  $("bp-out").classList.remove("hidden");
+  $("bp-toscore").classList.remove("hidden");
+  $("bp-toscore").onclick = ()=>{
+    $("jd").value = jd; $("cv").value = bp;
+    document.querySelector('.tab[data-tab="score"]').click();
+  };
+});
+
+/* ---------- SCORE + XRAY ---------- */
+let lastScore = null;
 function render(res){
   $("out").classList.remove("hidden");
   $("total").textContent=res.total;
@@ -199,15 +361,76 @@ function render(res){
     t>=70?"Competitive but beatable — fix the two lowest dimensions before submitting.":
     t>=50?"Likely filtered out in a large pool. Retailor keywords, add numbers, restructure the top third.":
     "Unlikely to pass ATS. Rebuild from the standards.";
+  const cls=(v,max)=>{const p=v/max;return p>=.8?"ok":p>=.5?"warn":"bad";};
   $("rows").innerHTML=res.rows.map(([n,v,m,fix])=>`<tr class="${cls(v,m)}"><td>${n}</td><td><div class="meter"><i style="width:${(v/m*100).toFixed(0)}%"></i></div></td><td class="num">${v} / ${m}</td><td style="color:var(--ink-2)">${fix}</td></tr>`).join("");
-  $("kw").innerHTML=res.d.keywords.map(k=>`<span class="tag" style="${res.d.missing.includes(k)?'text-decoration:line-through;opacity:.7':''}">${k}</span>`).join("");
-  $("nonum").innerHTML=res.d.noNum.length?res.d.noNum.map(b=>`<li>${b.replace(/</g,"&lt;")}</li>`).join(""):"<li>None.</li>";
+  $("kw").innerHTML=res.d.keywords.map(k=>`<span class="tag" style="${res.d.missing.includes(k)?'text-decoration:line-through;opacity:.7':''}">${escHtml(k)}</span>`).join("");
+  $("nonum").innerHTML=res.d.noNum.length?res.d.noNum.map(b=>`<li>${escHtml(b)}</li>`).join(""):"<li>None.</li>";
   $("out").scrollIntoView({behavior:"smooth",block:"start"});
 }
-$("run").addEventListener("click",()=>{ if(!$("jd").value.trim()||!$("cv").value.trim())return alert("Paste both a JD and a resume first."); render(score($("cv").value,$("jd").value,+$("pages").value)); });
-$("sample").addEventListener("click",async()=>{
-  try{ const [jd,cv]=await Promise.all([fetch("sample_jd.md").then(r=>r.text()),fetch("sample_resume.md").then(r=>r.text())]); $("jd").value=jd; $("cv").value=cv; render(score(cv,jd,2)); }
-  catch{ alert("Sample files not found next to index.html."); }
+function renderXray(resume, jd){
+  const kws = extractKeywords(jd);
+  let html = escHtml(resume);
+  kws.filter(k=>k.length>2).sort((a,b)=>b.length-a.length).forEach(k=>{
+    html = html.replace(new RegExp("\\b"+esc(escHtml(k))+"\\b","gi"), m=>`<mark class="kw">${m}</mark>`);
+  });
+  FLUFF.forEach(f=>{ html = html.replace(new RegExp("\\b"+esc(f)+"\\b","gi"), m=>`<mark class="fluff">${m}</mark>`); });
+  CLICHE.forEach(c=>{ html = html.replace(new RegExp("\\b"+esc(c)+"\\b","gi"), m=>`<mark class="cliche">${m}</mark>`); });
+  html = html.replace(/\b\d[\d,.%$]*\+?\b/g, m=>`<mark class="num">${m}</mark>`);
+  $("xray-text").innerHTML = html;
+}
+$("run").addEventListener("click",()=>{
+  if(!$("jd").value.trim()||!$("cv").value.trim())return alert("Paste both a JD and a resume first.");
+  lastScore = score($("cv").value,$("jd").value,+$("pages").value);
+  render(lastScore);
+  renderXray($("cv").value, $("jd").value);
+});
+$("xray-toggle").addEventListener("click",()=>{
+  const panel = $("xray-panel");
+  panel.classList.toggle("hidden");
+  $("xray-toggle").textContent = panel.classList.contains("hidden") ? "Show X-Ray view" : "Hide X-Ray view";
+});
+
+/* ---------- 6-SECOND SCAN ---------- */
+$("scan-run").addEventListener("click",()=>{
+  const resume = $("scan-cv").value;
+  if(!resume.trim()) return alert("Paste a resume first.");
+  const lines = resume.split("\n").filter(l=>l.trim());
+  const topN = Math.max(1, Math.ceil(lines.length/3));
+  const html = lines.map((l,i)=> i<topN ? `<span class="caught">${escHtml(l)}</span>` : `<span class="missed">${escHtml(l)}</span>`).join("\n");
+  $("scan-doc").innerHTML = html;
+  $("scan-out").classList.remove("hidden");
+  $("scan-status").textContent = "Reading top third...";
+  const caughtNums = (lines.slice(0,topN).join(" ").match(/\b\d[\d,.%$]*\+?\b/g)||[]);
+  const caughtBits = lines.slice(0,topN).filter(l=>/\d/.test(l)).slice(0,5);
+  setTimeout(()=>{
+    $("scan-status").textContent = "6 seconds up — here's what stuck.";
+    let box = document.getElementById("scan-recall-visible");
+    if(!box){
+      box = document.createElement("div"); box.className="card"; box.id="scan-recall-visible";
+      $("scan-out").appendChild(box);
+    }
+    box.innerHTML = `<b>What a recruiter's 6-second scan actually caught:</b><ul>` +
+      (caughtBits.length ? caughtBits.map(b=>`<li>${escHtml(b)}</li>`).join("") : "<li>Nothing memorable — the top third has no numbers or headline signal.</li>") +
+      `</ul><p class="hint">${caughtNums.length} number(s) landed in the scanned zone. Everything greyed out below was invisible to this pass — that's why top-third placement is worth 10 of your 100 points.</p>`;
+  }, 900);
+});
+
+/* ---------- MATCH MATRIX ---------- */
+$("mx-run").addEventListener("click",()=>{
+  const cv = $("mx-cv").value;
+  const jds = [["JD 1",$("mx-jd1").value],["JD 2",$("mx-jd2").value],["JD 3",$("mx-jd3").value]].filter(([,v])=>v.trim());
+  if(!cv.trim()||!jds.length) return alert("Paste a resume and at least one JD.");
+  const results = jds.map(([label,jd])=>({label, jd, res:score(cv,jd,2)}));
+  const best = results.reduce((a,b)=>b.res.total>a.res.total?b:a);
+  let html = `<table class="matrix"><thead><tr><th>Dimension</th>${results.map(r=>`<th>${escHtml(r.label)}</th>`).join("")}</tr></thead><tbody>`;
+  const dims = results[0].res.rows.map(r=>r[0]);
+  dims.forEach((dim,i)=>{
+    html += `<tr><td style="text-align:left">${dim}</td>` + results.map(r=>`<td>${r.res.rows[i][1]}/${r.res.rows[i][2]}</td>`).join("") + `</tr>`;
+  });
+  html += `<tr><td style="text-align:left"><b>Total</b></td>` + results.map(r=>`<td class="${r===best?'best':''}">${r.res.total}${r===best?' ★':''}</td>`).join("") + `</tr>`;
+  html += `</tbody></table><p class="hint">★ best fit as-is. For any other job, the fixes list under Score &amp; X-Ray tells you exactly what to change.</p>`;
+  $("mx-out").innerHTML = html;
+  $("mx-out").classList.remove("hidden");
 });
 </script>
 </body>

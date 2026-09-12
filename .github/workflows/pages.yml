@@ -2,7 +2,7 @@ name: pages
 on:
   push:
     branches: [main]
-    paths: [web/**, examples/**, .github/workflows/pages.yml]
+    paths: [web/**, .github/workflows/pages.yml]
   workflow_dispatch:
 
 permissions: {contents: read, pages: write, id-token: write}
@@ -15,8 +15,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Assemble site
-        run: |
-          mkdir -p site && cp -r web/* site/ && cp examples/sample_jd.md examples/sample_resume.md site/
+        run: mkdir -p site && cp -r web/* site/
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with: {path: site}
