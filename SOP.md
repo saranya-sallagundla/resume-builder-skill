@@ -171,7 +171,7 @@ Start a new session (or continue the same one) and paste:
 >
 > Report results in plain English. Fix anything broken, but explain each fix before you make it. Do not change the rubric's point weights.
 
-Expected: 13 tests pass, and the sample resume scores about 94.5 out of 100.
+Expected: 13 tests pass, and the sample resume scores about 91.8 out of 100.
 
 ---
 

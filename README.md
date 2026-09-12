@@ -9,7 +9,7 @@ An open-source Claude skill that turns a job description plus your raw material 
 [![codeql](https://github.com/saranya-sallagundla/resume-builder-skill/actions/workflows/codeql.yml/badge.svg)](https://github.com/saranya-sallagundla/resume-builder-skill/security/code-scanning)
 ![License: MIT](https://img.shields.io/badge/license-MIT-black)
 
-**Live scorer:** <https://saranya-sallagundla.github.io/resume-builder-skill/> — paste a JD and a resume, get the breakdown. Runs in the browser; nothing is uploaded.
+**Live tool:** <https://saranya-sallagundla.github.io/resume-builder-skill/> — paste any JD to get an instant resume **Blueprint**, **Score & X-Ray** a resume against it, run the **6-Second Scan** to see what a recruiter's fast read actually catches, or **Match** one resume against up to three JDs at once. Runs entirely in the browser; nothing is uploaded.
 
 <!-- Replace with a 10-second GIF: paste → Score it → breakdown appears -->
 ![demo](docs/demo.gif)
@@ -28,7 +28,7 @@ Most resumes lose before a human reads them: keyword-matching ATS filters, then 
 | [`docs/playbooks.md`](docs/playbooks.md) | Per-candidate-type templates, transferable-skills mapping, red-flag handling. |
 | [`docs/regional-conventions.md`](docs/regional-conventions.md) | India, US, UK, EU, Gulf, AU/NZ, Singapore, Canada norms. |
 | [`scripts/score_resume.py`](scripts/score_resume.py) | Heuristic implementation of the rubric; used as a CI regression gate. |
-| [`web/`](web/) | The same rubric as a single-file browser app, deployed to GitHub Pages and packaged as a container. |
+| [`web/`](web/) | The same rubric as a single-file browser app — JD → resume blueprint, scorer with an X-Ray view, a 6-second recruiter-scan simulator, and a multi-JD match matrix — deployed to GitHub Pages and packaged as a container. |
 
 ## Install the skill
 
@@ -43,8 +43,8 @@ python scripts/score_resume.py --resume my_resume.md --jd the_jd.md
 ```
 
 ```text
-## ATS & recruiter match: 94.5 / 100
-Keyword coverage 22.5/25 · Placement 10/10 · Title 5/5 · Parse safety 10/10
+## ATS & recruiter match: 91.8 / 100
+Keyword coverage 23.8/25 · Placement 6/10 · Title 5/5 · Parse safety 10/10
 Quantification 15/15 · Bullet quality 10/10 · Scope & progression 10/10
 Length & layout 2/5 · Humanization 5/5 · Hygiene 5/5
 ```
