@@ -2,7 +2,6 @@
 FROM alpine:3.24 AS build
 WORKDIR /src
 COPY web/ ./web/
-COPY examples/sample_jd.md examples/sample_resume.md ./web/
 
 FROM nginxinc/nginx-unprivileged:1.31-alpine
 COPY --from=build /src/web/ /usr/share/nginx/html/
