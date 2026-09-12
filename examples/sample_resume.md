@@ -1,38 +1,39 @@
-# Govardan K. B.
-Senior Mainframe Technical Lead | 14+ Years | z/OS, COBOL, DB2, JCL | ITIL v4
-Hyderabad, India · +91 9xxxx xxxxx · email@example.com · linkedin.com/in/example
+<!-- Fully synthetic test fixture for the CI score-regression gate (see CLAUDE.md). Every name, company, and number below is invented and illustrative only — not a real person's record. -->
+# Jordan Ellis
+Senior DevOps Engineer | 9+ Years | Kubernetes, Terraform, AWS, CI/CD | AWS Certified DevOps Engineer
+Austin, TX (Remote) · +1 555-0100 · jordan.ellis@example.com · linkedin.com/in/example
 
 ## Summary
-Senior Mainframe Technical Lead with 14 years across banking and healthcare payer systems, currently owning 120+ nightly batch jobs for a US insurer at 99.8% on-time completion. Led two z/OS upgrades and a DB2 v11→v12 migration with zero client-facing incidents. Reduced repeat incidents 40% in 2023 through Root Cause Analysis (RCA) that fixed defects the vendor had marked "as designed".
+Senior DevOps Engineer with 9 years running CI/CD and cloud infrastructure for high-traffic SaaS platforms, currently owning Kubernetes and Terraform-provisioned AWS environments for a fintech client at 99.95% uptime. Led two multi-region migrations and a Kubernetes 1.24 to 1.29 upgrade with zero customer-facing incidents. Reduced production incidents 45% in 2023 through Root Cause Analysis (RCA) that closed gaps a legacy vendor runbook had missed.
 
 ## Skills
-Platforms: IBM z/OS 2.5, CICS, VSAM
-Languages: COBOL, JCL, REXX, SQL
-Databases: DB2 for z/OS v12, IMS DB
-ITSM & Tools: ServiceNow, Control-M, Splunk, Endevor
-Methodologies: ITIL v4, Incident Management, Problem Management, Change Advisory Board (CAB), SLA Management
+Platforms: Kubernetes, Docker, AWS (EKS, EC2, RDS, S3)
+Infrastructure as Code: Terraform, Helm, Kustomize
+CI/CD: GitHub Actions, Jenkins, ArgoCD
+Observability & On-call: Prometheus, Grafana, PagerDuty, Splunk
+Methodologies: Incident Management, Problem Management, Change Advisory Board (CAB), SLA Management
 
 ## Work Experience
-### Senior Mainframe Technical Lead — ABC Technologies (US healthcare payer client) — Jan 2020 – Present
-- Own production support for 120+ nightly batch jobs and 40 online CICS transactions serving 6M members, at 99.8% SLA adherence.
-- Led a 9-person L2/L3 team across onshore and offshore shifts; cut mean time to resolve P1 incidents from 3.5 h to 1.4 h by redesigning the escalation matrix.
-- Reduced repeat incidents 40% in 2023 through RCA on 27 chronic ABENDs, presenting fixes to the client CIO at monthly reviews.
-- Chaired weekly Change Advisory Board (CAB) for 5 application teams; 210 changes in 2024 with a 1.9% rollback rate.
-- Delivered DB2 v11 to v12 migration for 300+ tables over 5 months with zero client-facing incidents.
+### Senior DevOps Engineer — Meridian Cloud Systems (fintech client) — Jan 2020 – Present
+- Own CI/CD and the Kubernetes platform for 40+ services serving 3M monthly users at 99.95% SLA adherence.
+- Led a team of 8 SRE/DevOps engineers across two time zones; cut mean time to resolve P1 incidents from 2.5 h to 45 min by redesigning the on-call escalation matrix.
+- Reduced repeat incidents 45% in 2023 through RCA on 22 chronic alert sources, presenting fixes to the client's VP of Engineering at monthly reviews.
+- Chaired the weekly Change Advisory Board (CAB) for 6 product teams; approved 260 changes in 2024 with a 1.5% rollback rate.
+- Delivered a Kubernetes 1.24 to 1.29 upgrade across 3 regions with zero customer-facing incidents.
 
-### Mainframe Technical Lead — XYZ Services (banking client) — Mar 2015 – Dec 2019
-- Managed batch operations for 80 Control-M job streams processing 2M daily transactions.
-- Automated 30 manual health checks with REXX, saving 12 engineer-hours per week.
-- Mentored 6 junior engineers; 4 promoted to L2 within 18 months.
-- Coordinated 3 disaster-recovery drills per year with 100% RTO compliance.
+### DevOps Engineer — Larkspur Digital (e-commerce client) — Mar 2015 – Dec 2019
+- Managed Terraform-provisioned AWS infrastructure for 60+ services processing 5M daily transactions.
+- Automated 25 manual deployment checks with Python and Bash, saving 15 engineer-hours per week.
+- Mentored 5 junior engineers; 3 promoted to senior roles within 18 months.
+- Coordinated 4 disaster-recovery drills per year with 100% RTO compliance.
 
-### Mainframe Developer — PQR Solutions — Jun 2011 – Feb 2015
-- Developed and maintained 50+ COBOL/DB2 programs for a core banking platform.
-- Cut monthly statement batch runtime 35% by tuning DB2 SQL and VSAM access paths.
+### Systems Engineer — Anchorpoint Software — Jun 2011 – Feb 2015
+- Built and maintained 30+ deployment scripts for a core order-processing platform.
+- Cut nightly batch runtime 35% by tuning database queries and caching layers.
 
 ## Certifications
-ITIL v4 Foundation — AXELOS — 2022
-IBM Certified System Programmer z/OS — 2019
+AWS Certified DevOps Engineer – Professional — 2022
+Certified Kubernetes Administrator (CKA) — 2019
 
 ## Education
-B.Tech, Computer Science — JNTU Hyderabad — 2011
+B.Tech, Computer Science — State University — 2011

@@ -1,16 +1,16 @@
-Senior Mainframe Technical Lead
+Senior DevOps Engineer
 
-We are looking for a Senior Mainframe Technical Lead with 12+ years of experience in z/OS environments supporting large healthcare or banking clients.
+We are looking for a Senior DevOps Engineer with 8+ years of experience running CI/CD and cloud infrastructure for high-traffic SaaS platforms.
 
 Responsibilities
-- Lead production support and batch operations for COBOL, JCL and DB2 applications
-- Own Incident Management, Problem Management and Root Cause Analysis (RCA) per ITIL processes
-- Drive Change Advisory Board (CAB) reviews and release coordination
-- Mentor a team of L2/L3 engineers and coordinate with offshore teams
-- Manage SLA adherence and client stakeholder communication
+- Own CI/CD pipelines and release engineering across GitHub Actions and Jenkins
+- Manage Kubernetes clusters and Terraform-provisioned AWS infrastructure
+- Drive Incident Management and Root Cause Analysis (RCA) for production outages
+- Lead on-call rotations and coordinate Change Advisory Board (CAB) reviews
+- Mentor a team of SRE/DevOps engineers and partner with product teams on reliability
 
 Requirements
-- Strong hands-on COBOL, JCL, DB2, VSAM, CICS, REXX
-- Experience with ServiceNow, Control-M or CA-7 scheduling, Splunk
-- ITIL v4 certification preferred
-- Experience with mainframe modernization or migration projects is a plus
+- Strong hands-on Kubernetes, Terraform, Docker, AWS, Python or Bash scripting
+- Experience with Prometheus, Grafana, PagerDuty or similar observability and on-call tooling
+- AWS Certified DevOps Engineer or equivalent preferred
+- Experience with multi-region deployments or platform migrations is a plus
