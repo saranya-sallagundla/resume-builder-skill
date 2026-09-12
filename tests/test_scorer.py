@@ -22,7 +22,7 @@ Objective: seeking a challenging role
 def test_extract_keywords_finds_tools():
     kws = extract_keywords(JD)
     joined = " ".join(kws)
-    for k in ["cobol", "db2", "itil", "servicenow"]:
+    for k in ["aws", "kubernetes", "pagerduty", "rca"]:
         assert k in joined
 
 
