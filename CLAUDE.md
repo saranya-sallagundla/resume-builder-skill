@@ -15,7 +15,7 @@ An open-source Claude skill that builds ATS-optimized resumes, plus a full DevOp
 1. **Never weaken the truth rule.** Nothing in `skill/` may encourage fabricating employers, dates, titles, certifications, team settings, or metrics. Real hands-on work goes in a Key Projects section; it never gets placed under an employer where it didn't happen.
 2. **Scorer parity.** `scripts/score_resume.py` and `web/index.html` must produce identical numbers for the same input. Change one, change the other.
 3. **Docs mirror.** After editing `skill/references/*.md`, run `make sync-docs` or the test suite fails.
-4. **No new runtime dependencies** in `web/` — it stays a single dependency-free HTML file. No secrets anywhere in the repo.
+4. **No runtime dependencies by default** in `web/` — one HTML file whose rule-based features work with no external service. Two agreed exceptions (`docs/brief.md`, `docs/adr-003-optional-ai.md`): a Google Fonts stylesheet with a full system fallback stack, and the optional, user-initiated AI Boost module (a pinned on-device runtime script, or direct calls to a provider using the visitor's own key). No server, no project-owned keys, no analytics or trackers, no secrets anywhere in the repo.
 5. **Sample data stays illustrative.** Numbers in `examples/` are made-up demo values and must be described as such; never present them as a real person's record.
 
 ## Working style in this repo
