@@ -30,7 +30,18 @@ STANDARD_HEADERS = ["summary", "skills", "work experience", "experience",
                     "certifications", "education", "projects", "key projects"]
 GENERIC = set("""lead senior junior technical management manager engineer analyst developer
 responsibilities requirements experience preferred required plus strong looking hands-on
-environments clients client large support operations processes reviews coordination""".split())
+environments clients client large support operations processes reviews coordination
+develop develops developed developing build builds built building design designs designed
+designing deploy deploys deployed deploying create creates created creating ensure ensures
+ensured ensuring provide provides provided providing implement implements implemented
+implementing maintain maintains maintained maintaining perform performs performed performing
+conduct conducts conducted conducting assist assists assisted assisting participate
+participates participated participating contribute contributes contributed contributing
+utilize utilizes utilized utilizing collaborate collaborates collaborated collaborating
+communicate communicates communicated communicating identify identifies identified
+identifying automate automates automated automating customers customer computer science
+software systems applications solutions procedures updates environment scripts script
+tools tool need needs needed needing someone regularly background""".split())
 STOPWORDS = set("""a an and are as at be by for from has have in is it its of on or that the to
 with will you your we our this these those their they them experience years year strong
 good knowledge ability able work working team teams role roles skills skill required
@@ -81,7 +92,8 @@ def extract_keywords(jd: str, limit: int = 20) -> list[str]:
         elif re.fullmatch(r"[A-Z][a-z]{2,}", w):
             bump(w, 1)
     for a, b in zip(words, words[1:]):
-        if (a.lower() not in STOPWORDS and b.lower() not in STOPWORDS
+        al, bl = a.lower(), b.lower()
+        if (al not in STOPWORDS and bl not in STOPWORDS and al not in GENERIC and bl not in GENERIC
                 and a[:1].isalpha() and b[-1:].isalnum() and a[-1:].isalnum()):
             bump(f"{a} {b}")
     ranked = sorted(counts.items(), key=lambda kv: (-kv[1], kv[0]))
@@ -166,13 +178,15 @@ def score(resume: str, jd: str, keywords: list[str] | None = None,
     s.scope_progression = 10 if scope_hits >= 6 else 6 if scope_hits >= 3 else 3 if scope_hits >= 1 else 0
     s.details["scope_signals"] = scope_hits
 
-    # 8. Length & layout (5)
+    # 8. Length & layout (5) — standard is `target_pages` maximum (default 2, i.e. 1-2 pages full marks)
+    def length_score(p: int) -> float:
+        return 5 if p <= target_pages else 2 if p == target_pages + 1 else 0
     if pages is not None:
-        s.length_layout = 5 if pages == target_pages else 0
+        s.length_layout = length_score(pages)
     else:
         # ~55 non-empty lines per page in a dense resume
         est = max(1, round(len(lines) / 55))
-        s.length_layout = 5 if est == target_pages else 2 if abs(est - target_pages) == 1 else 0
+        s.length_layout = length_score(est)
         s.details["estimated_pages"] = est
 
     # 9. Humanization (5)

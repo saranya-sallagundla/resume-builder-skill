@@ -188,5 +188,6 @@ One pull request per part; CI green; merge; verify live. Each UI part is precede
 - **2026-09-13 — AI:** optional only; Mode B first, Mode A a week later; no Mode C; no project keys.
 - **2026-09-13 — Form:** website only; zero cost; non-commercial forever.
 - **2026-09-14 — Design:** Sky &amp; Paper approved (hero and six rooms). Rooms are not props or windows; they reuse the hero's three moves. The Apple-style direction from brief v3 is withdrawn.
+- **2026-09-14 — Part 1 shipped; dark mode flagged.** Sky & Paper shell live. Owner: dark-mode colours are "the worst" — revisit at the end of the build (not now, not blocking Part 2). Tracked here so it isn't forgotten.
 - **2026-09-14 — Research additions:** 60-second pitch, company briefing sheet, interview-day checklist, post-interview reflection, follow-up clock, take-home view, gentle streaks (from Dribbble and Figma Community patterns). Owner-approved suggestions added: master + variants with Tailor diff, truth ledger, referral script, counter-offer email, .ics export, 90-day check-ins, starter picker, before/after card, Letter/A4 toggle.
 - **Process:** one PR per part; the owner runs every git and GitHub step; preview approved before each UI part; CI green before merge.
