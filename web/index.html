@@ -125,39 +125,91 @@
   footer.site nav{display:flex;gap:var(--s3);flex-wrap:wrap}
   footer.site a{text-decoration:none;color:var(--page-fg-2)} footer.site a:hover{text-decoration:underline}
 
-  /* v1 tool, kept until Part 2 replaces it */
-  .v1{--v-ink:#141621;--v-ink2:#3B3E52;--v-rule:rgba(20,22,33,.12);--v-field:#fff;--v-band:#EEF3FF}
-  .v1 .tabs{display:flex;gap:6px;flex-wrap:wrap;margin:0 0 var(--s3);padding:6px;border-radius:999px;background:rgba(255,255,255,.55);border:1px solid rgba(20,22,33,.08);width:max-content;max-width:100%}
-  .v1 .tab{background:transparent;border:0;padding:9px 14px;font:600 14px var(--ui);color:var(--ink-3);cursor:pointer;border-radius:999px}
-  .v1 .tab.active{background:var(--ink);color:#fff}
-  .v1 .panel{display:none} .v1 .panel.active{display:block}
-  .v1 .grid{display:grid;gap:var(--s3);grid-template-columns:1fr 1fr} @media (max-width:800px){.v1 .grid{grid-template-columns:1fr}}
-  .v1 label{display:block;font:600 12px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);margin-bottom:8px}
-  .v1 .hint{font:400 13px var(--ui);color:var(--ink-2);text-transform:none;letter-spacing:0}
-  .v1 textarea{width:100%;min-height:280px;padding:12px 14px;border:1px solid var(--v-rule);border-radius:12px;background:var(--v-field);color:var(--v-ink);font:14px/1.45 var(--mono);resize:vertical}
-  .v1 .bar{display:flex;gap:12px;align-items:center;margin:var(--s3) 0;flex-wrap:wrap}
-  .v1 select{padding:9px 10px;border:1px solid var(--v-rule);border-radius:10px;background:var(--v-field);color:var(--v-ink);font:14px var(--ui)}
-  .v1 .total{display:flex;align-items:baseline;gap:14px;border-top:3px solid var(--ink);padding-top:14px;margin-bottom:6px}
-  .v1 .total b{font:800 72px/.9 var(--disp);letter-spacing:-.04em;font-variant-numeric:tabular-nums} .v1 .total span{color:var(--ink-3)}
-  .v1 .verdict{margin:0 0 var(--s3);padding:10px 14px;background:var(--v-band);border-radius:10px;color:var(--v-ink)}
-  .v1 table{width:100%;border-collapse:collapse;font-size:15px;color:var(--v-ink)}
-  .v1 td,.v1 th{text-align:left;padding:9px 6px;border-bottom:1px solid var(--v-rule);vertical-align:top} .v1 th{font-weight:600}
-  .v1 td.num{font-family:var(--mono);white-space:nowrap;text-align:right}
-  .v1 .ok{color:var(--mint)} .v1 .warn{color:var(--amber)} .v1 .bad{color:var(--rose)}
-  .v1 .meter{height:6px;background:rgba(20,22,33,.1);border-radius:3px;overflow:hidden;min-width:90px} .v1 .meter i{display:block;height:100%;background:currentColor}
-  .v1 details{margin-top:var(--s3);border-top:1px solid var(--v-rule);padding-top:10px} .v1 summary{cursor:pointer;font-weight:600}
-  .v1 ul{margin:8px 0 0 18px;padding:0} .v1 li{margin:3px 0}
-  .v1 .tag{display:inline-block;font:13px var(--mono);background:var(--v-band);padding:2px 7px;border-radius:6px;margin:2px 3px 2px 0}
-  .v1 .blueprint,.v1 .xray-box,.v1 .scan-doc{white-space:pre-wrap;font:14px/1.6 var(--mono);background:var(--v-field);border:1px solid var(--v-rule);border-radius:12px;padding:16px;overflow-x:auto;color:var(--v-ink)}
-  .v1 .xray-box mark.num{background:none;color:var(--mint);font-weight:700} .v1 .xray-box mark.fluff{background:none;color:var(--rose);text-decoration:underline wavy}
-  .v1 .xray-box mark.kw{background:none;color:var(--cobalt);text-decoration:underline;text-decoration-thickness:2px} .v1 .xray-box mark.cliche{background:none;color:#8A8FB3;text-decoration:line-through}
-  .v1 .legend{display:flex;gap:16px;flex-wrap:wrap;margin:10px 0 16px;font-size:13px;color:var(--ink-2)}
-  .v1 .scan-wrap{border:1px solid var(--v-rule);border-radius:12px;background:var(--v-field);overflow:hidden}
-  .v1 .scan-doc{border:0;border-radius:0} .v1 .scan-doc .missed{opacity:.15} .v1 .scan-doc .caught{background:var(--v-band)}
-  .v1 .scan-status{padding:10px 16px;background:var(--ink);color:#fff;font:600 14px var(--ui)}
-  .v1 .card{border:1px solid var(--v-rule);border-radius:12px;padding:14px;margin-top:14px;background:var(--v-field);color:var(--v-ink)}
-  .v1 .matrix{width:100%;border-collapse:collapse;font-size:14px;margin-top:10px} .v1 .matrix th,.v1 .matrix td{border:1px solid var(--v-rule);padding:8px;text-align:center} .v1 .matrix td.best{background:var(--v-band);font-weight:700}
-  .v1 .jd-cols{display:grid;gap:12px;grid-template-columns:1fr 1fr 1fr} @media (max-width:900px){.v1 .jd-cols{grid-template-columns:1fr}}
+  /* ================= Résumé room (Part 2) ================= */
+  .rr{--f:var(--paper);--fi:var(--ink);--rule2:rgba(20,22,33,.12);--band:rgba(43,76,255,.09)}
+  .rr .tabs{display:flex;gap:6px;flex-wrap:wrap;margin:0 0 var(--s3);padding:6px;border-radius:999px;background:rgba(255,255,255,.55);border:1px solid rgba(20,22,33,.08);width:max-content;max-width:100%}
+  .rr .tab{background:transparent;border:0;padding:9px 14px;font:600 14px var(--ui);color:var(--page-fg-3);cursor:pointer;border-radius:999px}
+  .rr .tab.active{background:var(--ink);color:#fff}
+  .rr .panel{display:none} .rr .panel.active{display:block}
+  .rr .grid2{display:grid;gap:var(--s3);grid-template-columns:1fr 1fr} @media (max-width:800px){.rr .grid2{grid-template-columns:1fr}}
+  .rr label{display:block;font:600 12px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--page-fg-3);margin-bottom:8px}
+  .rr .hint{font:400 13px var(--ui);color:var(--page-fg-2);text-transform:none;letter-spacing:0;margin:6px 0 0}
+  .rr textarea{width:100%;min-height:260px;padding:12px 14px;border:1px solid var(--rule2);border-radius:12px;background:var(--f);color:var(--fi);font:14px/1.45 var(--mono);resize:vertical}
+  .rr .bar{display:flex;gap:10px;align-items:center;margin:var(--s3) 0;flex-wrap:wrap}
+  .rr select{padding:9px 10px;border:1px solid var(--rule2);border-radius:10px;background:var(--f);color:var(--fi);font:14px var(--ui)}
+  .rr .total{display:flex;align-items:baseline;gap:14px;border-top:3px solid var(--ink);padding-top:14px;margin-bottom:6px}
+  .rr .total b{font:800 72px/.9 var(--disp);letter-spacing:-.04em;font-variant-numeric:tabular-nums;color:var(--fi)} .rr .total span{color:var(--page-fg-3)}
+  .rr .verdict{margin:0 0 var(--s3);padding:10px 14px;background:var(--band);border-radius:10px;color:var(--fi)}
+  .rr table{width:100%;border-collapse:collapse;font-size:15px;color:var(--fi)}
+  .rr td,.rr th{text-align:left;padding:9px 6px;border-bottom:1px solid var(--rule2);vertical-align:top} .rr th{font-weight:600;color:var(--page-fg-3);font-size:12px;letter-spacing:.04em;text-transform:uppercase}
+  .rr td.num{font-family:var(--mono);white-space:nowrap;text-align:right}
+  .rr .ok{color:var(--mint)} .rr .warn{color:var(--amber)} .rr .bad{color:var(--rose)}
+  .rr .meter{height:6px;background:rgba(127,127,127,.18);border-radius:3px;overflow:hidden;min-width:90px} .rr .meter i{display:block;height:100%;background:currentColor}
+  .rr details{margin-top:var(--s3);border-top:1px solid var(--rule2);padding-top:10px} .rr summary{cursor:pointer;font-weight:600}
+  .rr ul.plain{margin:8px 0 0 18px;padding:0} .rr ul.plain li{margin:3px 0}
+  .rr .tag{display:inline-block;font:13px var(--mono);background:var(--band);padding:2px 7px;border-radius:6px;margin:2px 3px 2px 0}
+  .rr .box,.rr .xray-box{white-space:pre-wrap;font:14px/1.6 var(--mono);background:var(--f);border:1px solid var(--rule2);border-radius:12px;padding:16px;overflow-x:auto;color:var(--fi)}
+  .rr .xray-box mark.num{background:none;color:var(--mint);font-weight:700} .rr .xray-box mark.fluff{background:none;color:var(--rose);text-decoration:underline wavy}
+  .rr .xray-box mark.kw{background:none;color:var(--cobalt);text-decoration:underline;text-decoration-thickness:2px} .rr .xray-box mark.cliche{background:none;color:#8A8FB3;text-decoration:line-through}
+  .rr .legend{display:flex;gap:16px;flex-wrap:wrap;margin:10px 0 16px;font-size:13px;color:var(--page-fg-2)}
+  .rr .card{border:1px solid var(--rule2);border-radius:12px;padding:14px;margin-top:14px;background:var(--f);color:var(--fi)}
+  .rr .matrix{width:100%;border-collapse:collapse;font-size:14px;margin-top:10px} .rr .matrix th,.rr .matrix td{border:1px solid var(--rule2);padding:8px;text-align:center} .rr .matrix td.best{background:var(--band);font-weight:700}
+  .rr .jd-cols{display:grid;gap:12px;grid-template-columns:1fr 1fr 1fr} @media (max-width:900px){.rr .jd-cols{grid-template-columns:1fr}}
+  .rr .copybtn.copied{background:var(--mint) !important;color:#fff !important;border-color:transparent !important}
+
+  /* Build room — example paper */
+  .rr .paper{background:#fff;color:#171923;border-radius:10px;padding:28px 32px;box-shadow:0 24px 50px -22px rgba(20,22,33,.5),0 0 0 1px rgba(20,22,33,.06);font:14px/1.5 var(--ui);max-width:720px;position:relative;overflow:hidden}
+  .rr .paper h4{font:600 22px/1.1 var(--serif);margin:0 0 2px;color:#171923}
+  .rr .paper .hl{color:#3B3E52;font-weight:600;margin:0 0 2px;font-size:14px}
+  .rr .paper .ct{color:#6B6F8F;margin:0 0 14px;font-size:12.5px}
+  .rr .paper h5{font:700 11px var(--ui);letter-spacing:.1em;text-transform:uppercase;color:#7A7D90;margin:16px 0 6px;border-bottom:1px solid #E6E1D4;padding-bottom:4px}
+  .rr .paper p{margin:0 0 8px} .rr .paper ul{margin:0;padding-left:18px} .rr .paper li{margin:0 0 6px}
+  .rr .paper mark.ex{background:var(--mustard);color:#171923;border-radius:3px;padding:0 3px;font-weight:600}
+  .rr .banner{display:flex;gap:10px;align-items:flex-start;background:var(--band);border-radius:12px;padding:12px 16px;margin:0 0 var(--s3);font-size:14px;color:var(--fi);max-width:720px}
+  .rr .banner b{color:var(--coral)}
+
+  /* Placement map */
+  .rr .pmap{display:grid;grid-template-columns:150px repeat(6,1fr);gap:5px;font-size:12px;align-items:center;margin-top:10px}
+  .rr .pmap .h{font:700 10px var(--ui);letter-spacing:.06em;text-transform:uppercase;color:var(--page-fg-3);text-align:center;padding-bottom:4px}
+  .rr .pmap .k{font:600 12px var(--mono);color:var(--fi)}
+  .rr .dot{height:26px;border-radius:6px;background:rgba(127,127,127,.14);display:flex;align-items:center;justify-content:center;font:700 10px var(--mono)}
+  .rr .dot.on{background:var(--mint);color:#fff}
+  .rr .dot.add{outline:2px dashed var(--coral);color:var(--coral)}
+
+  /* Coach */
+  .rr .bullets{display:grid;gap:8px}
+  .rr .bl{border-radius:12px;padding:12px 14px;background:var(--f);border:1px solid var(--rule2);cursor:pointer;font-size:14px;color:var(--fi)}
+  .rr .bl.sel{border-color:var(--coral);box-shadow:0 0 0 3px rgba(255,106,87,.18)}
+  .rr .chip{font:600 11px var(--mono);border-radius:999px;padding:3px 9px;margin:2px 4px 2px 0;display:inline-block}
+  .rr .chip.bad{background:rgba(214,69,80,.13);color:var(--rose)} .rr .chip.warn{background:rgba(224,161,0,.15);color:var(--amber)}
+  .rr .chip.ok{background:rgba(31,165,122,.14);color:var(--mint)} .rr .chip.info{background:rgba(43,76,255,.13);color:var(--cobalt)}
+  .rr .coach-card h3{margin:0 0 8px;font:600 20px var(--serif)} .rr .coach-card h3 i{font-style:italic;color:var(--coral)}
+  .rr .coach-card p{margin:8px 0} .rr .q{border-left:3px solid var(--cobalt);padding-left:12px;color:var(--page-fg-2);font-style:italic}
+
+  /* Three Readers */
+  .rr .readers{display:grid;grid-template-columns:repeat(3,1fr);gap:16px} @media (max-width:900px){.rr .readers{grid-template-columns:1fr}}
+  .rr .reader{padding:16px;border-radius:14px;background:var(--f);border:1px solid var(--rule2);display:grid;gap:8px;align-content:start}
+  .rr .reader header{display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+  .rr .reader h3{margin:0;font:600 20px var(--serif);color:var(--fi)} .rr .reader .t{font:600 11px var(--mono);color:var(--page-fg-3)}
+  .rr .reader ul{margin:0;padding-left:16px;color:var(--page-fg-2);font-size:13.5px} .rr .reader li{margin:4px 0}
+  .rr .reader .call{border-radius:10px;padding:10px 12px;background:rgba(31,165,122,.12);color:var(--fi);font-size:13px}
+  .rr .reader .call b{color:var(--mint)}
+  .rr .pillv{display:inline-flex;gap:6px;align-items:center;font:700 12px var(--ui);border-radius:999px;padding:5px 11px}
+  .rr .pillv.g{background:rgba(31,165,122,.16);color:var(--mint)} .rr .pillv.w{background:rgba(224,161,0,.16);color:var(--amber)} .rr .pillv.b{background:rgba(214,69,80,.16);color:var(--rose)}
+
+  /* Compare */
+  .rr .delta{display:inline-flex;gap:6px;align-items:center;font:600 12px var(--mono);border-radius:999px;padding:4px 10px;background:var(--band)}
+  .rr .delta.up{color:var(--mint)} .rr .delta.dn{color:var(--rose)}
+
+  #page-measure{position:absolute;left:-99999px;top:0;white-space:pre-wrap;word-wrap:break-word;font:14px/1.35 var(--ui);visibility:hidden}
+  #print-sheet{display:none}
+  @media print{
+    body *{visibility:hidden}
+    #print-sheet,#print-sheet *{visibility:visible}
+    #print-sheet{display:block !important;position:absolute;left:0;top:0;width:100%;color:#000;font:12pt/1.4 Georgia,serif}
+    #print-sheet h4{font-size:16pt;margin:0 0 10pt} #print-sheet li{margin:0 0 6pt}
+    .sky{display:none}
+  }
 </style>
 </head>
 <body>
@@ -203,7 +255,7 @@
           </div>
         </div>
         <div class="cards">
-          <a class="fc" href="#/resume"><b><i style="background:var(--cobalt)"></i>Résumé that fits the job</b><span>An example built from the JD — every number marked "example".</span><small>Résumé · live now (v1)</small></a>
+          <a class="fc" href="#/resume"><b><i style="background:var(--cobalt)"></i>Résumé that fits the job</b><span>An example built from the JD — every number marked "example".</span><small>Résumé · live now</small></a>
           <a class="fc" href="#/soon/interview"><b><i style="background:var(--coral)"></i>50 questions, your level</b><span>Traced to your bullets and their JD lines, with what a strong answer includes.</span><small>Interview · coming</small></a>
           <a class="fc" href="#/soon/interview"><b><i style="background:var(--mint)"></i>The number to ask for</b><span>Safe, sweet spot, stretch — with the odds and the script.</span><small>Ask Calculator · coming</small></a>
           <a class="fc" href="#/soon/interview"><b><i style="background:var(--mustard)"></i>Your 60-second pitch</b><span>"Tell me about yourself", written from your own résumé.</span><small>Interview · coming</small></a>
@@ -222,45 +274,57 @@
       </div>
     </section>
 
-    <section class="view room v1" id="view-resume" aria-labelledby="h-resume">
+    <section class="view room rr" id="view-resume" aria-labelledby="h-resume">
       <div class="kick">02 · Résumé</div>
       <h2 id="h-resume">Fix it line by <i>line.</i></h2>
-      <p class="sub">The v1 tools run here until the new Résumé room lands: a blueprint from any JD, a 100-point score with X-Ray, a 6-second scan, and a match matrix. Nothing you paste leaves this page.</p>
+      <p class="sub">Build an example from any JD, score your own with fixes you can act on, get bullet-by-bullet coaching, hear from three readers, and compare across jobs. Nothing you paste leaves this page.</p>
 
       <div class="tabs" role="tablist">
-        <button class="tab active" data-tab="blueprint" role="tab" aria-selected="true">Blueprint</button>
+        <button class="tab active" data-tab="build" role="tab" aria-selected="true">Build</button>
         <button class="tab" data-tab="score" role="tab" aria-selected="false">Score &amp; X-Ray</button>
-        <button class="tab" data-tab="scan" role="tab" aria-selected="false">6-Second Scan</button>
-        <button class="tab" data-tab="matrix" role="tab" aria-selected="false">Match Matrix</button>
+        <button class="tab" data-tab="coach" role="tab" aria-selected="false">Coach</button>
+        <button class="tab" data-tab="readers" role="tab" aria-selected="false">Three Readers</button>
+        <button class="tab" data-tab="compare" role="tab" aria-selected="false">Compare</button>
       </div>
 
-      <section class="panel active" id="panel-blueprint">
-        <label for="bp-jd">Paste any job description <span class="hint">— title on the first line works best</span></label>
+      <!-- ===== BUILD ===== -->
+      <section class="panel active" id="panel-build">
+        <label for="bp-jd">Paste any job description <span class="hint" style="display:inline">— title on the first line works best</span></label>
         <textarea id="bp-jd" spellcheck="false" placeholder="Paste the full JD here..."></textarea>
-        <div class="bar"><button class="pill dark" id="bp-run" type="button">Build blueprint</button><button class="pill" id="bp-toscore" type="button" hidden>Send blueprint to Score &amp; X-Ray</button></div>
+        <div class="bar"><button class="pill dark" id="bp-run" type="button">Build example résumé</button></div>
         <div id="bp-out" hidden>
-          <p class="hint">Every <span class="tag">[bracketed slot]</span> is something only you can truthfully fill in — numbers are never invented. Fill the slots, then switch to <b>Score &amp; X-Ray</b>.</p>
-          <div class="blueprint" id="bp-text"></div>
+          <div class="banner"><span><b>Copy the shape, never the numbers.</b> Every <mark class="ex" style="background:var(--mustard);border-radius:3px;padding:0 3px">highlighted</mark> figure below is invented to show what a strong bullet looks like for this JD. Your résumé needs your own, defensible numbers — open <b>Coach</b> to find them.</span></div>
+          <article class="paper" id="bp-paper"></article>
+          <div class="bar"><button class="pill" id="bp-copy" type="button">Copy as Markdown</button><button class="pill" id="bp-toscore" type="button">Send to Score &amp; X-Ray</button></div>
         </div>
       </section>
 
+      <!-- ===== SCORE + XRAY ===== -->
       <section class="panel" id="panel-score">
-        <div class="grid">
+        <div class="grid2">
           <div><label for="jd">Job description</label><textarea id="jd" spellcheck="false" placeholder="Paste the full JD. Put the job title on the first line."></textarea></div>
           <div><label for="cv">Résumé (plain text or markdown; bullets start with - or •)</label><textarea id="cv" spellcheck="false" placeholder="Paste the résumé text."></textarea></div>
         </div>
         <div class="bar">
           <button class="pill dark" id="run" type="button">Score it</button>
           <button class="pill" id="xray-toggle" type="button">Show X-Ray view</button>
-          <label for="pages" style="margin:0;text-transform:none;letter-spacing:0;font:500 14px var(--ui)">Target pages</label>
+          <label for="pages" style="margin:0;text-transform:none;letter-spacing:0;font:500 14px var(--ui)">Max pages</label>
           <select id="pages"><option value="1">1</option><option value="2" selected>2</option></select>
+          <label for="fmt" style="margin:0;text-transform:none;letter-spacing:0;font:500 14px var(--ui)">Page size</label>
+          <select id="fmt"><option value="letter" selected>Letter</option><option value="a4">A4</option></select>
         </div>
         <section id="out" hidden aria-live="polite">
           <div class="total"><b id="total">0</b><span>/ 100</span></div>
           <p class="verdict" id="verdict"></p>
+          <p class="hint" id="pagecount"></p>
           <table><thead><tr><th>Dimension</th><th></th><th class="num">Points</th><th>What to fix</th></tr></thead><tbody id="rows"></tbody></table>
+          <div class="bar"><button class="pill" id="copy-md" type="button">Copy as Markdown</button><button class="pill" id="print-pdf" type="button">Print to PDF</button></div>
           <details><summary>Keywords extracted from the JD</summary><div id="kw"></div></details>
-          <details><summary>Bullets with no numbers</summary><ul id="nonum"></ul></details>
+          <details><summary>Bullets with no numbers</summary><ul class="plain" id="nonum"></ul></details>
+          <details open><summary>Keyword placement map</summary>
+            <p class="hint">Where each keyword already appears, and the best empty slot for the ones that don't.</p>
+            <div class="pmap" id="pmap"></div>
+          </details>
           <div id="xray-panel" class="card" hidden>
             <div class="legend"><span><mark class="num" style="background:none">■</mark> numbers</span><span><mark class="fluff" style="background:none">■</mark> fluff verbs</span><span><mark class="kw" style="background:none">■</mark> JD keywords</span><span><mark class="cliche" style="background:none">■</mark> clichés</span></div>
             <div class="xray-box" id="xray-text"></div>
@@ -268,28 +332,54 @@
         </section>
       </section>
 
-      <section class="panel" id="panel-scan">
-        <label for="scan-cv">Résumé text</label>
-        <textarea id="scan-cv" spellcheck="false" placeholder="Paste the résumé text you want to test."></textarea>
-        <div class="bar"><button class="pill dark" id="scan-run" type="button">Run the 6-second scan</button></div>
-        <div id="scan-out" hidden>
-          <div class="scan-wrap"><div class="scan-status" id="scan-status">Ready</div><div class="scan-doc" id="scan-doc"></div></div>
+      <!-- ===== COACH ===== -->
+      <section class="panel" id="panel-coach">
+        <p class="hint" style="margin-bottom:14px">Uses the JD and résumé from <b>Score &amp; X-Ray</b>. Click any bullet.</p>
+        <div class="grid2">
+          <div><label>Your bullets</label><div class="bullets" id="coach-bullets"></div></div>
+          <div id="coach-out"><p class="hint">Score a résumé first, then click a bullet on the left.</p></div>
         </div>
       </section>
 
-      <section class="panel" id="panel-matrix">
-        <label for="mx-cv">Résumé</label>
-        <textarea id="mx-cv" spellcheck="false" placeholder="Paste your résumé once here."></textarea>
-        <p class="hint" style="margin:14px 0 6px">Up to 3 job descriptions to compare it against:</p>
-        <div class="jd-cols">
-          <textarea id="mx-jd1" spellcheck="false" placeholder="Job description #1" aria-label="Job description 1"></textarea>
-          <textarea id="mx-jd2" spellcheck="false" placeholder="Job description #2 (optional)" aria-label="Job description 2"></textarea>
-          <textarea id="mx-jd3" spellcheck="false" placeholder="Job description #3 (optional)" aria-label="Job description 3"></textarea>
+      <!-- ===== THREE READERS ===== -->
+      <section class="panel" id="panel-readers">
+        <p class="hint" style="margin-bottom:14px">Uses the JD and résumé from <b>Score &amp; X-Ray</b>.</p>
+        <div class="bar"><button class="pill dark" id="readers-run" type="button">Get three opinions</button></div>
+        <div class="readers" id="readers-out"></div>
+      </section>
+
+      <!-- ===== COMPARE ===== -->
+      <section class="panel" id="panel-compare">
+        <div class="tabs" role="tablist" style="margin-bottom:var(--s3)">
+          <button class="tab active" data-sub="matrix" role="tab" aria-selected="true">Match Matrix</button>
+          <button class="tab" data-sub="version" role="tab" aria-selected="false">Version Compare</button>
         </div>
-        <div class="bar"><button class="pill dark" id="mx-run" type="button">Compare</button></div>
-        <div id="mx-out" hidden></div>
+        <section class="panel active" id="sub-matrix">
+          <label for="mx-cv">Résumé</label>
+          <textarea id="mx-cv" spellcheck="false" placeholder="Paste your résumé once here."></textarea>
+          <p class="hint" style="margin:14px 0 6px">Up to 3 job descriptions to compare it against:</p>
+          <div class="jd-cols">
+            <textarea id="mx-jd1" spellcheck="false" placeholder="Job description #1" aria-label="Job description 1"></textarea>
+            <textarea id="mx-jd2" spellcheck="false" placeholder="Job description #2 (optional)" aria-label="Job description 2"></textarea>
+            <textarea id="mx-jd3" spellcheck="false" placeholder="Job description #3 (optional)" aria-label="Job description 3"></textarea>
+          </div>
+          <div class="bar"><button class="pill dark" id="mx-run" type="button">Compare</button></div>
+          <div id="mx-out" hidden></div>
+        </section>
+        <section class="panel" id="sub-version">
+          <p class="hint" style="margin-bottom:10px">Same JD, two résumé versions — see exactly what improved.</p>
+          <div><label for="v-jd">Job description</label><textarea id="v-jd" spellcheck="false" placeholder="Paste the JD both versions target."></textarea></div>
+          <div class="grid2" style="margin-top:14px">
+            <div><label for="va">Version A (before)</label><textarea id="va" spellcheck="false" placeholder="Paste the earlier résumé version."></textarea></div>
+            <div><label for="vb">Version B (after)</label><textarea id="vb" spellcheck="false" placeholder="Paste the newer résumé version."></textarea></div>
+          </div>
+          <div class="bar"><button class="pill dark" id="v-run" type="button">Compare versions</button></div>
+          <div id="v-out" hidden></div>
+        </section>
       </section>
     </section>
+    <pre id="page-measure" aria-hidden="true"></pre>
+    <div id="print-sheet" aria-hidden="true"></div>
 
     <section class="view room" id="view-soon" aria-labelledby="h-soon">
       <div class="kick" id="soon-kick">Coming</div>
@@ -408,17 +498,32 @@ const FLUFF=["responsible for","helped with","helped","worked on","involved in",
 const CLICHE=["spearheaded","leveraged","leverage","synergy","seamlessly","seamless","passionate","results-driven","proven track record","dynamic","cutting-edge","go-getter","think outside the box","detail-oriented","team player"];
 const HEADERS=["summary","skills","work experience","experience","certifications","education","projects","key projects"];
 const STOP=new Set(`a an and are as at be by for from has have in is it its of on or that the to with will you your we our this these those their they them experience years year strong good knowledge ability able work working team teams role roles skills skill required preferred plus including etc across using use used within must should can may`.split(/\s+/));
-const GENERIC=new Set(`lead senior junior technical management manager engineer analyst developer responsibilities requirements experience preferred required plus strong looking hands-on environments clients client large support operations processes reviews coordination`.split(/\s+/));
+const GENERIC=new Set(`lead senior junior technical management manager engineer analyst developer
+responsibilities requirements experience preferred required plus strong looking hands-on
+environments clients client large support operations processes reviews coordination
+develop develops developed developing build builds built building design designs designed
+designing deploy deploys deployed deploying create creates created creating ensure ensures
+ensured ensuring provide provides provided providing implement implements implemented
+implementing maintain maintains maintained maintaining perform performs performed performing
+conduct conducts conducted conducting assist assists assisted assisting participate
+participates participated participating contribute contributes contributed contributing
+utilize utilizes utilized utilizing collaborate collaborates collaborated collaborating
+communicate communicates communicated communicating identify identifies identified
+identifying automate automates automated automating customers customer computer science
+software systems applications solutions procedures updates environment scripts script
+tools tool need needs needed needing someone regularly background`.split(/\s+/));
 const esc=s=>s.replace(/[.*+?^${}()|[\]\\]/g,"\\$&");
 function extractKeywords(jd,limit=20){
   const words=jd.replace(/[^\w\s\-+/#.]/g," ").split(/\s+/).filter(Boolean);const counts=new Map();
   const bump=(k,w=1)=>{k=k.replace(/^[.,]+|[.,]+$/g,"").toLowerCase();if(k.length<2||STOP.has(k)||GENERIC.has(k))return;counts.set(k,(counts.get(k)||0)+w);};
   for(const w of words){const toolLike=/^[A-Z]{2,}[0-9/-]*$/.test(w)||/^[A-Z][a-z]+[A-Z][A-Za-z]+$/.test(w)||(/[0-9+#/-]/.test(w)&&/^[A-Za-z]/.test(w));if(toolLike)bump(w,3);else if(/^[A-Z][a-z]{2,}$/.test(w))bump(w,1);}
-  for(let i=0;i<words.length-1;i++){const a=words[i],b=words[i+1];if(!STOP.has(a.toLowerCase())&&!STOP.has(b.toLowerCase())&&/^[A-Za-z]/.test(a)&&/[A-Za-z0-9]$/.test(a)&&/[A-Za-z0-9]$/.test(b))bump(a+" "+b);}
+  for(let i=0;i<words.length-1;i++){const a=words[i],b=words[i+1];const al=a.toLowerCase(),bl=b.toLowerCase();
+    if(!STOP.has(al)&&!STOP.has(bl)&&!GENERIC.has(al)&&!GENERIC.has(bl)&&/^[A-Za-z]/.test(a)&&/[A-Za-z0-9]$/.test(a)&&/[A-Za-z0-9]$/.test(b))bump(a+" "+b);}
   return [...counts.entries()].sort((x,y)=>y[1]-x[1]||x[0].localeCompare(y[0])).slice(0,limit).map(e=>e[0]);
 }
 const bulletsOf=r=>r.split("\n").filter(l=>/^\s*[•\-*–·]\s+\S/.test(l)).map(l=>l.replace(/^\s*[•\-*–·]\s+/,"").trim());
-function score(resume,jd,targetPages){
+function lengthScore(p,t){return p<=t?5:p===t+1?2:0;}
+function score(resume,jd,targetPages,pagesOverride){
   const r=resume.toLowerCase();const d={};const kws=extractKeywords(jd);const present=kws.filter(k=>r.includes(k));d.keywords=kws;d.missing=kws.filter(k=>!r.includes(k));
   const kc=kws.length?+(25*present.length/kws.length).toFixed(1):0;
   const lines=resume.split("\n").filter(l=>l.trim());const top=lines.slice(0,Math.max(1,Math.floor(lines.length/3))).join("\n").toLowerCase();
@@ -431,65 +536,311 @@ function score(resume,jd,targetPages){
   const fw=bl.map(b=>(b.split(/\s+/)[0]||"").toLowerCase());for(let i=1;i<fw.length;i++)if(fw[i]&&fw[i]===fw[i-1])pen++;const bq=Math.max(0,10-pen);d.fluff=[...fluff];
   const scopeRe=/\b(\d+\+?\s*(people|person|engineers?|members?|users?|servers?|clients?|tickets?|incidents?|apps?|applications?|systems?|regions?|sites?|stores?|accounts?)|\$\s?\d|\d+\s?(k|m|lakh|crore|%))/g;
   const sh=(r.match(scopeRe)||[]).length;const sp=sh>=6?10:sh>=3?6:sh>=1?3:0;
-  const est=Math.max(1,Math.round(lines.length/55));const ll=est===targetPages?5:Math.abs(est-targetPages)===1?2:0;d.estPages=est;
+  let est;
+  if(pagesOverride!=null){est=pagesOverride;} else {est=Math.max(1,Math.round(lines.length/55));}
+  const ll=lengthScore(est,targetPages);d.estPages=est;d.pagesReal=pagesOverride!=null;
   const cl=CLICHE.filter(c=>new RegExp("\\b"+esc(c)+"\\b").test(r));const hu=Math.max(0,5-cl.length);d.cliche=cl;
   const styles=new Set();if(/\b\d{2}\/\d{4}\b/.test(resume))styles.add("mm/yyyy");if(/\b[A-Z][a-z]{2,8}\.? \d{4}\b/.test(resume))styles.add("Mon yyyy");if(/\b\d{4}-\d{2}\b/.test(resume))styles.add("yyyy-mm");
   const issues=Math.max(0,styles.size-1)+(resume.match(/\S  +\S/g)||[]).length;const hy=Math.max(0,5-issues);d.dateStyles=[...styles];
-  const rows=[["Keyword coverage",kc,25,d.missing.length?`Add where truthful: ${d.missing.slice(0,6).join(", ")}${d.missing.length>6?"…":""}`:"All must-have keywords present."],
+  const rows=[["Keyword coverage",kc,25,d.missing.length?`Add where truthful: ${d.missing.slice(0,6).join(", ")}${d.missing.length>6?"…":""}. Open the placement map below for exactly where.`:"All must-have keywords present."],
     ["Keyword placement",kp,10,kp<10?"Move more JD keywords into headline, summary, skills and the first role.":"Strong top third."],
     ["Title alignment",ta,5,ta<5?`Put "${title}" (or exact equivalent) in the headline.`:"Title matches."],
     ["Parse safety",ps,10,ps<10?"Remove tables/images; use standard headers (Summary, Skills, Work Experience, Certifications, Education).":"Parser-safe."],
-    ["Quantification",q,15,d.noNum.length?`${d.noNum.length} bullet(s) have no number — add scope or result metrics.`:"Every bullet carries a number."],
+    ["Quantification",q,15,d.noNum.length?`${d.noNum.length} bullet(s) have no number. Open Coach and click each one for the metric that fits.`:"Every bullet carries a number."],
     ["Bullet quality",bq,10,d.fluff.length?`Replace fluff verbs: ${d.fluff.join(", ")}.`:bq<10?"Shorten long bullets, remove passive voice, vary opening verbs.":"Tight, active bullets."],
     ["Scope & progression",sp,10,sp<10?"State team size, volumes, users, budgets in each recent role; show numbers growing over time.":"Scope is clear."],
-    ["Length & layout",ll,5,ll<5?`Text length suggests ~${est} page(s); target is ${targetPages}.`:"Length on target."],
+    ["Length & layout",ll,5,ll<5?`${d.pagesReal?'Rendered at':'Estimated'} ~${est} page(s); standard is ${targetPages} max.`:"Length on target."],
     ["Humanization",hu,5,cl.length?`Cut clichés: ${cl.join(", ")}.`:"Reads human."],
     ["Hygiene",hy,5,hy<5?`Use one date format (${d.dateStyles.join(" vs ")||"mixed"}) and remove double spaces.`:"Clean."]];
   const total=+rows.reduce((a,x)=>a+x[1],0).toFixed(1);return {rows,total,d};
 }
 const $=id=>document.getElementById(id);const escHtml=s=>s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
 const MAX=30000; const cap=s=>s.length>MAX?s.slice(0,MAX):s;
-document.querySelectorAll('.v1 .tab').forEach(btn=>btn.addEventListener('click',()=>{
-  document.querySelectorAll('.v1 .tab').forEach(b=>{b.classList.remove('active');b.setAttribute('aria-selected','false');});
-  document.querySelectorAll('.v1 .panel').forEach(p=>p.classList.remove('active'));
+
+/* ---------- tabs (top-level + Compare's nested sub-tabs) ---------- */
+document.querySelectorAll('.rr > .tabs > .tab').forEach(btn=>btn.addEventListener('click',()=>{
+  document.querySelectorAll('.rr > .tabs > .tab').forEach(b=>{b.classList.remove('active');b.setAttribute('aria-selected','false');});
+  document.querySelectorAll('#view-resume > .panel').forEach(p=>p.classList.remove('active'));
   btn.classList.add('active');btn.setAttribute('aria-selected','true');$('panel-'+btn.dataset.tab).classList.add('active');
 }));
-function buildBlueprint(jd){
-  const lines=jd.split("\n").map(l=>l.trim()).filter(Boolean);const title=lines[0]||"Target Role";const kws=extractKeywords(jd,14);
-  const respLines=lines.filter(l=>/^[-*•]/.test(l)||/^\d+\./.test(l)).map(l=>l.replace(/^[-*•\d.]+\s*/,""));const resp=respLines.length?respLines:lines.slice(1,6);
-  const bulletFor=r=>{const short=r.length>90?r.slice(0,87)+"...":r;return `- [Action verb] ${short.charAt(0).toLowerCase()+short.slice(1)}, delivering [metric: e.g. % improved / time saved / scale handled].`;};
-  const out=[`[Your Name]`,`${title} | [X]+ Years | ${kws.slice(0,3).join(", ")||"[top JD keywords]"} | [Key certification]`,`[City, Country] · [phone] · [email] · [linkedin.com/in/you]`,``,`## Summary`,
-    `${title} with [X] years [doing the JD's core function], currently [scope: team size / volume / users] at [X]% [SLA/quality metric]. [One signature outcome with a number]. [Second signature outcome with a number].`,``,`## Skills`,kws.slice(0,10).join(", ")||"[group JD keywords by category]",``,`## Work Experience`,`### ${title} — [Company] ([client industry] client) — [Mon YYYY] – Present`];
-  (resp.length?resp:["own the core JD responsibility"]).slice(0,6).forEach(r=>out.push(bulletFor(r)));
-  out.push(``,`### [Previous Title] — [Company] — [Mon YYYY] – [Mon YYYY]`,`- [Bullet mapping an earlier responsibility to a number].`,`- [Bullet showing scope or team size with a number].`,``,`## Certifications`,`[Certification the JD mentions or implies] — [Year]`,``,`## Education`,`[Degree], [Field] — [Institution] — [Year]`);
-  return out.join("\n");
+document.querySelectorAll('#panel-compare > .tabs > .tab').forEach(btn=>btn.addEventListener('click',()=>{
+  document.querySelectorAll('#panel-compare > .tabs > .tab').forEach(b=>{b.classList.remove('active');b.setAttribute('aria-selected','false');});
+  document.querySelectorAll('#panel-compare > .panel').forEach(p=>p.classList.remove('active'));
+  btn.classList.add('active');btn.setAttribute('aria-selected','true');$('sub-'+btn.dataset.sub).classList.add('active');
+}));
+
+/* ---------- real page-size measurement (Letter/A4) ---------- */
+const PAGE_PX={letter:{w:(8.5-1.5)*96,h:(11-1.5)*96},a4:{w:((210-40)/25.4)*96,h:((297-36)/25.4)*96}};
+function measurePages(text,format){
+  if(!text.trim())return 0;
+  const el=$('page-measure');const dims=PAGE_PX[format]||PAGE_PX.letter;
+  el.style.width=dims.w+'px';el.textContent=text;
+  return Math.max(1,Math.ceil(el.scrollHeight/dims.h));
 }
-$("bp-run").addEventListener("click",()=>{const jd=cap($("bp-jd").value.trim());if(!jd)return alert("Paste a job description first.");const bp=buildBlueprint(jd);$("bp-text").textContent=bp;$("bp-out").hidden=false;$("bp-toscore").hidden=false;
-  $("bp-toscore").onclick=()=>{$("jd").value=jd;$("cv").value=bp;document.querySelector('.v1 .tab[data-tab="score"]').click();};});
-function render(res){$("out").hidden=false;$("total").textContent=res.total;const t=res.total;
-  $("verdict").textContent=t>=85?"Shortlist-ready. Spend the remaining effort on interview prep.":t>=70?"Competitive but beatable — fix the two lowest dimensions before submitting.":t>=50?"Likely filtered out in a large pool. Retailor keywords, add numbers, restructure the top third.":"Unlikely to pass ATS. Rebuild from the standards.";
-  const cls=(v,max)=>{const p=v/max;return p>=.8?"ok":p>=.5?"warn":"bad";};
-  $("rows").innerHTML=res.rows.map(([n,v,m,fix])=>`<tr class="${cls(v,m)}"><td>${n}</td><td><div class="meter"><i style="width:${(v/m*100).toFixed(0)}%"></i></div></td><td class="num">${v} / ${m}</td><td style="color:var(--ink-2)">${escHtml(fix)}</td></tr>`).join("");
-  $("kw").innerHTML=res.d.keywords.map(k=>`<span class="tag" style="${res.d.missing.includes(k)?'text-decoration:line-through;opacity:.7':''}">${escHtml(k)}</span>`).join("");
-  $("nonum").innerHTML=res.d.noNum.length?res.d.noNum.map(b=>`<li>${escHtml(b)}</li>`).join(""):"<li>None.</li>";$("out").scrollIntoView({behavior:"smooth",block:"start"});}
+
+/* ---------- Build: a fully-written example résumé, invented figures tagged ---------- */
+function seededRand(seed){let s=(seed||1)>>>0;return()=>{s^=s<<13;s^=s>>>17;s^=s<<5;s>>>=0;return s/4294967296;};}
+function hashStr(s){let h=0;for(let i=0;i<s.length;i++)h=(h*31+s.charCodeAt(i))|0;return h;}
+function findCertPhrase(jd){
+  const tidy=s=>s.replace(/\s+(preferred|required|desired|is a plus|a plus|nice to have|mandatory|essential)\.?$/i,'').trim().replace(/[.,;]$/,'');
+  const m=jd.match(/\b([A-Z][\w.]*(?:\s+[A-Z][\w.]*){0,4}\s+Certified\s+[A-Z][\w.]*(?:\s+[A-Za-z]+){0,3})/);
+  if(m)return tidy(m[1]);
+  const m2=jd.match(/\bCertified\s+[A-Z][\w.]*(?:\s+[A-Za-z]+){0,3}/);
+  return m2?tidy(m2[0]):null;
+}
+function buildExampleResume(jd){
+  const lines=jd.split('\n').map(l=>l.trim()).filter(Boolean);const title=lines[0]||'Target Role';
+  const kws=extractKeywords(jd,12);
+  const respLines=lines.filter(l=>/^[-*•]/.test(l)||/^\d+\./.test(l)).map(l=>l.replace(/^[-*•\d.]+\s*/,''));
+  const resp=(respLines.length?respLines:lines.slice(1,7)).slice(0,5);
+  const rnd=seededRand(hashStr(jd));
+  const totalYears=4+Math.floor(rnd()*9);
+  const curYears=Math.max(2,Math.min(4,totalYears-2));
+  const curStart=2026-curYears,prevStart=2026-totalYears,prevEnd=curStart;
+  const team=()=>4+Math.floor(rnd()*10);
+  const users=()=>[500000,1000000,2000000,3000000,5000000][Math.floor(rnd()*5)].toLocaleString();
+  const pct=()=>15+Math.floor(rnd()*45);
+  const verbs=['Own','Lead','Drive','Deliver','Scale','Modernize','Streamline'];
+  function clean(t){const c=t.replace(/^[A-Z][a-z]+\s+/,'').trim();return c.length>90?c.slice(0,87)+'...':c;}
+  const templates=[
+    (v,b)=>`${v} ${b} across ⟦${team()}+⟧ services, supporting ⟦${users()}+⟧ users at ⟦${90+Math.min(9,pct()%10)}%⟧ reliability.`,
+    (v,b)=>`${v} ${b}; cut related incidents ⟦${pct()}%⟧ in the last year through closer monitoring and root-cause fixes.`,
+    (v,b)=>`${v} ${b} for a team of ⟦${team()}⟧, reducing manual effort by roughly ⟦${pct()}%⟧.`,
+    (v,b)=>`${v} ${b}, taking the process from monthly to weekly with a ⟦${90+Math.floor(rnd()*9)}%⟧ success rate.`
+  ];
+  const bullets=(resp.length?resp:['the core responsibility from this JD']).map((rline,i)=>'- '+templates[i%templates.length](verbs[i%verbs.length],clean(rline)));
+  const cert=findCertPhrase(jd);
+  const md=[`[Your Name]`,`${title} | ⟦${totalYears}+⟧ Years | ${kws.slice(0,3).join(', ')||'core JD skills'}${cert?` | ${cert}`:''}`,
+    `[City, Country] · [phone] · [email] · linkedin.com/in/you`,``,`## Summary`,
+    `${title} with ⟦${totalYears}⟧ years in this space, currently owning work for ⟦${team()}+⟧ people at ⟦${90+pct()%10}%⟧ on-time delivery. Led one project end-to-end with zero customer-facing incidents. Cut a recurring cost or delay ⟦${pct()}%⟧ through a root-cause fix.`,
+    ``,`## Skills`,kws.slice(0,10).join(', ')||'skills grouped from the JD',``,`## Work Experience`,
+    `### ${title} — Company A (client industry) — ⟦${curStart}⟧ – Present`,...bullets,``,
+    `### ${respLines.length>1?'Previous '+title:title} — Company B — ⟦${prevStart}⟧ – ⟦${prevEnd}⟧`,
+    `- Handled an earlier version of this responsibility for ⟦${team()}⟧ stakeholders, cutting turnaround ⟦${pct()}%⟧.`,
+    `- Delivered a project used by ⟦${users()}⟧ people with no rollback.`,``,`## Certifications`,`${cert||'A certification relevant to this role'} — ⟦${prevEnd}⟧`,``,`## Education`,`Degree, Field — Institution — ⟦${prevStart-4}⟧`].join('\n');
+  return md;
+}
+function toParaHtml(md){
+  return md.split('\n').map(line=>{
+    const t=escHtml(line).replace(/⟦(.*?)⟧/g,'<mark class="ex">$1</mark>');
+    if(/^##\s+/.test(line))return `<h5>${t.replace(/^##\s+/,'')}</h5>`;
+    if(/^###\s+/.test(line))return `<p class="hl">${t.replace(/^###\s+/,'')}</p>`;
+    if(/^\[Your Name\]/.test(line))return `<h4>${t}</h4>`;
+    if(/^\[City/.test(line))return `<p class="ct">${t}</p>`;
+    if(/^-\s+/.test(line))return `<li>${t.replace(/^-\s+/,'')}</li>`;
+    return line.trim()?`<p>${t}</p>`:'';
+  }).join('\n').replace(/(<li>.*<\/li>\n?)+/gs,m=>`<ul>${m}</ul>`);
+}
+function toPlain(md){return md.replace(/⟦(.*?)⟧/g,'$1');}
+let lastBuiltJD='',lastBuiltMd='';
+$('bp-run').addEventListener('click',()=>{
+  const jd=cap($('bp-jd').value.trim());if(!jd)return alert('Paste a job description first.');
+  lastBuiltJD=jd;lastBuiltMd=buildExampleResume(jd);
+  $('bp-paper').innerHTML=toParaHtml(lastBuiltMd);$('bp-out').hidden=false;$('bp-out').scrollIntoView({behavior:'smooth',block:'start'});
+});
+$('bp-copy').addEventListener('click',async()=>{
+  const text=toPlain(lastBuiltMd);if(!text)return;
+  try{await navigator.clipboard.writeText(text);}catch(e){const ta=document.createElement('textarea');ta.value=text;document.body.appendChild(ta);ta.select();try{document.execCommand('copy');}catch(e2){}document.body.removeChild(ta);}
+  const b=$('bp-copy');b.classList.add('copied');b.textContent='Copied!';setTimeout(()=>{b.classList.remove('copied');b.textContent='Copy as Markdown';},1500);
+});
+$('bp-toscore').addEventListener('click',()=>{
+  if(!lastBuiltMd)return alert('Build an example first.');
+  $('jd').value=lastBuiltJD;$('cv').value=toPlain(lastBuiltMd);
+  document.querySelector('.rr > .tabs > .tab[data-tab="score"]').click();
+});
+
+/* ---------- Score & X-Ray ---------- */
+function render(res){$('out').hidden=false;$('total').textContent=res.total;const t=res.total;
+  $('verdict').textContent=t>=85?'Shortlist-ready. Spend the remaining effort on interview prep.':t>=70?'Competitive but beatable — fix the two lowest dimensions before submitting.':t>=50?'Likely filtered out in a large pool. Retailor keywords, add numbers, restructure the top third.':'Unlikely to pass ATS. Rebuild from the standards.';
+  $('pagecount').textContent=res.d.pagesReal?`Rendered at real page size: ${res.d.estPages} page(s) (${$('fmt').value==='a4'?'A4':'Letter'}).`:'';
+  const cls=(v,max)=>{const p=v/max;return p>=.8?'ok':p>=.5?'warn':'bad';};
+  $('rows').innerHTML=res.rows.map(([n,v,m,fix])=>`<tr class="${cls(v,m)}"><td>${n}</td><td><div class="meter"><i style="width:${(v/m*100).toFixed(0)}%"></i></div></td><td class="num">${v} / ${m}</td><td style="color:var(--page-fg-2)">${escHtml(fix)}</td></tr>`).join('');
+  $('kw').innerHTML=res.d.keywords.map(k=>`<span class="tag" style="${res.d.missing.includes(k)?'text-decoration:line-through;opacity:.7':''}">${escHtml(k)}</span>`).join('');
+  $('nonum').innerHTML=res.d.noNum.length?res.d.noNum.map(b=>`<li>${escHtml(b)}</li>`).join(''):'<li>None.</li>';
+  $('out').scrollIntoView({behavior:'smooth',block:'start'});
+}
 function renderXray(resume,jd){const kws=extractKeywords(jd);let html=escHtml(resume);
-  kws.filter(k=>k.length>2).sort((a,b)=>b.length-a.length).forEach(k=>{html=html.replace(new RegExp("\\b"+esc(escHtml(k))+"\\b","gi"),m=>`<mark class="kw">${m}</mark>`);});
-  FLUFF.forEach(f=>{html=html.replace(new RegExp("\\b"+esc(f)+"\\b","gi"),m=>`<mark class="fluff">${m}</mark>`);});
-  CLICHE.forEach(c=>{html=html.replace(new RegExp("\\b"+esc(c)+"\\b","gi"),m=>`<mark class="cliche">${m}</mark>`);});
-  html=html.replace(/\b\d[\d,.%$]*\+?\b/g,m=>`<mark class="num">${m}</mark>`);$("xray-text").innerHTML=html;}
-$("run").addEventListener("click",()=>{if(!$("jd").value.trim()||!$("cv").value.trim())return alert("Paste both a JD and a résumé first.");const res=score(cap($("cv").value),cap($("jd").value),+$("pages").value);render(res);renderXray(cap($("cv").value),cap($("jd").value));});
-$("xray-toggle").addEventListener("click",()=>{const p=$("xray-panel");p.hidden=!p.hidden;$("xray-toggle").textContent=p.hidden?"Show X-Ray view":"Hide X-Ray view";});
-$("scan-run").addEventListener("click",()=>{const resume=cap($("scan-cv").value);if(!resume.trim())return alert("Paste a résumé first.");const lines=resume.split("\n").filter(l=>l.trim());const topN=Math.max(1,Math.ceil(lines.length/3));
-  $("scan-doc").innerHTML=lines.map((l,i)=>i<topN?`<span class="caught">${escHtml(l)}</span>`:`<span class="missed">${escHtml(l)}</span>`).join("\n");$("scan-out").hidden=false;$("scan-status").textContent="Reading top third...";
-  const caughtNums=(lines.slice(0,topN).join(" ").match(/\b\d[\d,.%$]*\+?\b/g)||[]);const caughtBits=lines.slice(0,topN).filter(l=>/\d/.test(l)).slice(0,5);
-  setTimeout(()=>{$("scan-status").textContent="6 seconds up — here's what stuck.";let box=document.getElementById("scan-recall-visible");if(!box){box=document.createElement("div");box.className="card";box.id="scan-recall-visible";$("scan-out").appendChild(box);}
-    box.innerHTML=`<b>What a recruiter's 6-second scan actually caught:</b><ul>`+(caughtBits.length?caughtBits.map(b=>`<li>${escHtml(b)}</li>`).join(""):"<li>Nothing memorable — the top third has no numbers or headline signal.</li>")+`</ul><p class="hint">${caughtNums.length} number(s) landed in the scanned zone. Everything greyed out below was invisible to this pass — that's why top-third placement is worth 10 of your 100 points.</p>`;},900);});
-$("mx-run").addEventListener("click",()=>{const cv=cap($("mx-cv").value);const jds=[["JD 1",$("mx-jd1").value],["JD 2",$("mx-jd2").value],["JD 3",$("mx-jd3").value]].filter(([,v])=>v.trim()).map(([l,v])=>[l,cap(v)]);
-  if(!cv.trim()||!jds.length)return alert("Paste a résumé and at least one JD.");const results=jds.map(([label,jd])=>({label,jd,res:score(cv,jd,2)}));const best=results.reduce((a,b)=>b.res.total>a.res.total?b:a);
-  let html=`<table class="matrix"><thead><tr><th>Dimension</th>${results.map(r=>`<th>${escHtml(r.label)}</th>`).join("")}</tr></thead><tbody>`;const dims=results[0].res.rows.map(r=>r[0]);
-  dims.forEach((dim,i)=>{html+=`<tr><td style="text-align:left">${dim}</td>`+results.map(r=>`<td>${r.res.rows[i][1]}/${r.res.rows[i][2]}</td>`).join("")+`</tr>`;});
-  html+=`<tr><td style="text-align:left"><b>Total</b></td>`+results.map(r=>`<td class="${r===best?'best':''}">${r.res.total}${r===best?' ★':''}</td>`).join("")+`</tr></tbody></table><p class="hint">★ best fit as-is. For any other job, the fixes list under Score &amp; X-Ray tells you exactly what to change.</p>`;
-  $("mx-out").innerHTML=html;$("mx-out").hidden=false;});
+  kws.filter(k=>k.length>2).sort((a,b)=>b.length-a.length).forEach(k=>{html=html.replace(new RegExp('\\b'+esc(escHtml(k))+'\\b','gi'),m=>`<mark class="kw">${m}</mark>`);});
+  FLUFF.forEach(f=>{html=html.replace(new RegExp('\\b'+esc(f)+'\\b','gi'),m=>`<mark class="fluff">${m}</mark>`);});
+  CLICHE.forEach(c=>{html=html.replace(new RegExp('\\b'+esc(c)+'\\b','gi'),m=>`<mark class="cliche">${m}</mark>`);});
+  html=html.replace(/\b\d[\d,.%$]*\+?\b/g,m=>`<mark class="num">${m}</mark>`);$('xray-text').innerHTML=html;
+}
+/* section parser + keyword placement map */
+function parseSections(resume){
+  const lines=resume.split('\n');const sec={headline:lines.slice(0,4).join('\n'),summary:'',skills:'',roles:[],other:''};
+  let cur=null,buf=[];
+  const flush=()=>{const t=buf.join('\n');if(cur==='summary')sec.summary+=t;else if(cur==='skills')sec.skills+=t;else if(cur==='role')sec.roles.push(t);buf=[];};
+  for(const line of lines){
+    const h2=line.match(/^##\s+(.*)/),h3=line.match(/^###\s+(.*)/);
+    if(h2){flush();const t=h2[1].toLowerCase();cur=/summary/.test(t)?'summary':/skills/.test(t)?'skills':/experience/.test(t)?'exp':'other';continue;}
+    if(h3){flush();cur='role';buf.push(line);continue;}
+    buf.push(line);
+  }
+  flush();return sec;
+}
+function placementMap(resume,keywords){
+  const sec=parseSections(resume);const cols=['headline','summary','skills','role0','role1','other'];
+  const colText={headline:sec.headline,summary:sec.summary,skills:sec.skills,role0:sec.roles[0]||'',role1:sec.roles.slice(1).join('\n'),other:sec.other};
+  return keywords.slice(0,10).map(k=>{
+    const kl=k.toLowerCase();const hits=cols.map(c=>(colText[c]||'').toLowerCase().includes(kl));
+    const found=hits.some(Boolean);
+    let addCol=-1;
+    if(!found){const toolLike=!k.includes(' ');addCol=toolLike?cols.indexOf('skills'):cols.indexOf('summary');}
+    return {k,hits,addCol};
+  });
+}
+function renderPlacementMap(resume,jd){
+  const kws=extractKeywords(jd,10);const rows=placementMap(resume,kws);
+  const heads=['Headline','Summary','Skills','Role 1','Role 2+','Other'];
+  let html=`<div class="h"></div>`+heads.map(h=>`<div class="h">${h}</div>`).join('');
+  rows.forEach(row=>{
+    html+=`<div class="k">${escHtml(row.k)}</div>`;
+    row.hits.forEach((hit,i)=>{
+      if(hit)html+=`<div class="dot on">●</div>`;
+      else if(i===row.addCol)html+=`<div class="dot add">add</div>`;
+      else html+=`<div class="dot"></div>`;
+    });
+  });
+  $('pmap').innerHTML=html;
+}
+function doScore(){
+  if(!$('jd').value.trim()||!$('cv').value.trim())return alert('Paste both a JD and a résumé first.');
+  const jd=cap($('jd').value),cv=cap($('cv').value),target=+$('pages').value,fmt=$('fmt').value;
+  const pages=measurePages(cv,fmt);
+  const res=score(cv,jd,target,pages);
+  render(res);renderXray(cv,jd);renderPlacementMap(cv,jd);
+  return res;
+}
+$('run').addEventListener('click',doScore);
+$('xray-toggle').addEventListener('click',()=>{const p=$('xray-panel');p.hidden=!p.hidden;$('xray-toggle').textContent=p.hidden?'Show X-Ray view':'Hide X-Ray view';});
+$('copy-md').addEventListener('click',async()=>{const text=cap($('cv').value);if(!text.trim())return;
+  try{await navigator.clipboard.writeText(text);}catch(e){const ta=document.createElement('textarea');ta.value=text;document.body.appendChild(ta);ta.select();try{document.execCommand('copy');}catch(e2){}document.body.removeChild(ta);}
+  const b=$('copy-md');b.classList.add('copied');b.textContent='Copied!';setTimeout(()=>{b.classList.remove('copied');b.textContent='Copy as Markdown';},1500);
+});
+$('print-pdf').addEventListener('click',()=>{const text=cap($('cv').value);if(!text.trim())return alert('Score a résumé first.');
+  $('print-sheet').innerHTML=text.split('\n').map(l=>{
+    if(/^#{1,3}\s+/.test(l))return `<h4>${escHtml(l.replace(/^#{1,3}\s+/,''))}</h4>`;
+    if(/^\s*[-*•]\s+/.test(l))return `<li>${escHtml(l.replace(/^\s*[-*•]\s+/,''))}</li>`;
+    return l.trim()?`<p>${escHtml(l)}</p>`:'';
+  }).join('\n');
+  window.print();
+});
+/* ---------- Coach ---------- */
+const VERB_METRIC=[
+  {re:/^(own|manage|lead|run|oversee|maintain|administer)\b/i,metric:'scope — team size, number of services or systems, or user count'},
+  {re:/^(automate|build|develop|create|implement|migrate|design|architect)\b/i,metric:'time saved or manual effort removed (%, or hours per week)'},
+  {re:/^(reduce|cut|decrease|lower|fix|resolve|eliminate)\b/i,metric:'the percentage or absolute reduction, with a before and after'},
+  {re:/^(increase|grow|improve|boost|drive|scale|accelerate)\b/i,metric:'the percentage or scale increase, with a before and after'},
+  {re:/^(led|mentored|coached|trained|hired)\b/i,metric:'how many people, and one measurable outcome of it'}
+];
+function metricHintFor(bullet){const w=(bullet.split(/\s+/)[0]||'').toLowerCase();for(const m of VERB_METRIC)if(m.re.test(w))return m.metric;return 'a number that shows scope or result — team size, volume, percentage, or time';}
+function diagnoseBullet(bullet,jd){
+  const hasNum=/\d/.test(bullet);const low=bullet.toLowerCase();
+  const fluffHit=FLUFF.find(f=>new RegExp('\\b'+esc(f)+'\\b').test(low));
+  const clicheHit=CLICHE.find(c=>new RegExp('\\b'+esc(c)+'\\b').test(low));
+  const passive=/\b(was|were|is|are|been)\s+\w+ed\b/.test(low);const tooLong=bullet.length>220;
+  const kws=extractKeywords(jd);const nearbyKw=kws.find(k=>low.includes(k));
+  const chips=[];
+  if(hasNum)chips.push(['has a number','ok']);else chips.push(['no number','bad']);
+  if(fluffHit)chips.push(['fluff verb: '+fluffHit,'bad']);
+  if(clicheHit)chips.push(['cliché: '+clicheHit,'bad']);
+  if(passive)chips.push(['passive voice','warn']);
+  if(tooLong)chips.push(['over 2 lines','warn']);
+  if(nearbyKw)chips.push(['JD keyword: '+nearbyKw,'info']);
+  const strong=hasNum&&!fluffHit&&!clicheHit&&!passive&&!tooLong;
+  return {chips,strong,hasNum,fluffHit,clicheHit,metricHint:metricHintFor(bullet)};
+}
+function exampleRewrite(bullet,jd){
+  const rnd=seededRand(hashStr(bullet));const pct=15+Math.floor(rnd()*45);const team=4+Math.floor(rnd()*10);
+  const w=(bullet.split(/\s+/)[0]||'').toLowerCase();
+  const verbCat=VERB_METRIC.find(m=>m.re.test(w));
+  const body=bullet.replace(/^(responsible for|helped with|helped|worked on|tasked with)\s+/i,'').trim();
+  const clean=body.charAt(0).toLowerCase()+body.slice(1);
+  if(!verbCat||/reduce|cut|decrease/i.test(w))return `Reduced ${clean}, cutting it ${pct}% by identifying and fixing the root cause.`;
+  if(/automate|build|develop|create|implement/i.test(w))return `Automated ${clean}, saving roughly ${pct}% of the manual effort for a team of ${team}.`;
+  return `Owned ${clean} for ${team}+ people, at ${90+pct%9}% reliability.`;
+}
+function renderCoach(){
+  const cv=cap($('cv').value),jd=cap($('jd').value);
+  if(!cv.trim()){$('coach-bullets').innerHTML='';$('coach-out').innerHTML='<p class="hint">Score a résumé first, then click a bullet on the left.</p>';return;}
+  const bl=bulletsOf(cv);
+  $('coach-bullets').innerHTML=bl.map((b,i)=>`<div class="bl" data-i="${i}">${escHtml(b)}</div>`).join('')||'<p class="hint">No bullet lines found — start lines with - or •.</p>';
+  document.querySelectorAll('#coach-bullets .bl').forEach(el=>el.addEventListener('click',()=>{
+    document.querySelectorAll('#coach-bullets .bl').forEach(x=>x.classList.remove('sel'));el.classList.add('sel');
+    const bullet=bl[+el.dataset.i];const d=diagnoseBullet(bullet,jd);
+    const chips=d.chips.map(([label,tone])=>`<span class="chip ${tone}">${escHtml(label)}</span>`).join('');
+    let body;
+    if(d.strong){
+      body=`<p><b>Already strong.</b> It has a number, no fluff, and no cliché.</p><p><b>Interview Defense</b><br><span class="q">"How was that number measured — and what was your part vs. the team's?"</span></p>`;
+    } else if(!d.hasNum){
+      const ex=exampleRewrite(bullet,jd);
+      body=`<p><b>Metric that fits this verb.</b> ${escHtml(d.metricHint)}.</p><p><b>Rewrite pattern</b><br><span style="font-family:var(--mono);font-size:13px">[Strong verb] [what] for [scope], [result with a number] by [how].</span></p><p><b>Example rewrite</b> <span class="tag">example</span><br>${escHtml(ex)}</p><p class="hint">The number above is invented to show the shape — replace it with your own; a rough honest figure beats a precise invented one.</p><p><b>Interview Defense</b><br><span class="q">"Walk me through how you'd actually measure that."</span></p>`;
+    } else {
+      body=`<p><b>Close.</b> ${d.fluffHit?`Swap "${escHtml(d.fluffHit)}" for a stronger verb (owned, led, cut, automated).`:d.clicheHit?`Cut the cliché "${escHtml(d.clicheHit)}" — say what you actually did.`:'Tighten the wording and keep the number up front.'}</p><p><b>Interview Defense</b><br><span class="q">"What would you have done differently if the result had gone the other way?"</span></p>`;
+    }
+    $('coach-out').innerHTML=`<div class="card coach-card"><h3>Diagnosis <i>·</i></h3><div>${chips}</div>${body}</div>`;
+  }));
+}
+document.querySelector('.rr > .tabs > .tab[data-tab="coach"]').addEventListener('click',renderCoach);
+
+/* ---------- Three Readers ---------- */
+function buildReaders(res,resume,jd){
+  const rows=res.rows;const get=n=>rows.find(r=>r[0]===n);
+  const kwCov=get('Keyword coverage'),kwPl=get('Keyword placement'),title=get('Title alignment'),parse=get('Parse safety');
+  const quant=get('Quantification'),bq=get('Bullet quality'),scope=get('Scope & progression');
+  const atsVerdict=parse[1]===10&&kwCov[1]>=kwCov[2]*0.6?['g','Passes']:['w','Passes with gaps'];
+  const atsNotes=[
+    `Parse safety ${parse[1]}/${parse[2]} — ${parse[1]===10?'standard headers, no tables or images.':'some formatting risk found; see the fix above.'}`,
+    `Keyword hits ${res.d.keywords.length-res.d.missing.length}/${res.d.keywords.length} (${kwCov[1]}/${kwCov[2]} pts).`,
+    res.d.missing.length?`Knockout risk: missing "${res.d.missing[0]}" — a common must-have.`:'No obvious knockout risk.'
+  ];
+  const hrVerdict=kwPl[1]>=8&&title[1]>=5?['g','Shortlist']:kwPl[1]>=4?['w','Shortlist — borderline']:['b','Likely skipped'];
+  const lines=resume.split('\n').filter(l=>l.trim());const topN=Math.max(1,Math.ceil(lines.length/3));
+  const topNums=(lines.slice(0,topN).join(' ').match(/\d/g)||[]).length;
+  const hrNotes=[
+    title[1]>=5?'Title matches the role in the headline.':'Title isn\'t obvious in the first few lines.',
+    topNums?`${topNums} number(s) land in the top third — good, they'll register in a fast read.`:'No numbers in the top third — the fast read finds nothing to remember.',
+    res.d.missing.length?`I'd look for "${res.d.missing[0]}" before reading a single bullet — it's not there yet.`:'The must-haves are all visible early.'
+  ];
+  const mgrVerdict=scope[1]>=6&&bq[1]>=8&&quant[1]>=quant[2]*0.6?['g','Interview']:['w','Maybe — depends on the gaps'];
+  const weakestBullet=res.d.noNum && res.d.noNum[0];
+  const mgrNotes=[
+    scope[1]>=6?'Ownership and scope are clear in the recent role.':'Scope (team size, volume, budget) is thin — add it to the current role.',
+    weakestBullet?`Weakest line: "${weakestBullet.length>70?weakestBullet.slice(0,67)+'...':weakestBullet}" — no outcome attached.`:'Every bullet carries an outcome.',
+    'I\'d probe the single biggest number claim: baseline, timeframe, and your part vs. the team\'s.'
+  ];
+  return [
+    {name:'ATS bot',time:'~1 s parse',verdict:atsVerdict,notes:atsNotes,call:'Add the missing keywords where truthful, then this clears most ATS filters.'},
+    {name:'HR screener',time:'6-second pass',verdict:hrVerdict,notes:hrNotes,call:'Move your strongest number and the JD title into the first four lines.'},
+    {name:'Hiring manager',time:'2-minute read',verdict:mgrVerdict,notes:mgrNotes,call:'Give me one bullet about something that went wrong and how you fixed it — that\'s what I remember.'}
+  ];
+}
+$('readers-run').addEventListener('click',()=>{
+  if(!$('jd').value.trim()||!$('cv').value.trim())return alert('Paste a JD and a résumé in Score & X-Ray first.');
+  const jd=cap($('jd').value),cv=cap($('cv').value);
+  const res=score(cv,jd,+$('pages').value,measurePages(cv,$('fmt').value));
+  const readers=buildReaders(res,cv,jd);
+  $('readers-out').innerHTML=readers.map(r=>`<article class="reader"><header><h3>${r.name}</h3><span class="t">${r.time}</span></header><span class="pillv ${r.verdict[0]}">${r.verdict[1]}</span><ul>${r.notes.map(n=>`<li>${escHtml(n)}</li>`).join('')}</ul><div class="call"><b>Gets you the call:</b> ${escHtml(r.call)}</div></article>`).join('');
+});
+
+/* ---------- Compare: Match Matrix ---------- */
+$('mx-run').addEventListener('click',()=>{const cv=cap($('mx-cv').value);const jds=[['JD 1',$('mx-jd1').value],['JD 2',$('mx-jd2').value],['JD 3',$('mx-jd3').value]].filter(([,v])=>v.trim()).map(([l,v])=>[l,cap(v)]);
+  if(!cv.trim()||!jds.length)return alert('Paste a résumé and at least one JD.');const results=jds.map(([label,jd])=>({label,jd,res:score(cv,jd,2)}));const best=results.reduce((a,b)=>b.res.total>a.res.total?b:a);
+  let html=`<table class="matrix"><thead><tr><th>Dimension</th>${results.map(r=>`<th>${escHtml(r.label)}</th>`).join('')}</tr></thead><tbody>`;const dims=results[0].res.rows.map(r=>r[0]);
+  dims.forEach((dim,i)=>{html+=`<tr><td style="text-align:left">${dim}</td>`+results.map(r=>`<td>${r.res.rows[i][1]}/${r.res.rows[i][2]}</td>`).join('')+`</tr>`;});
+  html+=`<tr><td style="text-align:left"><b>Total</b></td>`+results.map(r=>`<td class="${r===best?'best':''}">${r.res.total}${r===best?' ★':''}</td>`).join('')+`</tr></tbody></table><p class="hint">★ best fit as-is. For any other job, the fixes list under Score &amp; X-Ray tells you exactly what to change.</p>`;
+  $('mx-out').innerHTML=html;$('mx-out').hidden=false;});
+
+/* ---------- Compare: Version Compare ---------- */
+$('v-run').addEventListener('click',()=>{
+  const jd=cap($('v-jd').value),a=cap($('va').value),b=cap($('vb').value);
+  if(!jd.trim()||!a.trim()||!b.trim())return alert('Paste the JD and both résumé versions.');
+  const ra=score(a,jd,2),rb=score(b,jd,2);const delta=+(rb.total-ra.total).toFixed(1);
+  let html=`<div class="total" style="border-top:none"><b>${ra.total}</b><span style="font:400 28px var(--serif);color:var(--page-fg-3);margin:0 6px">→</span><b>${rb.total}</b><span class="delta ${delta>=0?'up':'dn'}">${delta>=0?'+':''}${delta}</span></div><div style="margin-top:10px">`;
+  ra.rows.forEach((row,i)=>{const d=+(rb.rows[i][1]-row[1]).toFixed(1);if(d!==0)html+=`<span class="delta ${d>0?'up':'dn'}">${row[0]} ${d>0?'+':''}${d}</span> `;});
+  html+='</div>';
+  $('v-out').innerHTML=html;$('v-out').hidden=false;
+});
 </script>
 </body>
 </html>

@@ -11,7 +11,7 @@ Always report the breakdown, never just the total. Score the same way every time
 | 5 | **Quantification** | 15 | (bullets containing a number ÷ total bullets) × 15. Target ≥ 60%. |
 | 6 | **Bullet quality** | 10 | Start at 10. −1 per fluff verb ("responsible for", "helped", "worked on", "involved in"), −1 per passive sentence, −1 per bullet over 2 lines, −1 per repeated opening verb in consecutive bullets. Floor 0. |
 | 7 | **Scope & progression** | 10 | 10 if every role in the last 10 years shows scope (team/volume/scale) AND numbers grow over time; 6 if scope present but flat; 3 if scope only in current role; 0 if none. |
-| 8 | **Length & layout** | 5 | 5 if exact target page count with no dead space; 2 if correct pages but visible white space; 0 if wrong page count. |
+| 8 | **Length & layout** | 5 | Standard is 2 pages maximum. 5 for 1–2 pages; 2 for exactly one page over the max (3 pages at the default); 0 for two or more pages over. The web scorer renders the résumé at real Letter/A4 page size to count exactly; the CLI estimates from line count (~55 lines/page) unless `--pages` is given. |
 | 9 | **Humanization** | 5 | Start at 5. −1 per banned cliché (spearheaded, leveraged, synergy, seamlessly, passionate, results-driven, proven track record, dynamic, cutting-edge); −2 if summary is generic enough to belong to anyone. Floor 0. |
 | 10 | **Hygiene** | 5 | 5 if zero typos, consistent dates/tense/punctuation; −1 per issue; floor 0. |
 
