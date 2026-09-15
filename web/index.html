@@ -201,6 +201,74 @@
   .rr .delta{display:inline-flex;gap:6px;align-items:center;font:600 12px var(--mono);border-radius:999px;padding:4px 10px;background:var(--band)}
   .rr .delta.up{color:var(--mint)} .rr .delta.dn{color:var(--rose)}
 
+  /* ================= Interview room (Part 3) ================= */
+  .ir textarea{min-height:170px}
+  .ir .setup{display:grid;gap:var(--s3);grid-template-columns:1fr 1fr} @media (max-width:800px){.ir .setup{grid-template-columns:1fr}}
+  .ir .band{display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+  .ir .band button{border:1px solid var(--rule2);background:var(--f);color:var(--fi);border-radius:999px;padding:7px 13px;font:600 13px var(--ui);cursor:pointer}
+  .ir .band button.on{background:var(--cobalt);border-color:var(--cobalt);color:#fff}
+  .ir .qcount{font:800 40px/1 var(--disp);letter-spacing:-.03em;font-variant-numeric:tabular-nums;color:var(--fi)}
+  .ir .filters{display:flex;gap:6px;flex-wrap:wrap;margin:var(--s3) 0 var(--s2)}
+  .ir .filters button{border:1px solid var(--rule2);background:transparent;color:var(--page-fg-2);border-radius:999px;padding:6px 12px;font:600 12.5px var(--ui);cursor:pointer}
+  .ir .filters button.on{background:var(--ink);border-color:var(--ink);color:#fff}
+  .ir .q-list{display:grid;gap:10px}
+  .ir .qc{background:var(--f);border:1px solid var(--rule2);border-left:4px solid var(--cobalt);border-radius:12px;padding:14px 16px;color:var(--fi)}
+  .ir .qc.cat-gap{border-left-color:var(--amber)} .ir .qc.cat-claim{border-left-color:var(--rose)}
+  .ir .qc.cat-scenario{border-left-color:var(--mint)} .ir .qc.cat-star{border-left-color:var(--coral)} .ir .qc.cat-role{border-left-color:var(--ink-3)}
+  .ir .qc .qh{display:flex;justify-content:space-between;gap:10px;align-items:baseline;flex-wrap:wrap;margin-bottom:6px}
+  .ir .qc .qn{font:600 11px var(--mono);color:var(--page-fg-3);letter-spacing:.06em;text-transform:uppercase}
+  .ir .qc .qt{font:600 16.5px/1.4 var(--ui);margin:0 0 8px;color:var(--fi)}
+  .ir .qc .why{font-size:13.5px;color:var(--page-fg-2);border-left:2px solid var(--rule2);padding-left:10px;margin:0 0 8px}
+  .ir .qc .why b{color:var(--page-fg-3);font:600 11px var(--mono);letter-spacing:.06em;text-transform:uppercase;display:block}
+  .ir .qc .strong{font-size:13.5px;color:var(--page-fg-2);margin:0}
+  .ir .qc .strong b{color:var(--mint)}
+  .ir .rate{display:flex;gap:5px;margin-top:10px}
+  .ir .rate button{border:1px solid var(--rule2);background:transparent;color:var(--page-fg-3);border-radius:8px;padding:4px 10px;font:600 11.5px var(--ui);cursor:pointer}
+  .ir .rate button.on[data-r="0"]{background:rgba(214,69,80,.15);border-color:transparent;color:var(--rose)}
+  .ir .rate button.on[data-r="1"]{background:rgba(224,161,0,.18);border-color:transparent;color:var(--amber)}
+  .ir .rate button.on[data-r="2"]{background:rgba(31,165,122,.16);border-color:transparent;color:var(--mint)}
+
+  /* Drill */
+  .ir .drill{max-width:660px;margin:0 auto}
+  .ir .flash{background:var(--cobalt);color:#fff;border-radius:18px;padding:var(--s4);min-height:250px;display:grid;align-content:center;gap:14px;cursor:pointer;box-shadow:0 24px 50px -22px rgba(43,76,255,.75)}
+  .ir .flash.flipped{background:var(--paper-2);color:var(--ink);box-shadow:var(--card-shadow)}
+  .ir .flash .fq{font:600 clamp(19px,2.4vw,25px)/1.35 var(--ui);margin:0}
+  .ir .flash .fmeta{font:600 11px var(--mono);letter-spacing:.08em;text-transform:uppercase;opacity:.8}
+  .ir .flash .fa{font-size:15px;line-height:1.55;margin:0} .ir .flash .fa b{color:var(--mint)}
+  .ir .flash .tap{font:500 12px var(--mono);opacity:.75}
+  .ir .drill-bar{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:var(--s3)}
+  .ir .drill-bar button{border:0;border-radius:10px;padding:11px 18px;font:700 14px var(--ui);cursor:pointer;color:#fff}
+  .ir .d-blank{background:var(--rose)} .ir .d-shaky{background:var(--amber)} .ir .d-conf{background:var(--mint)}
+  .ir .drill-nav{display:flex;gap:8px;justify-content:space-between;align-items:center;margin-top:var(--s2);color:var(--page-fg-3);font-size:13px}
+  .ir .progress{display:grid;gap:8px;margin-bottom:var(--s3)}
+  .ir .pbar{height:10px;border-radius:5px;background:rgba(127,127,127,.18);overflow:hidden;display:flex}
+  .ir .pbar i{display:block;height:100%} .ir .pbar i.c{background:var(--mint)} .ir .pbar i.s{background:var(--amber)} .ir .pbar i.b{background:var(--rose)}
+  .ir kbd{font:600 11px var(--mono);border:1px solid var(--rule2);border-bottom-width:2px;border-radius:5px;padding:1px 5px;color:var(--page-fg-2)}
+
+  /* Story bank + pitch */
+  .ir .story{border:1px solid var(--rule2);border-radius:12px;padding:14px;margin-bottom:12px;background:var(--f);color:var(--fi)}
+  .ir .story h4{margin:0 0 8px;font:600 17px var(--serif)}
+  .ir .star{display:grid;gap:8px;margin-top:10px}
+  .ir .star .row{display:grid;grid-template-columns:96px 1fr;gap:10px;align-items:start} @media (max-width:640px){.ir .star .row{grid-template-columns:1fr}}
+  .ir .star .lt{font:700 11px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--cobalt);padding-top:9px}
+  .ir .star textarea{min-height:56px;font:14px/1.5 var(--ui)}
+  .ir .answers{margin-top:10px;font-size:13px;color:var(--page-fg-2)}
+  .ir .pitch-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:var(--s3)} @media (max-width:860px){.ir .pitch-grid{grid-template-columns:1fr}}
+  .ir .timer{font:800 56px/1 var(--disp);font-variant-numeric:tabular-nums;letter-spacing:-.03em;color:var(--fi)}
+  .ir .timer.over{color:var(--rose)}
+  .ir .wc{font:600 13px var(--mono);color:var(--page-fg-3)}
+  .ir .wc.good{color:var(--mint)} .ir .wc.over{color:var(--amber)}
+
+  /* Playbooks + checklist */
+  .ir .pb{border:1px solid var(--rule2);border-radius:12px;padding:16px;background:var(--f);color:var(--fi);margin-bottom:12px}
+  .ir .pb h4{margin:0 0 4px;font:600 20px var(--serif)} .ir .pb .who{font:600 11px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--page-fg-3);margin-bottom:10px}
+  .ir .pb dl{margin:0;display:grid;gap:8px} .ir .pb dt{font:700 11.5px var(--mono);letter-spacing:.05em;text-transform:uppercase;color:var(--cobalt)}
+  .ir .pb dd{margin:2px 0 0;font-size:14px;color:var(--page-fg-2)}
+  .ir .check{display:grid;gap:7px;margin-top:10px}
+  .ir .check label{display:grid;grid-template-columns:auto 1fr;gap:10px;align-items:start;font:400 14.5px/1.45 var(--ui);color:var(--fi);text-transform:none;letter-spacing:0;margin:0;cursor:pointer}
+  .ir .check input{margin-top:3px;width:17px;height:17px;accent-color:var(--cobalt);flex:none}
+  .ir .check label.done span{opacity:.5;text-decoration:line-through}
+
   #page-measure{position:absolute;left:-99999px;top:0;white-space:pre-wrap;word-wrap:break-word;font:14px/1.35 var(--ui);visibility:hidden}
   #print-sheet{display:none}
   @media print{
@@ -256,9 +324,9 @@
         </div>
         <div class="cards">
           <a class="fc" href="#/resume"><b><i style="background:var(--cobalt)"></i>Résumé that fits the job</b><span>An example built from the JD — every number marked "example".</span><small>Résumé · live now</small></a>
-          <a class="fc" href="#/soon/interview"><b><i style="background:var(--coral)"></i>50 questions, your level</b><span>Traced to your bullets and their JD lines, with what a strong answer includes.</span><small>Interview · coming</small></a>
-          <a class="fc" href="#/soon/interview"><b><i style="background:var(--mint)"></i>The number to ask for</b><span>Safe, sweet spot, stretch — with the odds and the script.</span><small>Ask Calculator · coming</small></a>
-          <a class="fc" href="#/soon/interview"><b><i style="background:var(--mustard)"></i>Your 60-second pitch</b><span>"Tell me about yourself", written from your own résumé.</span><small>Interview · coming</small></a>
+          <a class="fc" href="#/interview"><b><i style="background:var(--coral)"></i>50 questions, your level</b><span>Traced to your bullets and their JD lines, with what a strong answer includes.</span><small>Interview · live now</small></a>
+          <a class="fc" href="#/interview"><b><i style="background:var(--mustard)"></i>Your 60-second pitch</b><span>"Tell me about yourself", written from your own résumé.</span><small>Interview · live now</small></a>
+          <a class="fc" href="#/soon/offer"><b><i style="background:var(--mint)"></i>The number to ask for</b><span>Safe, sweet spot, stretch — with the odds and the script.</span><small>Ask Calculator · coming</small></a>
         </div>
         <nav class="stairs" aria-label="Journey">
           <svg viewBox="0 0 1000 140" preserveAspectRatio="none" aria-hidden="true"><path d="M0 140 H1000 V30 H833 V50 H666 V70 H500 V90 H333 V110 H166 V130 H0 Z" fill="var(--paper)" opacity=".9"/><path d="M0 130 H166 V110 H333 V90 H500 V70 H666 V50 H833 V30 H1000" fill="none" stroke="var(--ink)" stroke-width="3" stroke-linejoin="round"/></svg>
@@ -266,7 +334,7 @@
             <li class="stop soon"><a href="#/soon/target"><i></i><span class="lbl">Target<small>role compass</small></span></a></li>
             <li class="stop on"><a href="#/resume"><i></i><span class="lbl">Résumé<small>build · score</small></span></a></li>
             <li class="stop soon"><a href="#/soon/apply"><i></i><span class="lbl">Apply<small>tracker</small></span></a></li>
-            <li class="stop soon"><a href="#/soon/interview"><i></i><span class="lbl">Interview<small>50 Qs · drill · ask</small></span></a></li>
+            <li class="stop on"><a href="#/interview"><i></i><span class="lbl">Interview<small>50 Qs · drill · pitch</small></span></a></li>
             <li class="stop soon"><a href="#/soon/offer"><i></i><span class="lbl">Offer &amp; Exit<small>compare · resign</small></span></a></li>
             <li class="stop soon"><a href="#/soon/grow"><i></i><span class="lbl">Join &amp; Grow<small>30-60-90 · brag doc</small></span></a></li>
           </ol>
@@ -378,6 +446,141 @@
         </section>
       </section>
     </section>
+    <section class="view room rr ir" id="view-interview" aria-labelledby="h-interview">
+      <div class="kick">04 · Interview</div>
+      <h2 id="h-interview">Fifty questions, written for <i>your level.</i></h2>
+      <p class="sub">Paste the job description and your résumé. Every question below is traced to a line in one of them — no generic list. Then drill them, build the stories that answer them, and write the pitch that opens the call.</p>
+
+      <div class="tabs" role="tablist">
+        <button class="tab active" data-itab="questions" role="tab" aria-selected="true">50 Questions</button>
+        <button class="tab" data-itab="drill" role="tab" aria-selected="false">Drill</button>
+        <button class="tab" data-itab="stories" role="tab" aria-selected="false">Story Bank</button>
+        <button class="tab" data-itab="pitch" role="tab" aria-selected="false">60-Second Pitch</button>
+        <button class="tab" data-itab="ask" role="tab" aria-selected="false">Ask Them</button>
+        <button class="tab" data-itab="day" role="tab" aria-selected="false">Day Plan</button>
+      </div>
+
+      <!-- ===== 50 QUESTIONS ===== -->
+      <section class="panel active" id="panel-questions">
+        <div class="setup">
+          <div><label for="iv-jd">Job description</label><textarea id="iv-jd" spellcheck="false" placeholder="Paste the full JD. Title on the first line."></textarea></div>
+          <div><label for="iv-cv">Your résumé</label><textarea id="iv-cv" spellcheck="false" placeholder="Paste your résumé — bullets starting with - or • give the best claim probes."></textarea></div>
+        </div>
+        <div class="bar">
+          <button class="pill" id="iv-pull" type="button">Pull from Résumé room</button>
+          <span class="hint" style="margin:0">Experience level:</span>
+          <span class="band" id="iv-band" role="group" aria-label="Experience band">
+            <button type="button" data-b="1">0–2 yrs</button><button type="button" data-b="2">2–5 yrs</button>
+            <button type="button" data-b="3">5–10 yrs</button><button type="button" data-b="4">10+ yrs</button>
+          </span>
+        </div>
+        <div class="bar"><button class="pill dark" id="iv-run" type="button">Generate my 50 questions</button></div>
+        <div id="iv-out" hidden aria-live="polite">
+          <div class="total"><b id="iv-total" class="qcount">50</b><span>questions · <span id="iv-bandtxt"></span></span></div>
+          <p class="verdict" id="iv-summary"></p>
+          <div class="filters" id="iv-filters" role="group" aria-label="Filter questions">
+            <button type="button" data-f="all" class="on">All</button>
+            <button type="button" data-f="recruiter">Recruiter</button>
+            <button type="button" data-f="tech">Technical</button>
+            <button type="button" data-f="manager">Manager</button>
+            <button type="button" data-f="hr">HR</button>
+          </div>
+          <div class="bar" style="margin-top:0"><button class="pill" id="iv-copy" type="button">Copy as Markdown</button><button class="pill" id="iv-print" type="button">Print</button></div>
+          <div class="q-list" id="iv-list"></div>
+        </div>
+      </section>
+
+      <!-- ===== DRILL ===== -->
+      <section class="panel" id="panel-drill">
+        <div class="drill">
+          <div id="drill-empty"><p class="hint">Generate your 50 questions first — the deck is built from them.</p></div>
+          <div id="drill-live" hidden>
+            <div class="progress">
+              <div class="pbar" id="d-bar"><i class="c" style="width:0"></i><i class="s" style="width:0"></i><i class="b" style="width:0"></i></div>
+              <p class="hint" id="d-progress" style="margin:0"></p>
+            </div>
+            <div class="flash" id="d-card" tabindex="0" role="button" aria-label="Flashcard — activate to flip">
+              <span class="fmeta" id="d-meta"></span>
+              <p class="fq" id="d-front"></p>
+              <div id="d-back" hidden><p class="fa" id="d-answer"></p></div>
+              <span class="tap" id="d-tap">Tap, or press <kbd>Space</kbd>, to see what a strong answer includes</span>
+            </div>
+            <div class="drill-bar">
+              <button class="d-blank" type="button" data-r="0">Blank <kbd style="color:inherit;border-color:rgba(255,255,255,.5)">1</kbd></button>
+              <button class="d-shaky" type="button" data-r="1">Shaky <kbd style="color:inherit;border-color:rgba(255,255,255,.5)">2</kbd></button>
+              <button class="d-conf" type="button" data-r="2">Confident <kbd style="color:inherit;border-color:rgba(255,255,255,.5)">3</kbd></button>
+            </div>
+            <div class="drill-nav">
+              <button class="pill ghost" type="button" id="d-prev">← Previous</button>
+              <span id="d-pos"></span>
+              <button class="pill ghost" type="button" id="d-next">Next →</button>
+            </div>
+            <p class="hint" style="text-align:center;margin-top:var(--s3)">Shaky and blank cards come back first. Ratings stay in this browser — <button class="pill ghost" id="d-reset" type="button" style="padding:3px 10px;font-size:12px">reset them</button></p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== STORY BANK ===== -->
+      <section class="panel" id="panel-stories">
+        <p class="hint" style="margin-bottom:14px">One bullet from your résumé becomes one story — and one story answers several of the fifty. Fill these in your own words; they save in this browser only.</p>
+        <div class="bar" style="margin-top:0"><button class="pill dark" id="st-run" type="button">Build story skeletons</button><button class="pill" id="st-copy" type="button">Copy all stories</button></div>
+        <div id="st-out"></div>
+      </section>
+
+      <!-- ===== 60-SECOND PITCH ===== -->
+      <section class="panel" id="panel-pitch">
+        <p class="hint" style="margin-bottom:14px">"Tell me about yourself" — the first ninety seconds decide how the rest of the call goes. This drafts it from your résumé and the JD; edit it until it sounds like you.</p>
+        <div class="bar" style="margin-top:0"><button class="pill dark" id="pt-run" type="button">Draft my pitch</button></div>
+        <div class="pitch-grid" id="pt-grid" hidden>
+          <div>
+            <label for="pt-text">Your pitch <span class="hint" style="display:inline">— aim for 140–160 words</span></label>
+            <textarea id="pt-text" style="min-height:280px;font:15px/1.6 var(--ui)"></textarea>
+            <div class="bar"><span class="wc" id="pt-wc"></span><button class="pill" id="pt-copy" type="button">Copy</button></div>
+          </div>
+          <div>
+            <div class="card">
+              <p class="timer" id="pt-timer">0:00</p>
+              <div class="bar" style="margin:10px 0 0"><button class="pill dark" id="pt-start" type="button">Start</button><button class="pill ghost" id="pt-stop" type="button">Reset</button></div>
+              <p class="hint" style="margin-top:12px">Read it aloud at a normal pace. Under 60 seconds means it is tight enough; over 75 and they stop listening.</p>
+            </div>
+            <div class="card">
+              <p style="margin:0 0 6px"><b>The four beats</b></p>
+              <ul class="plain" style="font-size:13.5px;color:var(--page-fg-2)">
+                <li><b>Headline</b> — who you are professionally, in one line.</li>
+                <li><b>Two proof points</b> — the strongest number you own, and the thing closest to this job.</li>
+                <li><b>Why this role</b> — something specific from their JD, not flattery.</li>
+                <li><b>The ask</b> — hand the conversation back deliberately.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== ASK THEM ===== -->
+      <section class="panel" id="panel-ask">
+        <p class="hint" style="margin-bottom:14px">Questions built from the gaps and the wording in <em>their</em> JD. "No questions" is the most common way a good interview ends badly.</p>
+        <div class="bar" style="margin-top:0"><button class="pill dark" id="ask-run" type="button">Build my questions</button><button class="pill" id="ask-copy" type="button">Copy</button></div>
+        <div id="ask-out"></div>
+      </section>
+
+      <!-- ===== DAY PLAN ===== -->
+      <section class="panel" id="panel-day">
+        <div class="bar" style="margin-top:0">
+          <span class="hint" style="margin:0">Format:</span>
+          <span class="band" id="fmt-band" role="group" aria-label="Interview format">
+            <button type="button" data-f="remote" class="on">Remote</button><button type="button" data-f="onsite">Onsite</button><button type="button" data-f="panel">Panel</button>
+          </span>
+        </div>
+        <div class="card" id="day-check">
+          <h3 style="margin:0 0 4px;font:600 20px var(--serif)">Interview-day checklist</h3>
+          <p class="hint" id="day-sub" style="margin:0 0 10px"></p>
+          <div class="check" id="day-list"></div>
+        </div>
+        <h3 style="font:600 var(--t1)/1.15 var(--serif);margin:var(--s4) 0 var(--s2);color:var(--page-fg)">Round playbooks</h3>
+        <div id="pb-out"></div>
+      </section>
+    </section>
+
     <pre id="page-measure" aria-hidden="true"></pre>
     <div id="print-sheet" aria-hidden="true"></div>
 
@@ -478,15 +681,15 @@ themeBtn.addEventListener('click',()=>{const next=isDark()?'light':'dark';root.d
 
 const SOON={target:['01 · Target','Role Compass, JD red-flag check and a skill-gap plan — paste a few JDs and find out which role family you are closest to.'],
   apply:['03 · Apply','A tracker that knows every application\'s next move, a follow-up clock, a two-minute reflection after each round, cover letter and LinkedIn text.'],
-  interview:['04 · Interview','Fifty questions written for your level, a drill deck, your 60-second pitch, round playbooks, questions to ask them, and the Ask Calculator.'],
-  offer:['05 · Offer & Exit','Compare offers on equal terms, decide, then resign well: letter, notice calculator, exit checklist, handover.'],
+  offer:['05 · Offer & Exit','The Ask Calculator, offers compared on equal terms, then resigning well: letter, notice calculator, exit checklist, handover.'],
   grow:['06 · Join & Grow','A 30-60-90 plan from the JD that hired you, and a weekly brag doc that writes your next résumé.']};
 function route(){
   const h=location.hash.replace(/^#\/?/,'')||'';
   const [key,arg]=h.split('/');
   document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
   let id='view-home';
-  if(key==='resume')id='view-resume'; else if(key==='disclaimer')id='view-disclaimer'; else if(key==='privacy')id='view-privacy';
+  if(key==='resume')id='view-resume'; else if(key==='interview')id='view-interview';
+  else if(key==='disclaimer')id='view-disclaimer'; else if(key==='privacy')id='view-privacy';
   else if(key==='soon'){id='view-soon';const s=SOON[arg]||['Coming','This room is planned.'];document.getElementById('soon-kick').textContent=s[0];document.getElementById('soon-sub').textContent=s[1];}
   document.getElementById(id).classList.add('active');
   if(id!=='view-home')window.scrollTo({top:0,behavior:'instant'});
@@ -558,8 +761,8 @@ const $=id=>document.getElementById(id);const escHtml=s=>s.replace(/&/g,"&amp;")
 const MAX=30000; const cap=s=>s.length>MAX?s.slice(0,MAX):s;
 
 /* ---------- tabs (top-level + Compare's nested sub-tabs) ---------- */
-document.querySelectorAll('.rr > .tabs > .tab').forEach(btn=>btn.addEventListener('click',()=>{
-  document.querySelectorAll('.rr > .tabs > .tab').forEach(b=>{b.classList.remove('active');b.setAttribute('aria-selected','false');});
+document.querySelectorAll('#view-resume > .tabs > .tab').forEach(btn=>btn.addEventListener('click',()=>{
+  document.querySelectorAll('#view-resume > .tabs > .tab').forEach(b=>{b.classList.remove('active');b.setAttribute('aria-selected','false');});
   document.querySelectorAll('#view-resume > .panel').forEach(p=>p.classList.remove('active'));
   btn.classList.add('active');btn.setAttribute('aria-selected','true');$('panel-'+btn.dataset.tab).classList.add('active');
 }));
@@ -646,7 +849,7 @@ $('bp-copy').addEventListener('click',async()=>{
 $('bp-toscore').addEventListener('click',()=>{
   if(!lastBuiltMd)return alert('Build an example first.');
   $('jd').value=lastBuiltJD;$('cv').value=toPlain(lastBuiltMd);
-  document.querySelector('.rr > .tabs > .tab[data-tab="score"]').click();
+  document.querySelector('#view-resume > .tabs > .tab[data-tab="score"]').click();
 });
 
 /* ---------- Score & X-Ray ---------- */
@@ -781,7 +984,7 @@ function renderCoach(){
     $('coach-out').innerHTML=`<div class="card coach-card"><h3>Diagnosis <i>·</i></h3><div>${chips}</div>${body}</div>`;
   }));
 }
-document.querySelector('.rr > .tabs > .tab[data-tab="coach"]').addEventListener('click',renderCoach);
+document.querySelector('#view-resume > .tabs > .tab[data-tab="coach"]').addEventListener('click',renderCoach);
 
 /* ---------- Three Readers ---------- */
 function buildReaders(res,resume,jd){
@@ -841,6 +1044,673 @@ $('v-run').addEventListener('click',()=>{
   html+='</div>';
   $('v-out').innerHTML=html;$('v-out').hidden=false;
 });
+
+/* ================= Interview room (Part 3) =================
+   Skill bank v1. Strict JSON between the markers so tests/test_skill_bank.py can parse and
+   schema-check it without executing any JavaScript, and so a scheduled Action can flag entries
+   whose review date has gone stale. Fields:
+     n = display name   a = aliases matched case-insensitively   d = domain
+     p = the thing an interviewer actually digs into (keeps generated questions specific)
+     s = what a strong answer includes (never a script — the shape, not the words)
+   Adding a skill: append an entry, keep the JSON valid, and bump "reviewed". */
+const SKILL_BANK = /*BANK-START*/{
+"version": 1,
+"reviewed": "2026-09-14",
+"skills": [
+{"n":"Kubernetes","a":["k8s","eks","aks","gke"],"k":"tool","d":"cloud","p":"a rolling update where the new pods never go ready","s":"names readiness against liveness probes, explains surge and unavailable settings, and describes one rollback they actually ran"},
+{"n":"Docker","a":["container","containers","containerisation","containerization"],"k":"tool","d":"cloud","p":"an image that works locally and fails in the pipeline","s":"separates build time from run time, names layer caching or base-image drift, and says how they pinned it"},
+{"n":"Terraform","a":["hcl","opentofu"],"k":"tool","d":"cloud","p":"a plan that wants to destroy something you did not expect","s":"treats state as the source of truth, mentions drift, import or targeted plans, and how production is protected"},
+{"n":"AWS","a":["amazon web services","ec2","s3","lambda"],"k":"tool","d":"cloud","p":"choosing between two AWS services for the same job and defending the cost","s":"names both candidates, the cost driver, and the specific limit that decided it"},
+{"n":"Azure","a":["microsoft azure","azure devops"],"k":"tool","d":"cloud","p":"how identity and permissions are wired across a subscription","s":"distinguishes subscription, resource group and role scope, and gives one least-privilege change they made"},
+{"n":"Google Cloud","a":["gcp","bigquery"],"k":"tool","d":"cloud","p":"keeping projects, quotas and billing under control","s":"names project boundaries, a quota they had to raise, and a budget alert they set"},
+{"n":"CI/CD","a":["ci cd","continuous integration","continuous delivery","pipeline","pipelines"],"k":"practice","d":"cloud","p":"a pipeline that is green while shipping broken code","s":"names the gate that was missing and what they added to catch it earlier, not just more tests"},
+{"n":"Jenkins","a":["groovy pipeline","jenkinsfile"],"k":"tool","d":"cloud","p":"a shared library change that broke every downstream build","s":"talks about blast radius, versioning shared code, and how they rolled it back fast"},
+{"n":"GitHub Actions","a":["gh actions","workflow yaml"],"k":"tool","d":"cloud","p":"giving a deploy workflow exactly the permissions it needs and no more","s":"mentions least-privilege tokens, environments, and short-lived credentials over stored keys"},
+{"n":"Ansible","a":["playbook","playbooks","configuration management"],"k":"tool","d":"cloud","p":"a playbook that is not safe to run twice","s":"explains what re-running should do, names the task that broke idempotency, and the fix"},
+{"n":"Linux","a":["unix","rhel","ubuntu","centos"],"k":"tool","d":"cloud","p":"a server that is slow with no obvious CPU load","s":"walks a real triage order — load, memory, disk, I/O wait, network — and names the tool for each step"},
+{"n":"Networking","a":["dns","tcp","firewall","load balancer","vpc","subnet","network","networks"],"k":"practice","d":"cloud","p":"a service reachable from one network and not another","s":"walks DNS, routing, firewall and port in order, and says where they proved which layer was at fault"},
+{"n":"Observability","a":["monitoring","prometheus","grafana","datadog","splunk","logging","metrics","monitor","monitored"],"k":"practice","d":"cloud","p":"an alert that fires every night and nobody acts on","s":"separates symptom from cause, names threshold or objective tuning, and quotes how much the noise dropped"},
+{"n":"Incident response","a":["incident management","major incident","outage","postmortem","sev1","incidents","incident"],"k":"practice","d":"cloud","p":"an outage where the cause was not obvious for the first half hour","s":"names roles, a communication cadence, mitigating before diagnosing, and the follow-up action that shipped"},
+{"n":"Infrastructure as code","a":["iac","cloudformation","pulumi","bicep"],"k":"tool","d":"cloud","p":"bringing an environment that was built by hand under code","s":"mentions importing existing resources, freezing manual changes, and how parity was proved"},
+{"n":"Git","a":["version control","branching","pull request","merge conflict"],"k":"tool","d":"cloud","p":"a long-lived branch that has drifted badly from main","s":"explains the merge and rebase trade-off in their own words and how they avoided losing work"},
+{"n":"Shell scripting","a":["bash","powershell","scripting"],"k":"tool","d":"cloud","p":"a script that ran fine for a year and then deleted the wrong thing","s":"names quoting, strict mode, a dry-run flag, and review — rather than blaming the person who ran it"},
+{"n":"Identity and access","a":["iam","rbac","least privilege","active directory","sso","ldap"],"k":"practice","d":"cloud","p":"someone needing access urgently when the right role does not exist","s":"balances speed against least privilege, and describes a temporary path that expires by itself"},
+{"n":"Secrets management","a":["vault","secret","credentials","key rotation"],"k":"practice","d":"cloud","p":"a credential that leaked into a repository","s":"rotates first, then revokes, then audits the blast radius, then prevents — in that order"},
+{"n":"Cloud cost management","a":["finops","cost optimisation","cost optimization","billing"],"k":"practice","d":"cloud","p":"a cloud bill that jumped forty per cent in one month","s":"says how they found the driver, what they cut, and what they refused to cut and why"},
+{"n":"Python","a":["py","pandas","django","flask"],"k":"tool","d":"swe","p":"code that is correct but too slow on real data","s":"profiles before optimising, names the actual hot path, and says which change mattered and by how much"},
+{"n":"Java","a":["spring","spring boot","jvm"],"k":"tool","d":"swe","p":"a memory problem in a long-running service","s":"separates a large heap from a real leak, names the tool used to prove it, and the fix"},
+{"n":"JavaScript","a":["js","es6","ecmascript"],"k":"tool","d":"swe","p":"asynchronous code where the execution order surprised you","s":"explains the event loop or promise ordering in plain words with a real example, not a definition"},
+{"n":"TypeScript","a":["ts","typed javascript"],"k":"tool","d":"swe","p":"types that fight you instead of helping","s":"names a place they deliberately loosened or tightened a type, and what it bought them"},
+{"n":"React","a":["jsx","hooks","next.js","nextjs"],"k":"tool","d":"swe","p":"a component that re-renders far more than it should","s":"names where state actually lives, what memoisation fixed, and how it was measured rather than guessed"},
+{"n":"Node.js","a":["nodejs","node","express"],"k":"tool","d":"swe","p":"an API that falls over under load","s":"separates event-loop blocking from downstream limits and names what they measured to tell them apart"},
+{"n":"SQL","a":["mysql","postgres","postgresql","oracle","sql server","query","queries"],"k":"tool","d":"swe","p":"a query that was fast on test data and slow in production","s":"reads an execution plan, names the index or join order that changed, and gives the before and after timing"},
+{"n":"REST APIs","a":["rest","api design","openapi","swagger","graphql"],"k":"tool","d":"swe","p":"changing an API without breaking the callers you cannot see","s":"names additive change, a deprecation window, and how existing consumers were actually told"},
+{"n":"Microservices","a":["service mesh","distributed systems","event driven"],"k":"tool","d":"swe","p":"two services that keep failing together","s":"names coupling, timeouts, retries and circuit breaking, and one boundary they moved and why"},
+{"n":"Testing","a":["unit tests","integration tests","pytest","junit","test automation","selenium","cypress","tested","tests"],"k":"practice","d":"swe","p":"a test suite people have started ignoring","s":"finds the source of flakiness and explains how failures became trustworthy again"},
+{"n":"Code review","a":["peer review","pr review"],"k":"practice","d":"swe","p":"a pull request you disagreed with","s":"separates preference from defect, describes how the disagreement ended, and who decided"},
+{"n":"System design","a":["architecture","designing systems","scalability","high availability"],"k":"practice","d":"swe","p":"designing for ten times the current traffic","s":"states assumptions out loud, names the first bottleneck, and says what they would deliberately not build yet"},
+{"n":"Debugging","a":["troubleshooting","root causing","fault finding","debug","debugged"],"k":"practice","d":"swe","p":"a bug that only appeared in production","s":"describes reproducing it safely, the evidence gathered, and the cause — not the first plausible theory"},
+{"n":"Refactoring","a":["technical debt","legacy code","code quality","refactor","refactored"],"k":"practice","d":"swe","p":"improving code that has no tests and must not break","s":"names characterisation tests, small reversible steps, and a rollback path"},
+{"n":"Third-party integration","a":["api integration","webhooks","sdk","vendor api"],"k":"practice","d":"swe","p":"a third-party API that is unreliable","s":"names timeouts, retries with backoff, idempotency, and what the user sees when it is down"},
+{"n":"Data pipelines","a":["etl","elt","data engineering","ingestion","dbt"],"k":"practice","d":"data","p":"a nightly job that failed silently for a week","s":"names the freshness or row-count check they added and who gets told when it trips"},
+{"n":"Apache Spark","a":["spark","pyspark","databricks"],"k":"tool","d":"data","p":"a job that runs out of memory on one stage","s":"names skew, partitioning or a wide shuffle, and what they changed to prove it"},
+{"n":"Airflow","a":["dag","dags","orchestration","prefect"],"k":"tool","d":"data","p":"a DAG that keeps redoing work it has already done","s":"explains idempotency, backfills and scheduling windows in terms of real reruns"},
+{"n":"Data modelling","a":["data modeling","star schema","dimensional","data warehouse","snowflake"],"k":"practice","d":"data","p":"a number two teams calculate differently","s":"traces the definition rather than the code, and names the agreed source of truth that resulted"},
+{"n":"Power BI","a":["powerbi","dax"],"k":"tool","d":"data","p":"a dashboard nobody opens","s":"names the decision it was meant to support, and what they removed to make that decision obvious"},
+{"n":"Tableau","a":["tableau desktop","viz"],"k":"tool","d":"data","p":"a dashboard that crawls on a large extract","s":"separates the data model from visual complexity and says which one they fixed"},
+{"n":"Excel","a":["spreadsheet","vlookup","pivot table","google sheets"],"k":"tool","d":"data","p":"a spreadsheet other people depend on that keeps breaking","s":"names validation, protected ranges, and the point at which they moved it into a real system"},
+{"n":"Statistics","a":["statistical","significance","regression","sampling"],"k":"practice","d":"data","p":"a result that looked significant and was not","s":"explains sample size, base rates or multiple comparisons in plain language a stakeholder would follow"},
+{"n":"Machine learning","a":["ml","model training","scikit","tensorflow","pytorch","llm"],"k":"tool","d":"data","p":"a model that performed well offline and badly in production","s":"names training and serving skew, data drift, and the monitoring added afterwards"},
+{"n":"A/B testing","a":["ab testing","experimentation","split test"],"k":"practice","d":"data","p":"a winning variant that hurt a different metric","s":"names the guardrail metric, who decided, and what the decision was"},
+{"n":"ServiceNow","a":["snow","itsm tool","remedy","jira service"],"k":"tool","d":"itsm","p":"a queue where tickets keep landing with the wrong team","s":"names the category or assignment rule they changed and the measured improvement"},
+{"n":"Ticket triage","a":["queue management","support queue","first line","service desk"],"k":"practice","d":"itsm","p":"fifty open tickets and two people","s":"states the prioritisation rule, what was consciously deferred, and how expectations were set with users"},
+{"n":"SLAs","a":["sla","service level","kpi","response time"],"k":"practice","d":"itsm","p":"an SLA about to breach","s":"separates what they fixed from what they escalated, and does not forget the customer communication"},
+{"n":"Root cause analysis","a":["rca","5 whys","problem management","root caused"],"k":"practice","d":"itsm","p":"a problem that came back after it was fixed","s":"distinguishes symptom from cause and names the preventive action, with who owns it"},
+{"n":"Change management","a":["change control","cab","release management","approval"],"k":"practice","d":"itsm","p":"an emergency change outside the normal window","s":"names the approval path, the rollback plan, and what the review afterwards changed"},
+{"n":"On-call","a":["oncall","rotation","pager","escalation"],"k":"practice","d":"itsm","p":"a week on-call that went badly","s":"says what was paged, what should never have paged, and the change they made afterwards"},
+{"n":"Agile and Scrum","a":["agile","scrum","sprint","kanban","standup","retrospective","safe"],"k":"tool","d":"pm","p":"a sprint that keeps not finishing","s":"names the real cause — scope, estimation or interruptions — and the one change they tried next"},
+{"n":"Stakeholder management","a":["stakeholder","stakeholders","business partner","client management"],"k":"practice","d":"pm","p":"two stakeholders who want opposite things","s":"names what they surfaced, who actually decided, and how the decision was communicated back"},
+{"n":"Requirements gathering","a":["requirements","business analysis","user stories","elicitation"],"k":"practice","d":"pm","p":"a requirement that turned out to be wrong very late","s":"says how they would catch it earlier next time, specifically — not just 'more communication'"},
+{"n":"Roadmapping","a":["roadmap","product planning","backlog"],"k":"practice","d":"pm","p":"saying no to something senior people wanted","s":"makes the trade-off visible: what was traded away, and who agreed to trade it"},
+{"n":"Prioritisation","a":["prioritization","triage","moscow","backlog grooming","prioritised","prioritized"],"k":"practice","d":"pm","p":"everything being priority one","s":"names the criteria used and the decision it produced, not just the framework's name"},
+{"n":"Risk management","a":["risk register","mitigation","contingency"],"k":"practice","d":"pm","p":"a risk that materialised even though it was on the register","s":"names the planned mitigation and what was actually missing from it"},
+{"n":"Budgeting","a":["budget","cost control","forecasting spend","p&l","budgets","budgeted"],"k":"practice","d":"pm","p":"a project heading over budget","s":"says when they raised it, the options they presented, and what was chosen"},
+{"n":"Vendor management","a":["vendor","supplier","outsourcing","msp","contract management"],"k":"practice","d":"pm","p":"a vendor missing what they committed to","s":"names the contractual lever and the relationship approach, and which one actually worked"},
+{"n":"Process improvement","a":["continuous improvement","lean","six sigma","optimisation","optimization"],"k":"practice","d":"pm","p":"a process people quietly work around","s":"asks why the workaround existed before changing anything, and says what they changed as a result"},
+{"n":"Customer service","a":["customer support","client service","csat","complaints"],"k":"practice","d":"biz","p":"an angry customer who is factually wrong","s":"de-escalates first, names what they conceded and what they held, and how it ended"},
+{"n":"Sales","a":["selling","business development","quota","pipeline generation","closing"],"k":"practice","d":"biz","p":"a deal that stalled after a strong first meeting","s":"names the missing decision-maker or business case, and exactly how they reopened it"},
+{"n":"Account management","a":["account manager","renewals","churn","customer success"],"k":"practice","d":"biz","p":"an account at risk of leaving","s":"names the early signal they noticed, the intervention, and the outcome — including if it was lost"},
+{"n":"Marketing","a":["campaign","seo","content marketing","brand","social media"],"k":"practice","d":"biz","p":"a campaign that underperformed","s":"names the metric, the hypothesis they tested next, and what changed as a result"},
+{"n":"Content writing","a":["copywriting","technical writing","documentation","editing"],"k":"practice","d":"biz","p":"writing for an audience that is nothing like you","s":"names the research they did, the constraint they wrote against, and feedback they actually acted on"},
+{"n":"Recruiting","a":["talent acquisition","sourcing","hiring","interviewing candidates","recruited","recruitment"],"k":"practice","d":"biz","p":"a role that stayed open far too long","s":"identifies whether it was pipeline, process or the bar, and what they changed"},
+{"n":"Employee relations","a":["hr","human resources","grievance","performance management","er case"],"k":"practice","d":"biz","p":"a sensitive complaint with two versions of events","s":"names confidentiality, documentation and the process followed, without taking sides in the telling"},
+{"n":"Payroll and benefits","a":["payroll","compensation","benefits administration","pf","provident fund"],"k":"practice","d":"biz","p":"an error that affected people's pay","s":"covers detection, correction, communication and prevention — and does not skip the communication"},
+{"n":"Accounting","a":["bookkeeping","reconciliation","ledger","accounts payable","accounts receivable","gaap"],"k":"practice","d":"biz","p":"an account that would not reconcile","s":"describes the method used and where the discrepancy actually was, not where they first assumed"},
+{"n":"Financial analysis","a":["fp&a","financial modelling","financial modeling","variance analysis","valuation"],"k":"practice","d":"biz","p":"a forecast that was badly wrong","s":"names the assumption that broke and how they now stress-test that class of assumption"},
+{"n":"Audit and compliance","a":["audit","compliance","sox","gdpr","iso 27001","regulatory","controls"],"k":"practice","d":"biz","p":"a finding the business did not want to accept","s":"leads with evidence, frames it as risk rather than blame, and names the remediation that was agreed"},
+{"n":"Teaching and training","a":["training","facilitation","instructional design","onboarding others","coaching sessions","trained","teaching","taught"],"k":"practice","d":"biz","p":"a learner who is not getting it","s":"says how they diagnosed the gap and what they changed in their approach, not the learner"},
+{"n":"Patient care","a":["clinical","nursing","patient","healthcare","triage patients","bedside"],"k":"practice","d":"biz","p":"a handover where something important was missed","s":"names a structured handover format and the safeguard added afterwards"},
+{"n":"Supply chain","a":["logistics","procurement","shipment","freight","distribution"],"k":"practice","d":"biz","p":"a shipment that will not arrive on time","s":"names the customer-impact decision, the alternative sourced, and who was told when"},
+{"n":"Inventory management","a":["inventory","stock control","stock take","warehouse"],"k":"practice","d":"biz","p":"stock records that do not match the shelf","s":"names the count method, the cause found, and the control put in place afterwards"},
+{"n":"Retail operations","a":["retail","store operations","shift management","footfall","merchandising"],"k":"practice","d":"biz","p":"a shift that is short-staffed at the busiest hour","s":"names the trade-off made and its effect on the customer, honestly"},
+{"n":"Quality assurance","a":["quality control","qa","inspection","defect rate","iso 9001"],"k":"practice","d":"biz","p":"a defect that reached the customer","s":"finds the escape point in the process and names the gate added, not the person blamed"},
+{"n":"Health and safety","a":["hse","ehs","safety compliance","near miss","risk assessment"],"k":"practice","d":"biz","p":"a near-miss that nobody reported","s":"treats it as a reporting-culture problem first and names what they changed to make reporting safe"},
+{"n":"Contract management","a":["legal","contract negotiation","clause","terms and conditions","msa"],"k":"practice","d":"biz","p":"a clause the other side will not move on","s":"names the risk assessed, the alternative proposed, and when they escalated"},
+{"n":"UX and design","a":["ux","ui design","user research","usability","figma","wireframe"],"k":"practice","d":"biz","p":"a design that tested badly with users","s":"says what they learned and changed — not what they defended"},
+{"n":"Research and insight","a":["market research","user interviews","qualitative","quantitative research"],"k":"practice","d":"biz","p":"a finding that contradicted what the team believed","s":"says how they validated it before presenting, and how they presented it so it landed"},
+{"n":"Communication","a":["communicating","presentation","verbal and written","articulate","explaining","communicated","communicate"],"k":"practice","d":"soft","p":"explaining something technical to someone who does not want the detail","s":"names the audience, what they cut, and what they led with"},
+{"n":"Conflict resolution","a":["conflict","disagreement","difficult conversation","mediation"],"k":"practice","d":"soft","p":"a disagreement with a colleague that got personal","s":"owns their own part in it and names what they did to reset the relationship"},
+{"n":"Leadership","a":["leading","team lead","people management","influence","led","leads"],"k":"practice","d":"soft","p":"leading people who do not report to you","s":"shows influence without authority and lands on a concrete outcome, not a philosophy"},
+{"n":"Mentoring","a":["mentor","coaching","developing others","knowledge transfer","mentored","mentors"],"k":"practice","d":"soft","p":"someone you coached who was struggling","s":"says what measurably changed for that person, in their words not yours"},
+{"n":"Time management","a":["prioritising workload","deadlines","multitasking","workload"],"k":"practice","d":"soft","p":"two deadlines that could not both be met","s":"names who they told, how early, and what was traded — not heroics"},
+{"n":"Working under pressure","a":["pressure","high pressure","stressful","crisis"],"k":"practice","d":"soft","p":"the most pressure you have worked under","s":"describes the mechanics of staying functional — triage, comms, breaks — rather than just 'I stayed calm'"},
+{"n":"Learning quickly","a":["fast learner","adaptable","adaptability","upskilling","self-taught"],"k":"practice","d":"soft","p":"the last thing you had to learn fast","s":"names the method and how they proved to someone else that they had learned it"},
+{"n":"Ownership","a":["accountability","taking responsibility","proactive","initiative","owned","owns"],"k":"practice","d":"soft","p":"a mistake that was clearly yours","s":"states it plainly, names the fix and the prevention, and does not shift blame anywhere"},
+{"n":"Working with ambiguity","a":["ambiguity","unclear requirements","undefined","autonomy"],"k":"practice","d":"soft","p":"a task with no clear definition of done","s":"says how they made it concrete and who they aligned with before starting"},
+{"n":"Feedback","a":["receiving feedback","constructive criticism","performance review","1:1"],"k":"practice","d":"soft","p":"critical feedback you received and acted on","s":"names the feedback, the change made, and how they knew the change worked"}
+]
+}/*BANK-END*/;
+
+const IV_BANDS={1:['0–2 yrs','early career'],2:['2–5 yrs','established'],3:['5–10 yrs','senior'],4:['10+ yrs','lead / principal']};
+const IV_ROUNDS={recruiter:'Recruiter screen',tech:'Technical',manager:'Hiring manager',hr:'HR / final'};
+const upper1=s=>s.charAt(0).toUpperCase()+s.slice(1);
+function qid(s){return 'q'+(hashStr(s)>>>0).toString(36);}
+function lsGet(k,fb){try{const v=localStorage.getItem(k);return v?JSON.parse(v):fb;}catch(e){return fb;}}
+function lsSet(k,v){try{localStorage.setItem(k,JSON.stringify(v));}catch(e){}}
+
+/* term matching that survives C++, CI/CD, .NET and friends */
+function termRe(t){return new RegExp('(^|[^a-z0-9])'+esc(t.toLowerCase())+'([^a-z0-9]|$)','g');}
+function countTerm(lowText,t){return (lowText.match(termRe(t))||[]).length;}
+function skillTerms(s){return [s.n,...(s.a||[])];}
+function skillHits(lowText,s){return skillTerms(s).reduce((a,t)=>a+countTerm(lowText,t),0);}
+
+function ivDetectBand(cv,jd){
+  const yrs=[...(cv+' '+jd).matchAll(/\b(\d{1,2})\s*\+?\s*(?:years|yrs|year)\b/gi)].map(m=>+m[1]).filter(n=>n>0&&n<45);
+  const y=yrs.length?Math.max(...yrs):null;
+  if(y===null)return 2;
+  return y<2?1:y<5?2:y<10?3:4;
+}
+function ivClassify(jd,cv){
+  const j=jd.toLowerCase(),c=cv.toLowerCase();
+  const core=[],gap=[],diff=[];
+  for(const s of SKILL_BANK.skills){
+    const inJd=skillHits(j,s),inCv=skillHits(c,s);
+    if(inJd&&inCv)core.push({s,w:inJd*2+inCv});
+    else if(inJd&&!inCv)gap.push({s,w:inJd});
+    else if(!inJd&&inCv)diff.push({s,w:inCv});
+  }
+  const by=(a,b)=>b.w-a.w||a.s.n.localeCompare(b.s.n);
+  return {core:core.sort(by),gap:gap.sort(by),diff:diff.sort(by)};
+}
+function jdRespLines(jd){
+  return jd.split('\n').map(l=>l.trim())
+    .filter(l=>/^[-*•]|^\d+[.)]/.test(l)).map(l=>l.replace(/^[-*•\d.)]+\s*/,'').replace(/[.;]$/,''))
+    .filter(l=>l.split(/\s+/).length>=5&&l.length<190);
+}
+const shortQuote=(t,n=88)=>t.length>n?t.slice(0,n-1).trimEnd()+'…':t;
+/* The number an interviewer will actually pick on: a percentage first, otherwise the biggest
+   figure in the line — "12 clusters" is far less interesting than "99.95% availability". */
+function pickNumber(text){
+  const all=[...text.matchAll(/\d[\d,.]*\s?%|\$\s?\d[\d,.]*|\d[\d,.]*\+?/g)].map(m=>m[0].trim());
+  if(!all.length)return null;
+  const pct=all.find(x=>x.includes('%'));if(pct)return pct;
+  const money=all.find(x=>x.includes('$'));if(money)return money;
+  return all.sort((a,b)=>(parseFloat(b.replace(/[^\d.]/g,''))||0)-(parseFloat(a.replace(/[^\d.]/g,''))||0))[0];
+}
+
+const CORE_T={
+  1:[s=>`How have you used ${s.n}? Walk me through one thing you built or ran with it.`,
+     s=>`Tell me about ${s.p}. What would you check first, and who would you ask?`,
+     s=>`What part of ${s.n} confused you at first, and how did you work it out?`],
+  2:[s=>`Where does ${s.n} sit in your day-to-day work right now?`,
+     s=>`Talk me through ${s.p} — what you would do, in order.`,
+     s=>`What trade-off have you had to make with ${s.n}?`],
+  3:[s=>`How is ${s.n} used across your team, and which parts of it do you own?`,
+     s=>`Take me through ${s.p}. What does good look like here, and what usually goes wrong?`,
+     s=>s.k==='tool'?`When would you argue against using ${s.n}?`
+        :s.d==='soft'?`What do people usually get wrong about ${s.n}?`
+        :`Where does ${s.n} get in the way, and how do you keep it proportionate?`],
+  4:[s=>`How does ${s.n} fit the wider picture you are responsible for, and who decided that?`,
+     s=>`How do you make ${s.p} a solved problem across several teams, rather than something each one rediscovers?`,
+     s=>s.k==='tool'?`If you were choosing ${s.n} again today, what would you decide differently, and why?`
+        :`If you were setting ${s.n} up from scratch for a new team, what would you do differently from where you are now?`]
+};
+const CORE_S=[
+  s=>`One concrete example named plainly, what you personally did in it, and what the outcome was.`,
+  s=>`A strong answer ${s.s}.`,
+  s=>s.k==='tool'?`What it costs as well as what it gives you, and one situation where they would not reach for it.`
+     :`What it costs as well as what it gives you, and where they deliberately keep it light.`
+];
+const CLAIM_T=[
+  n=>`How was ${n} measured, and over what period?`,
+  n=>`What was the number before you started, and what was your part in moving it?`,
+  n=>`Who else worked on that, and what specifically was yours?`,
+  n=>`What would have happened if you had done nothing?`,
+  n=>`Could you get that result again somewhere else? What would you need?`,
+  n=>`What got worse while that got better?`,
+  n=>`How confident are you in that figure — where did the data come from?`,
+  n=>`Which part of that are you proudest of, and which part was luck?`
+];
+const SCEN_T=[
+  'walk me through how you would approach that here in your first ninety days.',
+  'what would you need from us to do that well?',
+  'what usually goes wrong with this, and how do you plan around it?',
+  'how would you know it was working?',
+  'who would you need on your side, and how would you get them there?',
+  'what would you do first, and what would you deliberately leave until later?',
+  'how do you handle it when that conflicts with something else you own?',
+  'what does the failing version of this look like, and how do you avoid it?'
+];
+const GAP_T=[
+  s=>`We use ${s.n} here. How much have you worked with it?`,
+  s=>`Your résumé does not mention ${s.n} — is that a gap?`,
+  s=>`We lean on ${s.n} heavily. How long before you would be useful with it?`,
+  s=>`Talk me through what you do know about ${s.n}.`,
+  s=>`What is the closest thing to ${s.n} you have actually used?`,
+  s=>`How do you normally pick up ${s.k==='tool'?`a tool like ${s.n}`:`something like ${s.n}`}?`,
+  s=>s.k==='tool'?`If you joined and ${s.n} broke in your second week, what would you do?`
+      :`If ${s.n} landed on your desk in your second week here, what would you do first?`
+];
+const STAR_Q={
+  1:[['a time something you did went wrong','failure'],['a disagreement with someone on your team','conflict'],
+     ['a deadline you thought you would miss','pressure'],['a time you had to convince someone of something','influence'],
+     ['a task where nobody told you what "done" meant','ambiguity'],['feedback that stung, and what you did with it','feedback']],
+  4:[['a decision of yours that turned out to be wrong at scale','failure'],['a conflict between two teams you had to resolve','conflict'],
+     ['a commitment the organisation was about to miss','pressure'],['a change you drove without the authority to mandate it','influence'],
+     ['a problem where even the goal was unclear','ambiguity'],['hard feedback from someone who reported to you','feedback']]
+};
+const STAR_S={
+  failure:'names the mistake without cushioning it, the cost, what they did immediately, and the specific thing that prevents a repeat.',
+  conflict:'describes the other person\'s position fairly, owns their own part, and ends on the working relationship — not on winning.',
+  pressure:'shows the mechanics: what was cut, who was told and how early, and what the outcome actually was.',
+  influence:'shows evidence used, the objection heard, and a decision that moved — not just persistence.',
+  ambiguity:'shows how they made it concrete: the question asked, who they aligned with, and the first thing they shipped.',
+  feedback:'names the feedback verbatim-ish, the change made, and how they knew it worked.'
+};
+const ROLE_Q=[
+  ['Tell me about yourself.','recruiter','Sixty to ninety seconds: headline, two proof points, why this role, then hand it back. The 60-Second Pitch tab drafts it from your own résumé.'],
+  ['Why this role, and why us?','recruiter','Something specific from their JD or product, one line connecting it to what you have actually done, and one honest thing you want from the move.'],
+  ['Why are you leaving your current role?','hr','Forward-facing and short. What you want next that you cannot get where you are. No criticism of people by name.'],
+  ['What are your salary expectations?','recruiter','A researched range with a reason, or a deflection with a date ("happy to discuss once I understand the scope — what is budgeted?"). Never a number you have not thought about.'],
+  ['Where do you want to be in three years?','hr','A direction rather than a title, connected to something this role would actually build.'],
+  ['What questions do you have for us?','manager','Two or three real questions about the work, the team and how success is judged. The Ask Them tab builds them from their own JD.']
+];
+
+const GAP_S='The honest route: what you have done that is adjacent, the closest transferable thing, and one example of picking up a comparable tool quickly. Then stop. People get hired for knowing the edge of what they know.';
+const UNIVERSAL=[
+  ['Walk me through your résumé.','recruiter','A two-minute narrative with a reason for each move — not a list of dates read aloud.'],
+  ['What are you best at?','manager','One thing, named plainly, with the evidence that proves it.'],
+  ['What are you working on improving?','hr','Real, specific, already in progress, and with what you have done about it so far.'],
+  ['How do you like to be managed?','manager','Concrete preferences — cadence, feedback style, how much autonomy — rather than "I am easy-going".'],
+  ['What would your last manager say about you?','hr','Something they would actually recognise, including one reservation you can own.'],
+  ['What does a good day at work look like for you?','hr','Specific enough that they can tell whether this job contains those days.'],
+  ['Tell me about a piece of work you are proud of.','manager','Why it mattered, not just what it was — and what would have happened without you.'],
+  ['How do you decide what to work on first?','manager','A rule you actually apply, plus one example of it forcing an uncomfortable choice.'],
+  ['When have you changed your mind about something at work?','manager','What the evidence was, and what it cost you to change position.'],
+  ['How do you handle work you find boring?','hr','Honest, not heroic — most jobs contain some, and pretending otherwise reads as inexperience.'],
+  ['What kind of team do you do your best work in?','manager','A real preference, said in a way that does not rule out their team by accident.'],
+  ['Tell me about a time you asked for help.','manager','Shows judgement about when to stop struggling alone — how long they waited, and why that was right.'],
+  ['What do you do when you disagree with a decision that has already been made?','manager','Disagree, commit, and say how they kept the disagreement on record without relitigating it.'],
+  ['How do you keep your skills current?','tech','Specific and recent — one thing they learned this year and where they used it.'],
+  ['What is the hardest problem you have worked on?','tech','Why it was hard, not just what it was, and which part is still unsolved.'],
+  ['How do you measure whether your work has been useful?','manager','A measure someone else would agree with, not just "the team was happy".'],
+  ['What do you want from your next role that you are not getting now?','hr','Forward-facing and specific, without criticising named people.'],
+  ['Is there anything about your background you would like to explain?','recruiter','The place to own a gap, a short stint or a switch, in one calm sentence with what came of it.']
+];
+let ivState={jd:'',cv:'',band:2,questions:[],built:false};
+function ivGenerate(jd,cv,band){
+  const cls=ivClassify(jd,cv);const out=[];const seen=new Set();
+  const push=(cat,round,q,why,strong,skill)=>{
+    if(seen.has(q))return; seen.add(q);
+    out.push({id:qid(q),cat,round,q,why,strong,skill:skill||null});
+  };
+  /* 1. Core — the strongest matched skills, three depths each */
+  const corePool=cls.core.length?cls.core:cls.diff;
+  const coreSkills=corePool.slice(0,5).map(x=>x.s);
+  coreSkills.forEach(s=>{
+    CORE_T[band].forEach((t,i)=>{
+      const round=s.d==='soft'||s.d==='pm'||s.d==='biz'?'manager':'tech';
+      push('core',round,t(s),`Core skill — "${s.n}" is in their JD and evidenced on your résumé.`,CORE_S[i](s),s.n);
+    });
+  });
+  /* 2. Claim probes — your own numbers, checked */
+  const numbered=bulletsOf(cv).filter(b=>/\d/.test(b)).slice(0,8);
+  numbered.forEach((b,i)=>{
+    const num=pickNumber(b)||'that number';
+    push('claim','manager',`Your résumé says "${shortQuote(b)}" — ${CLAIM_T[i%CLAIM_T.length](num)}`,
+      `Claim probe — you put this number on the page, so it is fair game.`,
+      'The baseline, the timeframe, where the data came from, and an honest split between your work and the team\'s. A number you cannot defend is worse than no number.');
+  });
+  /* 3. Scenarios — straight from their responsibilities */
+  jdRespLines(jd).slice(0,8).forEach((line,i)=>{
+    push('scenario','manager',`"${shortQuote(line,120)}" — ${SCEN_T[i%SCEN_T.length]}`,
+      `Their JD asks for this in so many words.`,
+      'A sequence rather than a list: what first, what it depends on, how you would measure it, and one thing you would deliberately not do yet.');
+  });
+  /* 4. Gaps — in their JD, not yet on your résumé */
+  cls.gap.slice(0,7).forEach((x,i)=>{
+    push('gap','tech',GAP_T[i%GAP_T.length](x.s),
+      `Gap — "${x.s.n}" appears in their JD but not on your résumé.`,GAP_S,x.s.n);
+  });
+  /* 5. STAR behaviourals, pitched at the band */
+  const STAR_ROUND={failure:'manager',influence:'manager',ambiguity:'manager',conflict:'hr',pressure:'hr',feedback:'hr'};
+  (STAR_Q[band>=4?4:1]).forEach(([topic,kind])=>{
+    push('star',STAR_ROUND[kind],`Tell me about ${topic}.`,
+      `Behavioural — asked in almost every process; the Story Bank tab builds your answer from a real bullet.`,
+      `Situation, Task, Action, Result — in about ninety seconds. A strong answer ${STAR_S[kind]}`);
+  });
+  /* 6. Role and HR */
+  ROLE_Q.forEach(([q,round,strong])=>push('role',round,q,'Asked in nearly every process, whatever the job.',strong));
+  /* Top up with deeper cuts at the next skills down. A skill that is still a gap keeps the
+     gap category and the honest-route advice — the question gets deeper, the advice does not change. */
+  const isGap=n=>cls.gap.some(g=>g.s.n===n);
+  const spare=[...corePool.slice(5),...cls.diff,...cls.gap].map(x=>x.s);
+  for(let depth=0;depth<3&&out.length<50;depth++){
+    for(const s of spare){
+      if(out.length>=50)break;
+      const gap=isGap(s.n);
+      push(gap?'gap':'core',s.d==='soft'?'manager':'tech',CORE_T[band][depth](s),
+        gap?`Gap — "${s.n}" is in their JD but not on your résumé.`:`"${s.n}" appears on both sides.`,
+        gap?GAP_S:CORE_S[depth](s),s.n);
+    }
+  }
+  /* Universal questions. Asked in almost every process whatever the job, so they are the honest
+     filler when a short JD cannot supply fifty traced questions — never invented padding. */
+  for(const [q,r,s] of UNIVERSAL){if(out.length>=50)break;push('role',r,q,'Asked in nearly every process, whatever the job.',s);}
+  return out.slice(0,50);
+}
+
+/* ---------- Interview: tabs ---------- */
+document.querySelectorAll('#view-interview > .tabs > .tab').forEach(btn=>btn.addEventListener('click',()=>{
+  document.querySelectorAll('#view-interview > .tabs > .tab').forEach(b=>{b.classList.remove('active');b.setAttribute('aria-selected','false');});
+  document.querySelectorAll('#view-interview > .panel').forEach(p=>p.classList.remove('active'));
+  btn.classList.add('active');btn.setAttribute('aria-selected','true');$('panel-'+btn.dataset.itab).classList.add('active');
+}));
+
+/* ---------- Interview: setup ---------- */
+function ivSetBand(b){ivState.band=b;document.querySelectorAll('#iv-band button').forEach(x=>x.classList.toggle('on',+x.dataset.b===b));}
+document.querySelectorAll('#iv-band button').forEach(b=>b.addEventListener('click',()=>{
+  ivSetBand(+b.dataset.b);ivState.touchedBand=true;if(ivState.built)ivRun();
+}));
+ivSetBand(2);
+$('iv-pull').addEventListener('click',()=>{
+  const jd=$('jd').value.trim()||$('bp-jd').value.trim(),cv=$('cv').value.trim();
+  if(!jd&&!cv)return alert('Nothing to pull yet — paste a JD and résumé in the Résumé room first.');
+  if(jd)$('iv-jd').value=jd; if(cv)$('iv-cv').value=cv;
+});
+function ivEnsure(){
+  const jd=cap($('iv-jd').value.trim()),cv=cap($('iv-cv').value.trim());
+  if(!jd)return false;
+  if(ivState.built&&ivState.jd===jd&&ivState.cv===cv)return true;
+  ivState.jd=jd;ivState.cv=cv;ivState.questions=ivGenerate(jd,cv,ivState.band);ivState.built=true;
+  return true;
+}
+let ivFilter='all';
+function ivRun(){
+  const jd=$('iv-jd').value.trim();
+  if(!jd)return alert('Paste the job description first — every question is built from it.');
+  const autoBand=ivDetectBand($('iv-cv').value,jd);
+  if(!ivState.touchedBand){ivSetBand(autoBand);ivState.touchedBand=true;}
+  ivState.built=false;ivEnsure();
+  const cls=ivClassify(ivState.jd,ivState.cv);
+  $('iv-total').textContent=ivState.questions.length;
+  $('iv-bandtxt').textContent=IV_BANDS[ivState.band][0]+' · '+IV_BANDS[ivState.band][1];
+  const counts=ivState.questions.reduce((a,q)=>{a[q.cat]=(a[q.cat]||0)+1;return a;},{});
+  const bits=[`${counts.core||0} on skills they named`,`${counts.claim||0} probing your own numbers`,
+    `${counts.scenario||0} from their responsibilities`,`${counts.gap||0} on gaps`,`${counts.star||0} behavioural`,`${counts.role||0} role and HR`];
+  $('iv-summary').textContent=(ivState.cv?'':'No résumé pasted, so claim probes are replaced with deeper skill questions. ')+
+    `Matched ${cls.core.length} skill(s) on both sides, ${cls.gap.length} in the JD only. ${bits.join(' · ')}.`+
+    (ivState.questions.length<50?` Only ${ivState.questions.length} — this JD is short on detail, and padding it with invented questions would waste your time. Paste the full description for the complete fifty.`:'');
+  ivRenderList();$('iv-out').hidden=false;
+  $('iv-out').scrollIntoView({behavior:'smooth',block:'start'});
+  ivDrillInit();
+}
+function ivRatings(){return lsGet('vriddhih.iv.ratings',{});}
+function ivRate(id,r){const m=ivRatings();m[id]=r;lsSet('vriddhih.iv.ratings',m);}
+const RATE_LBL=['Blank','Shaky','Confident'];
+function ivRenderList(){
+  const m=ivRatings();
+  const list=ivState.questions.filter(q=>ivFilter==='all'||q.round===ivFilter);
+  $('iv-list').innerHTML=list.map((q,i)=>{
+    const r=m[q.id];
+    return `<article class="qc cat-${q.cat}" data-id="${q.id}">
+      <div class="qh"><span class="qn">${q.cat==='role'?'Role &amp; HR':upper1(q.cat)} · ${IV_ROUNDS[q.round]}</span><span class="qn">#${i+1}</span></div>
+      <p class="qt">${escHtml(q.q)}</p>
+      <p class="why"><b>Why they will ask</b>${escHtml(q.why)}</p>
+      <p class="strong"><b>A strong answer:</b> ${escHtml(q.strong)}</p>
+      <div class="rate">${[0,1,2].map(n=>`<button type="button" data-r="${n}" class="${r===n?'on':''}">${RATE_LBL[n]}</button>`).join('')}</div>
+    </article>`;}).join('')||'<p class="hint">No questions in that round.</p>';
+  $('iv-list').querySelectorAll('.qc .rate button').forEach(b=>b.addEventListener('click',()=>{
+    const id=b.closest('.qc').dataset.id;ivRate(id,+b.dataset.r);
+    b.parentElement.querySelectorAll('button').forEach(x=>x.classList.remove('on'));b.classList.add('on');
+    ivDrillProgress();
+  }));
+}
+$('iv-run').addEventListener('click',ivRun);
+document.querySelectorAll('#iv-filters button').forEach(b=>b.addEventListener('click',()=>{
+  document.querySelectorAll('#iv-filters button').forEach(x=>x.classList.remove('on'));b.classList.add('on');
+  ivFilter=b.dataset.f;ivRenderList();
+}));
+function ivMarkdown(){
+  const by={};ivState.questions.forEach(q=>{(by[q.round]=by[q.round]||[]).push(q);});
+  let md=`# Interview prep — ${IV_BANDS[ivState.band][0]}\n\n`;
+  for(const r of Object.keys(IV_ROUNDS)){if(!by[r])continue;
+    md+=`## ${IV_ROUNDS[r]}\n\n`;by[r].forEach(q=>{md+=`**${q.q}**\n\n- Why: ${q.why}\n- Strong answer: ${q.strong}\n\n`;});}
+  return md;
+}
+async function copyText(text,btn,label){
+  try{await navigator.clipboard.writeText(text);}catch(e){const ta=document.createElement('textarea');ta.value=text;document.body.appendChild(ta);ta.select();try{document.execCommand('copy');}catch(e2){}document.body.removeChild(ta);}
+  const old=btn.textContent;btn.classList.add('copybtn','copied');btn.textContent='Copied!';setTimeout(()=>{btn.classList.remove('copied');btn.textContent=old||label;},1500);
+}
+$('iv-copy').addEventListener('click',e=>{if(!ivState.built)return;copyText(ivMarkdown(),e.currentTarget);});
+$('iv-print').addEventListener('click',()=>{
+  if(!ivState.built)return;
+  $('print-sheet').innerHTML=`<h4>Interview prep — ${escHtml(IV_BANDS[ivState.band][0])}</h4>`+
+    ivState.questions.map((q,i)=>`<p><b>${i+1}. ${escHtml(q.q)}</b><br><i>${escHtml(q.strong)}</i></p>`).join('');
+  window.print();
+});
+
+/* ---------- Interview: Drill ---------- */
+let dOrder=[],dPos=0,dFlipped=false;
+function dRank(q,m){const r=m[q.id];return r===0?0:r===1?1:r===undefined?2:3;}
+function ivDrillInit(){
+  if(!ivState.built){$('drill-empty').hidden=false;$('drill-live').hidden=true;return;}
+  const m=ivRatings();
+  dOrder=ivState.questions.map((q,i)=>({q,i})).sort((a,b)=>dRank(a.q,m)-dRank(b.q,m)||a.i-b.i).map(x=>x.q);
+  dPos=0;dFlipped=false;$('drill-empty').hidden=true;$('drill-live').hidden=false;dPaint();
+}
+function dPaint(){
+  const q=dOrder[dPos];if(!q)return;
+  $('d-meta').textContent=`${q.cat==='role'?'Role & HR':upper1(q.cat)} · ${IV_ROUNDS[q.round]}`;
+  $('d-front').textContent=q.q;
+  $('d-answer').innerHTML='<b>A strong answer:</b> '+escHtml(q.strong);
+  $('d-back').hidden=!dFlipped;$('d-card').classList.toggle('flipped',dFlipped);
+  $('d-tap').hidden=dFlipped;
+  $('d-pos').textContent=`Card ${dPos+1} of ${dOrder.length}`;
+  const m=ivRatings(),r=m[q.id];
+  document.querySelectorAll('.drill-bar button').forEach(b=>b.style.outline=(+b.dataset.r===r)?'3px solid var(--ink)':'none');
+  ivDrillProgress();
+}
+function ivDrillProgress(){
+  if(!ivState.built)return;
+  const m=ivRatings(),t=ivState.questions.length;
+  const c=ivState.questions.filter(q=>m[q.id]===2).length,s=ivState.questions.filter(q=>m[q.id]===1).length,b=ivState.questions.filter(q=>m[q.id]===0).length;
+  const bar=$('d-bar');if(bar){bar.children[0].style.width=(c/t*100)+'%';bar.children[1].style.width=(s/t*100)+'%';bar.children[2].style.width=(b/t*100)+'%';}
+  const el=$('d-progress');if(el)el.textContent=`${c} of ${t} confident · ${s} shaky · ${b} blank · ${t-c-s-b} not rated yet`;
+}
+function dFlip(){dFlipped=!dFlipped;dPaint();}
+function dMove(n){dPos=(dPos+n+dOrder.length)%dOrder.length;dFlipped=false;dPaint();}
+function dSet(r){const q=dOrder[dPos];if(!q)return;ivRate(q.id,r);if(ivState.built)ivRenderList();dMove(1);}
+$('d-card').addEventListener('click',dFlip);
+$('d-card').addEventListener('keydown',e=>{if(e.key===' '||e.key==='Enter'){e.preventDefault();dFlip();}});
+$('d-next').addEventListener('click',()=>dMove(1));
+$('d-prev').addEventListener('click',()=>dMove(-1));
+document.querySelectorAll('.drill-bar button').forEach(b=>b.addEventListener('click',()=>dSet(+b.dataset.r)));
+$('d-reset').addEventListener('click',()=>{if(confirm('Clear every rating in this browser?')){lsSet('vriddhih.iv.ratings',{});ivDrillInit();if(ivState.built)ivRenderList();}});
+addEventListener('keydown',e=>{
+  if($('panel-drill')&&!$('panel-drill').classList.contains('active'))return;
+  if(!$('view-interview').classList.contains('active'))return;
+  if(/^(INPUT|TEXTAREA)$/.test(document.activeElement.tagName))return;
+  if(e.key==='1'){dSet(0);} else if(e.key==='2'){dSet(1);} else if(e.key==='3'){dSet(2);}
+  else if(e.key==='ArrowRight'){dMove(1);} else if(e.key==='ArrowLeft'){dMove(-1);}
+  else if(e.key===' '&&document.activeElement!==$('d-card')){e.preventDefault();dFlip();}
+});
+document.querySelector('#view-interview > .tabs > .tab[data-itab="drill"]').addEventListener('click',ivDrillInit);
+
+/* ---------- Interview: Story Bank ---------- */
+function storySkeleton(bullet){
+  const low=bullet.toLowerCase();
+  const skills=SKILL_BANK.skills.filter(s=>skillHits(low,s)>0).slice(0,3);
+  const num=pickNumber(bullet);
+  return {
+    bullet,skills,num,
+    prompts:{
+      s:'Where and when. The state of things before you touched it — one sentence a stranger would understand.',
+      t:'What you specifically were asked to do, or decided to take on. Not the team — you.',
+      a:'Two or three steps you actually took, in order. This is the longest part and the part they judge.',
+      r:num?`What changed, ending on ${num}. Add how you know — where that figure came from.`:'What changed, with a number if you can defend one, and what happened afterwards.'
+    }
+  };
+}
+function storyKey(b){return 'st'+(hashStr(b)>>>0).toString(36);}
+function ivStories(){
+  if(!ivEnsure())return alert('Paste the job description on the 50 Questions tab first.');
+  const bl=bulletsOf(ivState.cv);
+  if(!bl.length){$('st-out').innerHTML='<p class="hint">No bullet lines found in your résumé — start each line with - or • and try again.</p>';return;}
+  const picked=[...bl.filter(b=>/\d/.test(b)),...bl.filter(b=>!/\d/.test(b))].slice(0,6);
+  const saved=lsGet('vriddhih.iv.stories',{});
+  $('st-out').innerHTML=picked.map(b=>{
+    const sk=storySkeleton(b),k=storyKey(b),v=saved[k]||{};
+    const answers=ivState.questions.filter(q=>(q.skill&&sk.skills.some(s=>s.n===q.skill))||q.cat==='star'||(q.cat==='claim'&&sk.num&&q.q.includes(shortQuote(b).slice(0,30)))).slice(0,4);
+    return `<div class="story" data-k="${k}">
+      <h4>${escHtml(shortQuote(b,110))}</h4>
+      ${sk.skills.length?`<div>${sk.skills.map(s=>`<span class="chip info">${escHtml(s.n)}</span>`).join('')}</div>`:''}
+      <div class="star">
+        ${[['s','Situation'],['t','Task'],['a','Action'],['r','Result']].map(([f,lbl])=>
+          `<div class="row"><span class="lt">${lbl}</span><textarea data-f="${f}" placeholder="${escHtml(sk.prompts[f])}">${escHtml(v[f]||'')}</textarea></div>`).join('')}
+      </div>
+      ${answers.length?`<p class="answers"><b>This story answers:</b><br>${answers.map(q=>'· '+escHtml(shortQuote(q.q,80))).join('<br>')}</p>`:''}
+    </div>`;}).join('');
+  $('st-out').querySelectorAll('.story textarea').forEach(ta=>ta.addEventListener('input',()=>{
+    const k=ta.closest('.story').dataset.k,all=lsGet('vriddhih.iv.stories',{});
+    all[k]=all[k]||{};all[k][ta.dataset.f]=ta.value;lsSet('vriddhih.iv.stories',all);
+  }));
+}
+$('st-run').addEventListener('click',ivStories);
+$('st-copy').addEventListener('click',e=>{
+  const blocks=[...document.querySelectorAll('#st-out .story')].map(el=>{
+    const t=el.querySelector('h4').textContent;const f={};el.querySelectorAll('textarea').forEach(ta=>f[ta.dataset.f]=ta.value.trim());
+    return `## ${t}\n\n- **Situation:** ${f.s||'—'}\n- **Task:** ${f.t||'—'}\n- **Action:** ${f.a||'—'}\n- **Result:** ${f.r||'—'}\n`;});
+  if(!blocks.length)return;copyText('# Story bank\n\n'+blocks.join('\n'),e.currentTarget);
+});
+
+/* ---------- Interview: 60-second pitch ---------- */
+function draftPitch(jd,cv){
+  const cls=ivClassify(jd,cv);
+  const lines=cv.split('\n').map(l=>l.trim()).filter(Boolean);
+  const title=(jd.split('\n').find(l=>l.trim())||'this role').trim().replace(/^(job title|title|role)\s*[:\-]\s*/i,'');
+  const yrs=[...(cv).matchAll(/\b(\d{1,2})\s*\+?\s*(?:years|yrs)\b/gi)].map(m=>+m[1]);
+  const y=yrs.length?Math.max(...yrs):null;
+  const bl=bulletsOf(cv);const withNum=bl.filter(b=>/\d/.test(b));
+  const top=cls.core.slice(0,3).map(x=>x.s.n);
+  const gapTop=cls.gap.slice(0,1).map(x=>x.s.n)[0];
+  const p1=withNum[0]||bl[0]||'[your strongest piece of work — what you did and what changed]';
+  const p2=withNum[1]||bl[1]||'[the piece of work closest to this job]';
+  return [
+    `I'm a ${title}${y?` with about ${y} years in this space`:''}${top.length?`, mostly around ${top.slice(0,3).join(', ')}`:''}.`,
+    ``,
+    `Two things that give you a sense of how I work. ${upper1(shortQuote(p1,150))}${/[.!?]$/.test(p1)?'':'.'} And ${shortQuote(p2,150).replace(/^[A-Z]/,c=>c.toLowerCase())}${/[.!?]$/.test(p2)?'':'.'}`,
+    ``,
+    `What drew me to this role specifically: ${top[0]?`you're clearly investing in ${top[0]}`:'the scope of the role'}${gapTop?`, and the ${gapTop} side is something I want to go deeper on`:''}. That's the direction I want my next few years to go.`,
+    ``,
+    `Happy to go wherever is most useful — shall I start with the ${top[0]||'most relevant'} work, or would the team context be more helpful first?`
+  ].join('\n');
+}
+$('pt-run').addEventListener('click',()=>{
+  const jd=cap($('iv-jd').value.trim()),cv=cap($('iv-cv').value.trim());
+  if(!jd||!cv)return alert('Paste both the job description and your résumé on the 50 Questions tab.');
+  const saved=lsGet('vriddhih.iv.pitch','');
+  $('pt-text').value=saved&&confirm('You have a saved pitch. Keep it? (Cancel to draft a fresh one.)')?saved:draftPitch(jd,cv);
+  $('pt-grid').hidden=false;ptCount();
+});
+function ptCount(){
+  const w=$('pt-text').value.trim().split(/\s+/).filter(Boolean).length;
+  const el=$('pt-wc');el.textContent=`${w} words · about ${Math.round(w/2.5)} seconds spoken`;
+  el.className='wc '+(w>=130&&w<=175?'good':w>175?'over':'');
+}
+$('pt-text').addEventListener('input',()=>{ptCount();lsSet('vriddhih.iv.pitch',$('pt-text').value);});
+$('pt-copy').addEventListener('click',e=>copyText($('pt-text').value,e.currentTarget));
+let ptT=null,ptS=0;
+function ptShow(){const m=Math.floor(ptS/60),s=ptS%60;$('pt-timer').textContent=`${m}:${String(s).padStart(2,'0')}`;$('pt-timer').classList.toggle('over',ptS>75);}
+$('pt-start').addEventListener('click',()=>{
+  if(ptT){clearInterval(ptT);ptT=null;$('pt-start').textContent='Start';return;}
+  $('pt-start').textContent='Pause';ptT=setInterval(()=>{ptS++;ptShow();},1000);
+});
+$('pt-stop').addEventListener('click',()=>{clearInterval(ptT);ptT=null;ptS=0;$('pt-start').textContent='Start';ptShow();});
+
+/* ---------- Interview: Ask Them ---------- */
+const REDFLAGS=[
+  [/fast[- ]paced/i,'tech','You describe the environment as fast-paced — what does a normal week actually look like, and how often does it get disrupted?'],
+  [/wear(ing)? many hats|multi[- ]?task/i,'manager','The role covers a lot of ground — which parts are genuinely mine, and which are shared?'],
+  [/rock ?star|ninja|guru|superstar|10x/i,'manager','What would an outstanding first year in this role look like, concretely?'],
+  [/like a family|work hard,? ?play hard/i,'hr','How does the team handle it when someone needs to properly switch off?'],
+  [/under (tight )?pressure|tight deadlines|demanding/i,'manager','What is creating the pressure at the moment — volume, deadlines, or unplanned work? Which of those are you fixing?'],
+  [/flexible (with )?hours|outside (normal|business) hours|weekend/i,'hr','How often does work land outside normal hours, and how is that recognised?'],
+  [/on[- ]call|24x7|24\/7/i,'tech','How does the on-call rotation work — how often, how many pages at night, and who owns reducing the noisy ones?'],
+  [/self[- ]starter|minimal supervision|little direction|hit the ground running/i,'manager','Who would I go to in my first month when I am stuck, and how is onboarding structured?'],
+  [/start[- ]?up environment|high[- ]growth|scale[- ]?up|rapidly (growing|changing)/i,'manager','What has changed most in this team in the last year, and what do you expect to change next?'],
+  [/urgent|immediate (joiner|start)|asap/i,'recruiter','Is this a replacement or a new position? What made it urgent?'],
+  [/competitive (salary|compensation|package)/i,'recruiter','What is the budgeted range for this role?'],
+  [/end[- ]to[- ]end|full ownership|own the entire/i,'manager','Where does my ownership end and someone else\'s begin?'],
+  [/legacy|modernis|moderniz|migration|transformation/i,'tech','How far along is that migration, and what is the honest state of the old system?']
+];
+const ASK_BASE={
+  recruiter:['What does the process look like from here, and what is the timeline?','Who would I be meeting at each stage?','Why is the role open?'],
+  tech:['How does work arrive — tickets, planning, or something else?','What does the path from a change to production look like today?','Where is the technical debt that slows people down most?'],
+  manager:['What does success look like at six months for whoever takes this?','What is the biggest problem the team is facing right now?','How do decisions get made when people disagree?'],
+  hr:['How does the review and progression cycle work here?','What makes people stay, and what has made people leave recently?','How is the team set up for remote or hybrid working?']
+};
+function buildAsk(jd,cv){
+  const out={recruiter:[],tech:[],manager:[],hr:[]};
+  const seen=new Set();
+  const add=(r,q,why)=>{if(seen.has(q))return;seen.add(q);out[r].push({q,why});};
+  REDFLAGS.forEach(([re,round,q])=>{const m=jd.match(re);if(m)add(round,q,`Their wording: "${m[0]}"`);});
+  const cls=ivClassify(jd,cv);
+  cls.gap.slice(0,3).forEach(x=>add('manager',`How does the team support someone ramping up on ${x.s.n}?`,`${x.s.n} is in the JD and not yet on your résumé — asking beats hoping it does not come up.`));
+  cls.core.slice(0,2).forEach(x=>add('tech',`How does ${x.s.n} actually work here day to day — and what would you change about it if you could?`,`${x.s.n} is core to this role for both of you.`));
+  for(const r of Object.keys(ASK_BASE))ASK_BASE[r].forEach(q=>add(r,q,'Always worth asking.'));
+  return out;
+}
+$('ask-run').addEventListener('click',()=>{
+  const jd=cap($('iv-jd').value.trim()),cv=cap($('iv-cv').value.trim());
+  if(!jd)return alert('Paste the job description on the 50 Questions tab first.');
+  const out=buildAsk(jd,cv);
+  $('ask-out').innerHTML=Object.keys(IV_ROUNDS).map(r=>!out[r].length?'':`<div class="pb">
+    <h4>${IV_ROUNDS[r]}</h4><div class="who">Ask two or three of these</div>
+    <dl>${out[r].map(x=>`<dt>${escHtml(x.q)}</dt><dd>${escHtml(x.why)}</dd>`).join('')}</dl></div>`).join('');
+});
+$('ask-copy').addEventListener('click',e=>{
+  const md=[...document.querySelectorAll('#ask-out .pb')].map(el=>
+    `## ${el.querySelector('h4').textContent}\n\n`+[...el.querySelectorAll('dt')].map(d=>`- ${d.textContent}`).join('\n')).join('\n\n');
+  if(!md)return;copyText('# Questions to ask them\n\n'+md,e.currentTarget);
+});
+
+/* ---------- Interview: Day Plan ---------- */
+const PLAYBOOKS=[
+  {n:'Recruiter screen',w:'20–30 min · usually first',tests:'Whether you are real, reachable, affordable and interested. Almost never technical depth.',
+   prep:'Your 60-second pitch, your notice period, your range with a reason, and one specific line about why this company.',
+   open:'Warm and brief. Let them run their script — they have a form to fill.',
+   bad:'Rambling past two minutes on the first question, or giving a salary number you have not thought about.'},
+  {n:'Technical round',w:'45–90 min · one or more',tests:'Whether your résumé is true, and how you think when you do not know the answer.',
+   prep:'Your top three core questions from the list, one real failure you debugged, and the honest route for every gap question.',
+   open:'Ask what shape the session takes before you start. Then narrate your thinking out loud — silence reads as stuck.',
+   bad:'Bluffing. Interviewers are not testing whether you know everything; they are testing whether you know what you do not know.'},
+  {n:'Hiring manager',w:'45–60 min',tests:'Scope, ownership, and whether they want you in their team meetings every week.',
+   prep:'Three STAR stories from the Story Bank, the numbers on your résumé and how you would defend them, and two real questions about the work.',
+   open:'Ask what the biggest problem in the team is right now, early enough that you can aim the rest of your answers at it.',
+   bad:'Describing what the team did without ever saying what you did.'},
+  {n:'Client or stakeholder',w:'30–45 min',tests:'Whether you can be put in front of someone who pays, without supervision.',
+   prep:'Plain-language versions of your two proof points — no internal jargon, no tool names they will not know.',
+   open:'Lead with their outcome, not your process.',
+   bad:'Technical detail nobody asked for, or being unable to say what something cost or saved.'},
+  {n:'HR or final round',w:'30 min',tests:'Values, motivation, red flags, and the practicalities — notice, expectations, references.',
+   prep:'Why you are leaving, in one forward-facing sentence. Where you want to be in three years. Your range, again, consistent with what you said in round one.',
+   open:'Consistency matters more than polish here — they compare notes.',
+   bad:'Criticising your current employer by name, or a salary number that contradicts the recruiter screen.'}
+];
+const DAY_BASE=[
+  'Re-read the JD once — the questions come from it',
+  'Skim your own résumé; be ready on every number',
+  'Three Story Bank stories fresh in your head',
+  'Two or three questions ready from Ask Them',
+  'Know the interviewers\' names and roles',
+  'Water within reach, phone on silent',
+  'Notepad for the questions you want to ask later'
+];
+const DAY_FMT={
+  remote:['Test camera, mic and the meeting link the day before, then again 15 minutes before',
+    'Check what is behind you and close anything that could notify on screen',
+    'Have the dial-in number as a fallback if video fails',
+    'Look at the camera when you make your key point, not at their face',
+    'Résumé open in a second window — not a second screen you have to turn to',
+    'Tell anyone at home the time; lock the door if you can'],
+  onsite:['Plan the route and add thirty minutes; know the building and floor',
+    'Arrive early, but walk in ten minutes before — not thirty',
+    'Two printed copies of your résumé and a photo ID',
+    'Dress one level above the team photos on their site',
+    'Eat beforehand; onsite loops run long and nobody offers lunch',
+    'Names of everyone you meet, written down as you go'],
+  panel:['Ask for the names and roles of every panellist beforehand',
+    'Answer to the person who asked, then include the room with your eyes',
+    'Expect to repeat yourself — different panellists have different questions on purpose',
+    'When two people ask at once, take the more senior question first and offer to come back',
+    'Note who seemed unconvinced; address it in your closing question',
+    'One question at the end that only the panel together could answer']
+};
+let dayFmt='remote';
+function renderDay(){
+  const items=[...DAY_BASE,...DAY_FMT[dayFmt]];
+  const key='vriddhih.iv.check.'+dayFmt;const done=lsGet(key,[]);
+  $('day-sub').textContent=`${dayFmt==='remote'?'Remote / video':dayFmt==='onsite'?'Onsite':'Panel'} · ${items.length} things, ticked in this browser only`;
+  $('day-list').innerHTML=items.map((t,i)=>
+    `<label class="${done.includes(i)?'done':''}"><input type="checkbox" data-i="${i}" ${done.includes(i)?'checked':''}><span>${escHtml(t)}</span></label>`).join('');
+  $('day-list').querySelectorAll('input').forEach(c=>c.addEventListener('change',()=>{
+    const cur=lsGet(key,[]),i=+c.dataset.i;
+    const next=c.checked?[...new Set([...cur,i])]:cur.filter(x=>x!==i);
+    lsSet(key,next);c.closest('label').classList.toggle('done',c.checked);
+  }));
+}
+document.querySelectorAll('#fmt-band button').forEach(b=>b.addEventListener('click',()=>{
+  document.querySelectorAll('#fmt-band button').forEach(x=>x.classList.remove('on'));b.classList.add('on');
+  dayFmt=b.dataset.f;renderDay();
+}));
+$('pb-out').innerHTML=PLAYBOOKS.map(p=>`<div class="pb">
+  <h4>${escHtml(p.n)}</h4><div class="who">${escHtml(p.w)}</div>
+  <dl><dt>What it tests</dt><dd>${escHtml(p.tests)}</dd>
+  <dt>What to prepare</dt><dd>${escHtml(p.prep)}</dd>
+  <dt>How to open</dt><dd>${escHtml(p.open)}</dd>
+  <dt>What ends it badly</dt><dd>${escHtml(p.bad)}</dd></dl></div>`).join('');
+renderDay();
 </script>
 </body>
 </html>
