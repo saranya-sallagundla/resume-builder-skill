@@ -28,7 +28,7 @@ Most resumes lose before a human reads them: keyword-matching ATS filters, then 
 | [`docs/playbooks.md`](docs/playbooks.md) | Per-candidate-type templates, transferable-skills mapping, red-flag handling. |
 | [`docs/regional-conventions.md`](docs/regional-conventions.md) | India, US, UK, EU, Gulf, AU/NZ, Singapore, Canada norms. |
 | [`scripts/score_resume.py`](scripts/score_resume.py) | Heuristic implementation of the rubric; used as a CI regression gate. |
-| [`web/`](web/) | The same rubric as a single-file browser app — JD → resume blueprint, scorer with an X-Ray view, a 6-second recruiter-scan simulator, and a multi-JD match matrix — deployed to GitHub Pages and packaged as a container. |
+| [`web/`](web/) | **Vriddhih** — the same rubric as a single-file browser app, now a career-journey site. Résumé room (build from a JD, score with an X-Ray view, bullet coaching, three readers, multi-JD match matrix) and Interview room (fifty questions traced to the JD and your own bullets, a drill deck, STAR story bank, 60-second pitch, questions to ask them, round playbooks). Deployed to GitHub Pages and packaged as a container. |
 
 ## Install the skill
 
