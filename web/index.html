@@ -757,7 +757,11 @@ function score(resume,jd,targetPages,pagesOverride){
     ["Hygiene",hy,5,hy<5?`Use one date format (${d.dateStyles.join(" vs ")||"mixed"}) and remove double spaces.`:"Clean."]];
   const total=+rows.reduce((a,x)=>a+x[1],0).toFixed(1);return {rows,total,d};
 }
-const $=id=>document.getElementById(id);const escHtml=s=>s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+const $=id=>document.getElementById(id);/* Escapes quotes as well as angle brackets: the output is interpolated into HTML attributes
+   (placeholder="...") as well as text, and an unescaped quote there closes the attribute early.
+   Named entities only — the X-Ray view highlights numbers in already-escaped HTML, so a numeric
+   entity like &#39; would be split into &#<mark>39</mark>; and shown as literal text. */
+const escHtml=s=>s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&apos;");
 const MAX=30000; const cap=s=>s.length>MAX?s.slice(0,MAX):s;
 
 /* ---------- tabs (top-level + Compare's nested sub-tabs) ---------- */

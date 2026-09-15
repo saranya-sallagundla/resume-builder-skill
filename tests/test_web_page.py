@@ -65,6 +65,21 @@ def test_every_domain_is_represented():
     assert got == DOMAINS, f"missing coverage for {DOMAINS - got}"
 
 
+def test_html_escaping_covers_quotes_and_uses_named_entities():
+    """escHtml output lands in attributes as well as text, so quotes must be escaped.
+
+    The entities must be named: the X-Ray view highlights numbers in already-escaped HTML, so a
+    numeric entity such as &#39; gets split into &#<mark>39</mark>; and shown as literal text.
+    """
+    m = re.search(r"const escHtml=(.+)", PAGE)
+    assert m, "escHtml definition not found"
+    body = m.group(1)
+    for char, entity in [("&", "&amp;"), ("<", "&lt;"), (">", "&gt;"), ('"', "&quot;")]:
+        assert entity in body, f"escHtml does not escape {char!r}"
+    assert "&apos;" in body, "escHtml does not escape the apostrophe"
+    assert "&#" not in body, "escHtml must use named entities, not numeric ones — see the docstring"
+
+
 def test_no_duplicate_element_ids():
     ids = re.findall(r'\sid="([^"]+)"', PAGE)
     dupes = [i for i, c in Counter(ids).items() if c > 1]
