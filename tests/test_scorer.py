@@ -43,8 +43,18 @@ def test_score_is_deterministic():
 
 
 def test_page_count_override():
+    """Standard is 2 pages max: 1-2 pages full marks, 3 partial, 4+ zero."""
+    assert score(GOOD, JD, pages=1).length_layout == 5
     assert score(GOOD, JD, pages=2).length_layout == 5
-    assert score(GOOD, JD, pages=3).length_layout == 0
+    assert score(GOOD, JD, pages=3).length_layout == 2
+    assert score(GOOD, JD, pages=4).length_layout == 0
+
+
+def test_page_count_target_is_configurable():
+    """A fresher targeting 1 page can set --target-pages 1."""
+    assert score(GOOD, JD, pages=1, target_pages=1).length_layout == 5
+    assert score(GOOD, JD, pages=2, target_pages=1).length_layout == 2
+    assert score(GOOD, JD, pages=3, target_pages=1).length_layout == 0
 
 
 def test_bullets_parse():
