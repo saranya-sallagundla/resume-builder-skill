@@ -26,7 +26,7 @@ jobs:
         run: |
           kubectl port-forward svc/resume-scorer 8080:80 &
           sleep 3
-          curl -fsS http://localhost:8080/ | grep -q "Resume Blueprint" && echo "scorer is serving"
+          curl -fsS http://localhost:8080/ | grep -q "Vriddhih" && echo "site is serving"
       - name: Show cluster state on failure
         if: failure()
         run: kubectl get all -A && kubectl describe deploy resume-scorer && kubectl logs -l app=resume-scorer --tail=50
