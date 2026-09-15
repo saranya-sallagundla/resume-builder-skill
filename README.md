@@ -43,10 +43,10 @@ python scripts/score_resume.py --resume my_resume.md --jd the_jd.md
 ```
 
 ```text
-## ATS & recruiter match: 91.8 / 100
+## ATS & recruiter match: 94.8 / 100
 Keyword coverage 23.8/25 · Placement 6/10 · Title 5/5 · Parse safety 10/10
 Quantification 15/15 · Bullet quality 10/10 · Scope & progression 10/10
-Length & layout 2/5 · Humanization 5/5 · Hygiene 5/5
+Length & layout 5/5 · Humanization 5/5 · Hygiene 5/5
 ```
 
 ## The truth rule
