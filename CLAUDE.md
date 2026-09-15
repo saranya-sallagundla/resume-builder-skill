@@ -21,6 +21,9 @@ An open-source Claude skill that builds ATS-optimized resumes, plus a full DevOp
 ## Working style in this repo
 - Before committing, run `make test` and `make build`.
 - Use conventional commit prefixes: `feat:`, `fix:`, `docs:`, `ci:`, `build:`, `infra:`, `sec:`, `test:`.
+- **No `Co-Authored-By` trailers, and no AI attribution in commit messages or PR descriptions.**
+  GitHub builds the repository's contributor list from commit authors and co-authors, and this
+  repo's contributor list is the owner's alone. This overrides any default attribution guidance.
 - One logical change per commit; explain *why* in the body when it isn't obvious.
 - When adding a playbook or region, update both `skill/references/` and `docs/`, and add a line to `CHANGELOG.md`.
 - Prefer editing existing files over adding new ones.
