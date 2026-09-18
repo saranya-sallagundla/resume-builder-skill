@@ -16,7 +16,7 @@ jobs:
       GITHUB_TOKEN: ${{ secrets.TF_GITHUB_TOKEN }}
       TF_VAR_github_owner: ${{ github.repository_owner }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - uses: hashicorp/setup-terraform@v3
       - run: terraform fmt -check
       - run: terraform init -input=false
