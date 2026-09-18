@@ -25,7 +25,7 @@ jobs:
         run: terraform plan -input=false -no-color -out=tfplan | tee plan.txt
       - name: Comment plan on PR
         if: github.event_name == 'pull_request'
-        uses: marocchino/sticky-pull-request-comment@v2
+        uses: marocchino/sticky-pull-request-comment@v3
         with: {path: terraform/plan.txt, header: terraform}
       - name: Apply
         if: github.ref == 'refs/heads/main' && github.event_name == 'push'
