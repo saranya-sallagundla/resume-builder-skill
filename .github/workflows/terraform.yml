@@ -17,7 +17,7 @@ jobs:
       TF_VAR_github_owner: ${{ github.repository_owner }}
     steps:
       - uses: actions/checkout@v4
-      - uses: hashicorp/setup-terraform@v3
+      - uses: hashicorp/setup-terraform@v4
       - run: terraform fmt -check
       - run: terraform init -input=false
       - run: terraform validate
